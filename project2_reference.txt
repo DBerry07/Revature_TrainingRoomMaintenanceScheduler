@@ -6,18 +6,36 @@ Naming Convention:
 https://jeroenmols.com/blog/2016/03/07/resourcenaming/
 WHAT_WHERE_DESCRIPTION_SIZE
 
+Acitivity:
+Login
+	Trainer
+	Site Manager
+
+
 Fragments:
 Site Manager
-	Campus Selection
-	Room Selection
-	Criteria Selection
-	Trainer Selection
-	Delegate Date Selection
-	Reports Date Selection
+	->Campus Selection (N)
+	Room Selection (D)
+	Cleaning Criteria Selection (N)
+	Trainer Selection (D)
+	Delegate Date Selection (D)
+	Reports Date Selection (D)
 Trainer
-	Room Selection
-	Cleaning Criteria
-	Trainer Selection
-	Room Selection
-	Delegate Date Selection
-	Reports Date Selection
+	Cleaning Criteria Selection (N)
+	->Signature (N)
+	Trainer Selection (D)
+	Room Selection (D)
+	Delegate Date Selection (D)
+	Reports Date Selection (D)
+
+Navigation:
+Trainer
+	Verify -> Room Selection(Trainer Home)-> Cleaning Criteria -> Signature
+	Delegate -> Trainer Selection -> Room Selection -> Date Selection
+	Reports-> Date Selection (Lists Report here)
+	Log Out
+
+Site Manager
+	Schedule -> Campus Selection(Site Manager Home) -> Room Selection(Trainer Home)-> Cleaning Criteria -> Trainer Selection -> Date Selection
+	Reports-> Date Selection (Lists Report & Email here)
+	Log out->
