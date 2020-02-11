@@ -1,0 +1,23 @@
+Green: 	#7A926F
+Gray:	#D0D0D0
+Orange:	#F26925
+
+Naming Convention:
+https://jeroenmols.com/blog/2016/03/07/resourcenaming/
+WHAT_WHERE_DESCRIPTION_SIZE
+
+Fragments:
+Site Manager
+	Campus Selection
+	Room Selection
+	Criteria Selection
+	Trainer Selection
+	Delegate Date Selection
+	Reports Date Selection
+Trainer
+	Room Selection
+	Cleaning Criteria
+	Trainer Selection
+	Room Selection
+	Delegate Date Selection
+	Reports Date Selection
