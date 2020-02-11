@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+        <item
+            android:id="@+id/menuItem_trainer_verify"
+            android:title="@string/trainer_option_verify" />
+        <item
+            android:id="@+id/menuItem_trainer_delegate"
+            android:title="@string/trainer_option_delegate" />
+        <item
+            android:id="@+id/menuItem_trainer_reports"
+            android:title="@string/trainer_option_reports" />
+        <item
+            android:id="@+id/menuItem_trainer_logout"
+            android:title="@string/menu_option_logout"/>
+    </group>
+</menu>

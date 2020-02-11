@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group >
+        <item
+            android:id="@+id/menuItem_siteManager_schedule"
+            android:title="@string/siteManager_option_schedule" />
+        <item
+            android:id="@+id/menuItem_siteManager_reports"
+            android:title="@string/siteManager_option_reports" />
+        <item
+            android:id="@+id/menuItem_siteManager_logout"
+            android:title="@string/menu_option_logout"/>
+    </group>
+</menu>

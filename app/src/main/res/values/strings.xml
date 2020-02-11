@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Revature Training Room Maintenance Scheduler</string>
+
+    <!-- LOGIN STRINGS -->
+    <string name="login_title">Log In</string>
+    <string name="login_label_email">E-mail Address</string>
+    <string name="login_hint_email">Enter email</string>
+    <string name="login_label_password">Password</string>
+    <string name="login_hint_password">Enter password</string>
+    <string name="login_msg_forgotPassword">Forgot your password?</string>
+    <string name="login_link_forgotPassword">Click here</string>
+
+    <string name="menu_option_logout">Log Out</string>
+    <!-- TRAINER MENU STRINGS -->
+    <string name="trainer_option_verify">Verify</string>
+    <string name="trainer_option_delegate">Delegate</string>
+    <string name="trainer_option_reports">Reports</string>
+
+    <!-- SITE MANAGER MENU STRINGS -->
+    <string name="siteManager_option_schedule">Schedule</string>
+    <string name="siteManager_option_reports">Reports</string>
+
+    <!-- FRAGMENT TITLES -->
+    <string name="title_campus_selection">Campus Selection</string>
+    <string name="title_room_selection">Room Selection</string>
+    <string name="title_cleaningCriteria_selection">Cleaning Criteria Selection</string>
+    <string name="title_trainer_selection">Trainer Selection</string>
+    <string name="title_date_selection">Date Selection</string>
+
+
+    <string name="hello_blank_fragment">Temp</string>
+
+<!-- DRAWER LAYOUT STRINGS -->
+    <string name="drawerOpen">Open Drawer</string>
+    <string name="drawerClose">Close Drawer</string>
+</resources>

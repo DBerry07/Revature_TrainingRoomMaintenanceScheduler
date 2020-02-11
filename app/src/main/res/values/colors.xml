@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="revOrange">#F26925</color>
+    <color name="revOrangeDark">#d65311</color>
+
+    <color name="revGray">#D0D0D0</color>
+    <color name="revGreen">#7A926F</color>
+</resources>
