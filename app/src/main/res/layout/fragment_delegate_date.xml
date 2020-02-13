@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/frameLayoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SM_DelegateDateFragment">
@@ -9,6 +10,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fragment Delegate Date" />
+        android:text="@string/title_date_selection" />
+
+    <Button
+        android:id="@+id/btn_delegateDate"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </FrameLayout>

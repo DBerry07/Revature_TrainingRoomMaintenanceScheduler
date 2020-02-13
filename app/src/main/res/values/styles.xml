@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/revGreen</item>
     </style>
 
+    <style name="frameLayoutContainer">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
     <style name="fragmentTitle">
         <item name="android:textColor">@color/revOrange</item>
         <item name="android:gravity">center</item>
