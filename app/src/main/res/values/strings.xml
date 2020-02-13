@@ -33,4 +33,5 @@
 <!-- DRAWER LAYOUT STRINGS -->
     <string name="drawerOpen">Open Drawer</string>
     <string name="drawerClose">Close Drawer</string>
+    <string name="btn_label_submit">Submit</string>
 </resources>

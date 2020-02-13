@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/scheduleNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.CampusSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_CampusSelectionFragment"
         android:label="@string/title_campus_selection"
         tools:layout="@layout/fragment_campus_selection"
         />

@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class SIteManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class SiteManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     NavController navController;

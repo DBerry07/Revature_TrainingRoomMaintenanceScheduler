@@ -5,7 +5,6 @@
     android:id="@+id/drawerLayout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/revGray"
     tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout

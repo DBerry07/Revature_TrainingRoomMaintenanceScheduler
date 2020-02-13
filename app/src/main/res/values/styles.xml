@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/revGreen</item>
     </style>
 
+    <style name="fragmentTitle">
+        <item name="android:textColor">@color/revOrange</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fragment_title_text_size</item>
+    </style>
+
+    <style name="buttonStyle">
+        <item name="android:layout_margin">@dimen/all_control_margin</item>
+        <item name="android:textColor">@color/revGreen</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="spinnerStyle">
+        <item name="android:layout_margin">@dimen/all_control_margin</item>
+        <item name="android:padding">@dimen/all_control_margin</item>
+    </style>
 </resources>
