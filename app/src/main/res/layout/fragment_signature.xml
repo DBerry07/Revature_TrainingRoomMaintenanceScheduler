@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="frameLayoutContainer"
+    style="@style/frameLayoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,35 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_title_campusSelection"
-            style="@style/fragmentTitle"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/ll_signatureContainer"
+            style="@style/containerSignature"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/title_campus_selection"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Spinner
-            android:id="@+id/spn_campusSelection"
-            style="@style/spinnerStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/global_control_margin"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_campusSelection" />
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tv_title_trainerSignature"
+                style="@style/textViewSignature_v21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_signature" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_campusSelection"
+            android:id="@+id/btn_trainerSelection"
             style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_label_submit"
+            android:text="@string/trainer_option_verify"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spn_campusSelection" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_signatureContainer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

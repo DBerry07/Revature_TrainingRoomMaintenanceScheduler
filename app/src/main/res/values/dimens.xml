@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="global_stroke_width">2dp</dimen>
+    <dimen name="global_control_margin">16dp</dimen>
+
     <dimen name="container_padding">24dp</dimen>
     <dimen name="logo_height">150dp</dimen>
 
     <dimen name="login_title_size">50dp</dimen>
     <dimen name="login_title_margin">50dp</dimen>
 
-    <dimen name="all_control_margin">16dp</dimen>
-
     <dimen name="navigation_drawer_width">180dp</dimen>
 
     <dimen name="fragment_title_text_size">30dp</dimen>
-    <dimen name="button_stroke_width">5dp</dimen>
+    <dimen name="button_stroke_width">@dimen/global_stroke_width</dimen>
     <dimen name="switch_text_padding">3dp</dimen>
+
+    <dimen name="container_signature_top_margin">75dp</dimen>
+
+    <dimen name="textView_signature_padding">7dp</dimen>
+    <dimen name="textView_signature_top_padding">125dp</dimen>
+    <dimen name="textView_signature_bottom_border_width">3dp</dimen>
 </resources>

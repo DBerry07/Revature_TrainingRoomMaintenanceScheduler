@@ -1,29 +1,21 @@
 package com.revature.roommaintenanceprototype.fragment;
 
 
-import android.database.DataSetObserver;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SM_CampusSelectionFragment extends Fragment implements View.OnClickListener{
     Spinner spnCampus;
@@ -60,7 +52,7 @@ public class SM_CampusSelectionFragment extends Fragment implements View.OnClick
         switch (view.getId()){
             case R.id.btn_campusSelection:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_RoomSelectionFragment(), FragmentStringTags.getSM_RoomSelectionFragment())
+                        .replace(R.id.fragment_mainContentContainer, new SM_RoomSelectionFragment(), FragmentStringTags.getSM_RoomSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
                 break;

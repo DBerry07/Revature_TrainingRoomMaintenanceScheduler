@@ -29,7 +29,7 @@ public class SM_RoomSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_CriteriaSelectionFragment(), FragmentStringTags.getSM_CriteriaSelectionFragment())
+                        .replace(R.id.fragment_mainContentContainer, new SM_CriteriaSelectionFragment(), FragmentStringTags.getSM_CriteriaSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }

@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/all_control_margin"
+    android:layout_margin="@dimen/global_control_margin"
     android:id="@+id/linearLayout">
 
     <TextView

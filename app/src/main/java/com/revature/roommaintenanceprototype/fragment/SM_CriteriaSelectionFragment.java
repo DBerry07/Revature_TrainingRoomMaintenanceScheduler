@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -56,7 +57,7 @@ public class SM_CriteriaSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_TrainerSelectionFragment(), FragmentStringTags.getSM_TrainerSelectionFragment())
+                        .replace(R.id.fragment_mainContentContainer, new SM_TrainerSelectionFragment(), FragmentStringTags.getSM_TrainerSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }
@@ -64,47 +65,6 @@ public class SM_CriteriaSelectionFragment extends Fragment {
 
     }
 
-    private class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.CriteriaViewHolder>{
-        ArrayList<String> criteriaItemsList;
 
-        CriteriaAdapter(ArrayList<String> criteriaItemList){
-            this.criteriaItemsList = criteriaItemList;
-        }
-
-        @NonNull
-        @Override
-        public CriteriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_cleaning_criteria, parent, false);
-            return new CriteriaViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull CriteriaViewHolder holder, int position) {
-            holder.tvCleaningItem.setText(criteriaItemsList.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return criteriaItemsList.size();
-        }
-
-        private class CriteriaViewHolder extends RecyclerView.ViewHolder{
-            Switch swtCleaningItem;
-            TextView tvCleaningItem;
-
-            public CriteriaViewHolder(@NonNull final View itemView) {
-                super(itemView);
-                tvCleaningItem = itemView.findViewById(R.id.tv_cleaningCriteria_item);
-
-                swtCleaningItem = (Switch) itemView.findViewById(R.id.swt_cleaningCriteria_item);
-                swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        ScreenMessage.snackBarLongMsg(itemView,tvCleaningItem.getText().toString());
-                    }
-                });
-            }
-        }
-    }
 
 }

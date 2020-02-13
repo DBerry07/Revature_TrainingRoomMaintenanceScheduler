@@ -23,9 +23,10 @@
     <!-- FRAGMENT TITLES -->
     <string name="title_campus_selection">Campus Selection</string>
     <string name="title_room_selection">Room Selection</string>
-    <string name="title_cleaningCriteria_selection">Cleaning Criteria Selection</string>
+    <string name="title_cleaningCriteria_selection">Cleaning Criteria</string>
     <string name="title_trainer_selection">Trainer Selection</string>
     <string name="title_date_selection">Date Selection</string>
+    <string name="title_signature">Signature</string>
 
 
     <string name="hello_blank_fragment">Temp</string>
