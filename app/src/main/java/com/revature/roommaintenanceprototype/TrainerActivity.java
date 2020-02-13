@@ -66,7 +66,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.delegateTrainerSelectionFragment);
                 break;
             case R.id.menuItem_trainer_reports:
-                //Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsTrainerNavFragment);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsDateFragment2);
                 break;
             case R.id.menuItem_trainer_logout:
                 finish();

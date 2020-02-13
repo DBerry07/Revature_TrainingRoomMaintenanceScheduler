@@ -29,12 +29,12 @@ public class TV_CriteriaSelectionAdapter extends RecyclerView.Adapter<TV_Criteri
 
         public MyViewHolder(View v){
             super(v);
-            aSwitch = v.findViewById(R.id.criteria_selection_switch);
+            //aSwitch = v.findViewById(R.id.criteria_selection_switch);
         }
     }
 
-    public TV_CriteriaSelectionAdapter(Activity activity, List<String> rooms){
-        this.criteria = rooms;
+    public TV_CriteriaSelectionAdapter(Activity activity, List<String> criteria){
+        this.criteria = criteria;
         this.activity = activity;
     }
 
@@ -48,7 +48,7 @@ public class TV_CriteriaSelectionAdapter extends RecyclerView.Adapter<TV_Criteri
     }
 
     public void onBindViewHolder(final MyViewHolder holder, final int position){
-        holder.aSwitch.setText(criteria.get(position));
+        //holder.aSwitch.setText(criteria.get(position));
     }
 
     public int getItemCount() {

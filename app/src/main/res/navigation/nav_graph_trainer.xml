@@ -11,8 +11,8 @@
         android:label="fragment_room_selection"
         tools:layout="@layout/fragment_room_selection" >
         <action
-            android:id="@+id/action_verifyRoomSelectionFragment_to_verifyCriteriaSelectionFragment"
-            app:destination="@id/verifyCriteriaSelectionFragment" />
+            android:id="@+id/action_verifyRoomSelectionFragment_to_TV_CriteriaSelectionFragment"
+            app:destination="@id/TV_CriteriaSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/delegateTrainerSelectionFragment"
@@ -23,16 +23,6 @@
             android:id="@+id/action_delegateTrainerSelectionFragment_to_TD_RoomSelectionFragment"
             app:destination="@id/TD_RoomSelectionFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/verifyCriteriaSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.verify.criteria.TV_CriteriaSelectionFragment"
-        android:label="fragment_criteria_selection"
-        tools:layout="@layout/fragment_criteria_selection" />
-    <fragment
-        android:id="@+id/reportsDateFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.ReportsDateFragment"
-        android:label="fragment_reports_date"
-        tools:layout="@layout/fragment_reports_date" />
     <fragment
         android:id="@+id/TD_RoomSelectionFragment"
         android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.room.TD_RoomSelectionFragment"
@@ -46,4 +36,14 @@
         android:id="@+id/TD_DateSelecterFragment"
         android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.date.TD_DateSelecterFragment"
         android:label="TD_DateSelecterFragment" />
+    <fragment
+        android:id="@+id/TV_CriteriaSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.trainer.verify.criteria.TV_CriteriaSelectionFragment"
+        android:label="fragment_criteria_selection"
+        tools:layout="@layout/fragment_criteria_selection" />
+    <fragment
+        android:id="@+id/reportsDateFragment2"
+        android:name="com.revature.roommaintenanceprototype.fragment.trainer.reports.ReportsFragment"
+        android:label="fragment_reports_date"
+        tools:layout="@layout/fragment_reports" />
 </navigation>

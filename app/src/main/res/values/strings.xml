@@ -30,7 +30,10 @@
 
     <string name="hello_blank_fragment">Temp</string>
 
-<!-- DRAWER LAYOUT STRINGS -->
+    <!-- DRAWER LAYOUT STRINGS -->
     <string name="drawerOpen">Open Drawer</string>
     <string name="drawerClose">Close Drawer</string>
+
+    <!-- OTHER STRINGS -->
+    <string name="emptyString"></string>
 </resources>

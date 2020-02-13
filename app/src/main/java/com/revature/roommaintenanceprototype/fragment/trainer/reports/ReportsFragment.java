@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment.trainer.verify.criteria;
+package com.revature.roommaintenanceprototype.fragment.trainer.reports;
 
 
 import android.os.Bundle;
@@ -14,21 +14,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.fragment.trainer.verify.criteria.TV_CriteriaSelectionAdapter;
 import com.revature.roommaintenanceprototype.fragment.trainer.verify.room.TV_RoomSelectionAdapter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TV_CriteriaSelectionFragment extends Fragment {
+public class ReportsFragment extends Fragment {
 
     NavController navController;
-    List<String> criteria = new ArrayList<>(Arrays.asList("Dusting", "Vacuuming", "Tables"));
+    Map<String, Boolean> roomStatus;
 
-    public TV_CriteriaSelectionFragment() {
+    public ReportsFragment() {
         // Required empty public constructor
     }
 
@@ -36,21 +36,24 @@ public class TV_CriteriaSelectionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_criteria_selection, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_reports, container, false);
+
+        roomStatus = new HashMap<>();
+        roomStatus.put("NEC 101", true);
+        roomStatus.put("FPS 221", false);
+        roomStatus.put("RTP 336", false);
+        roomStatus.put("MMO 111", true);
+        roomStatus.put("HTT 900", false);
+
         navController = Navigation.findNavController(this.getActivity(), R.id.fragment_mainContentContainer);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.criteria_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.reports_recycler_view);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
         recyclerView.setLayoutManager(linearLayoutManager);
-        TV_CriteriaSelectionAdapter adapter = new TV_CriteriaSelectionAdapter(getActivity(), criteria);
-        recyclerView.setAdapter(adapter);
 
-        rootView.findViewById(R.id.criteria_selection_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //navController.navigate();
-            }
-        });
+        ReportsAdapter adapter = new ReportsAdapter(getActivity(), roomStatus);
+
+        recyclerView.setAdapter(adapter);
 
         return rootView;
     }

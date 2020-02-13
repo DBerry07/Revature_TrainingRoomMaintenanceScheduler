@@ -51,7 +51,7 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(activity, R.id.fragment_mainContentContainer).navigate(R.id.action_verifyRoomSelectionFragment_to_verifyCriteriaSelectionFragment);
+                Navigation.findNavController(activity, R.id.fragment_mainContentContainer).navigate(R.id.action_verifyRoomSelectionFragment_to_TV_CriteriaSelectionFragment);
             }
         });
     }
