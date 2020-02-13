@@ -13,4 +13,13 @@ public class DummyText {
         campuses.add("TSU");
         return campuses;
     }
+
+    public static List<String> getCleaningCriteria() {
+        List<String> cleaningCriteria = new ArrayList<String>();
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
+        return cleaningCriteria;
+    }
 }

@@ -33,6 +33,7 @@
             android:id="@+id/rv_cleaningCriteria"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/btn_cleaningCriteriaSelection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

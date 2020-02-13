@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/all_control_margin"
+    android:id="@+id/linearLayout">
+
+    <TextView
+        android:id="@+id/tv_cleaningCriteria_item"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:padding="@dimen/switch_text_padding"
+        android:text="temp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Switch
+            android:id="@+id/swt_cleaningCriteria_item"
+            style="@style/switchGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_conversion_absoluteHeight="27dp"
+            tools:layout_editor_absoluteY="16dp"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_conversion_absoluteWidth="190dp" />
+    </LinearLayout>
+</LinearLayout>

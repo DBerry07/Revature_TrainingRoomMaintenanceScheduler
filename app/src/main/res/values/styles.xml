@@ -28,4 +28,8 @@
         <item name="android:layout_margin">@dimen/all_control_margin</item>
         <item name="android:padding">@dimen/all_control_margin</item>
     </style>
+
+    <style name="switchGreen">
+
+    </style>
 </resources>
