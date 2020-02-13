@@ -28,17 +28,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_cleaningCriteria"
+
+        <ScrollView
+            android:id="@+id/sv_cleaningCriteria"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:fadeScrollbars="false"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             android:background="@android:color/white"
             app:layout_constraintBottom_toTopOf="@+id/btn_cleaningCriteriaSelection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_cleaningCriteria_selection">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_cleaningCriteria_selection"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cleaningCriteria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+            </androidx.recyclerview.widget.RecyclerView>
+        </ScrollView>
 
         <Button
             android:id="@+id/btn_cleaningCriteriaSelection"
@@ -49,7 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_cleaningCriteria" />
+            app:layout_constraintTop_toBottomOf="@+id/sv_cleaningCriteria" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

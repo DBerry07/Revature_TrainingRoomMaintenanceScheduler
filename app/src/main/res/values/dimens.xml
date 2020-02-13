@@ -20,4 +20,6 @@
     <dimen name="textView_signature_padding">7dp</dimen>
     <dimen name="textView_signature_top_padding">125dp</dimen>
     <dimen name="textView_signature_bottom_border_width">3dp</dimen>
+    <dimen name="card_roundRadius">12dp</dimen>
+    <dimen name="card_margin">2dp</dimen>
 </resources>

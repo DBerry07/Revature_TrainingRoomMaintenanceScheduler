@@ -20,6 +20,26 @@ public class DummyText {
         cleaningCriteria.add("Chairs");
         cleaningCriteria.add("Whiteboards");
         cleaningCriteria.add("Tables");
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
+        cleaningCriteria.add("Desks");
+        cleaningCriteria.add("Chairs");
+        cleaningCriteria.add("Whiteboards");
+        cleaningCriteria.add("Tables");
         return cleaningCriteria;
     }
 }
