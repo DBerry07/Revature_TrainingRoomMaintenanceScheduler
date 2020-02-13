@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragment.trainer.delegate;
 
 
 import android.os.Bundle;
@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
 
-public class DelegateDateFragment extends Fragment {
+public class TD_DateFragment extends Fragment {
 
 
-    public DelegateDateFragment() {
+    public TD_DateFragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_delegate_date, container, false);
+        return inflater.inflate(R.layout.fragment_date_selector, container, false);
     }
 
 }

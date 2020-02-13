@@ -24,9 +24,9 @@ public class User {
     @ColumnInfo(name = "userRoleId")
     private int userRoleId;
 
-    @NonNull
+    /*@NonNull
     @ColumnInfo(name = "password")
-    private String password;
+    private String password;*/
 
     //GETTERS
     public int getId() {

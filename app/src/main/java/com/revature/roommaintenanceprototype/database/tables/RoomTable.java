@@ -17,7 +17,7 @@ import androidx.room.PrimaryKey;
             parentColumns = "id",
             childColumns = "assignedTo")
 })
-public class Room {
+public class RoomTable {
 
     @PrimaryKey
     @ColumnInfo(name = "id")

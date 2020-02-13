@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity=Room.class,
+        @ForeignKey(entity = RoomTable.class,
                 parentColumns = "id",
                 childColumns = "roomId"),
         @ForeignKey(entity = User.class,
@@ -30,22 +30,22 @@ public class RoomCalendar {
     private int assignedTo;
 
     @ColumnInfo(name = "dateStart")
-    private Date dateStart;
+    private String dateStart;
 
     @ColumnInfo(name = "dateEnd")
-    private Date dateEnd;
+    private String dateEnd;
 
     //GETTERS
     public int getId() { return id; }
     public int getRoomId() { return roomId; }
     public int getAssignedTo() { return assignedTo; }
-    public Date getDateStart() { return dateStart; }
-    public Date getDateEnd() { return dateEnd; }
+    public String getDateStart() { return dateStart; }
+    public String getDateEnd() { return dateEnd; }
 
     //SETTERS
     public void setId(int id) { this.id = id; }
     public void setRoomId(int roomId) { this.roomId = roomId; }
     public void setAssignedTo(int assignedTo) { this.assignedTo = assignedTo; }
-    public void setDateStart(Date dateStart) { this.dateStart = dateStart; }
-    public void setDateEnd(Date dateEnd) { this.dateEnd = dateEnd; }
+    public void setDateStart(String dateStart) { this.dateStart = dateStart; }
+    public void setDateEnd(String dateEnd) { this.dateEnd = dateEnd; }
 }

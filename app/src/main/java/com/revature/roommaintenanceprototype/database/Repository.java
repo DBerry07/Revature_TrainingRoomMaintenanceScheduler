@@ -2,8 +2,7 @@ package com.revature.roommaintenanceprototype.database;
 
 import android.app.Application;
 
-import com.revature.roommaintenanceprototype.dao.UserDao;
-import com.revature.roommaintenanceprototype.database.MaintenanceDatabase;
+import com.revature.roommaintenanceprototype.database.dao.UserDao;
 
 public class Repository {
 

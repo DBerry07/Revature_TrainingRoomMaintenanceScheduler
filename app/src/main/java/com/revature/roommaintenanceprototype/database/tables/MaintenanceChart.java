@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Room.class,
+        @ForeignKey(entity = RoomTable.class,
                 parentColumns = "id",
                 childColumns = "roomId"),
         @ForeignKey(entity = User.class,
@@ -22,7 +22,7 @@ public class MaintenanceChart {
     private int id;
 
     @ColumnInfo(name = "date")
-    private Date date;
+    private String date;
 
     @ColumnInfo(name = "roomId")
     private int roomId;
@@ -32,13 +32,13 @@ public class MaintenanceChart {
 
     //GETTERS
     public int getId() { return id; }
-    public Date getDate() { return date; }
+    public String getDate() { return date; }
     public int getRoomId() { return roomId; }
     public int getInspectedBy() { return inspectedBy; }
 
     //SETTERS
     public void setId(int id) { this.id = id; }
-    public void setDate(Date date) { this.date = date; }
+    public void setDate(String date) { this.date = date; }
     public void setRoomId(int roomId) { this.roomId = roomId; }
     public void setInspectedBy(int inspectedBy) { this.inspectedBy = inspectedBy; }
 }
