@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_trainer"
-    app:startDestination="@+id/verifyNavFragment"
-    >
+    app:startDestination="@id/verifyRoomSelectionFragment">
     <fragment
         android:id="@+id/verifyNavFragment"
         android:name="com.revature.roommaintenanceprototype.fragment.TR_RoomSelectionFragment"
@@ -18,9 +17,10 @@
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         >
+
         <action
-            android:id="@+id/action_delegateNavFragment_to_verifyNavFragment"
-            app:destination="@id/verifyNavFragment" />
+            android:id="@+id/action_delegateTrainerSelectionFragment_to_TD_RoomSelectionFragment"
+            app:destination="@id/TD_RoomSelectionFragment" />
     </fragment>
     <fragment
         android:id="@+id/reportsTrainerNavFragment"
@@ -29,8 +29,11 @@
         tools:layout="@layout/fragment_room_selection"
         >
         <action
-            android:id="@+id/action_reportsTrainerNavFragment_to_verifyNavFragment"
-            app:destination="@id/verifyNavFragment" />
+            android:id="@+id/action_TD_RoomSelectionFragment_to_TD_DateSelecterFragment"
+            app:destination="@id/TD_DateSelecterFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/TD_DateSelecterFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.date.TD_DateSelecterFragment"
+        android:label="TD_DateSelecterFragment" />
 </navigation>
