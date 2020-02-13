@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/reportsSiteManagerNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.ReportsDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_ReportsDateFragment"
         android:label="@string/title_campus_selection"
         tools:layout="@layout/fragment_campus_selection"
         >

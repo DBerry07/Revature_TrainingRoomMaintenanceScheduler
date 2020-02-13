@@ -8,13 +8,13 @@
     >
     <fragment
         android:id="@+id/verifyNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_RoomSelectionFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         />
     <fragment
         android:id="@+id/delegateNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.DelegateDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_DelegateDateFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         >
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/reportsTrainerNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.ReportsDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_ReportsDateFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         >

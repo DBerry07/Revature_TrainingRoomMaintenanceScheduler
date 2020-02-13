@@ -14,10 +14,10 @@ import com.revature.roommaintenanceprototype.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CriteriaSelectionFragment extends Fragment {
+public class SM_CriteriaSelectionFragment extends Fragment {
 
 
-    public CriteriaSelectionFragment() {
+    public SM_CriteriaSelectionFragment() {
         // Required empty public constructor
     }
 

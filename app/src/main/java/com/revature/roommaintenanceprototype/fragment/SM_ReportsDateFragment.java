@@ -1,5 +1,6 @@
 package com.revature.roommaintenanceprototype.fragment;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,13 +11,17 @@ import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
 
-public class RoomSelectionFragment extends Fragment {
-    
+public class SM_ReportsDateFragment extends Fragment {
+
+
+    public SM_ReportsDateFragment() {
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_room_selection, container, false);
+        return inflater.inflate(R.layout.fragment_reports_date, container, false);
     }
+
 }
