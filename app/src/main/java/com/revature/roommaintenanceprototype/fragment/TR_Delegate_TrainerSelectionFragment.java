@@ -13,10 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
+
+import java.util.ArrayList;
 
 public class TR_Delegate_TrainerSelectionFragment extends Fragment {
 
@@ -32,10 +35,7 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment {
         RecyclerView recyclerView = rootView.findViewById(R.id.trainer_selection_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-
-        TrainerSelectionAdapter trainerSelectionAdapter = new TrainerSelectionAdapter(getActivity(), DummyText.getTrainers());
-        recyclerView.setAdapter(trainerSelectionAdapter);
-
+        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms()));
         return rootView;
     }
 

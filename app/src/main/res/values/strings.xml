@@ -35,4 +35,5 @@
     <string name="drawerOpen">Open Drawer</string>
     <string name="drawerClose">Close Drawer</string>
     <string name="btn_label_submit">Submit</string>
+    <string name="title_view_reports">View Reports</string>
 </resources>
