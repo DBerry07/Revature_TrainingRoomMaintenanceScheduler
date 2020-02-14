@@ -39,7 +39,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_Verify_CriteriaSelectionFragment(), FragmentStringTags.getTR_CriteriaSelectionFragmentTag())
+                        .replace(R.id.fragment_mainContentContainer, new TR_Delegate_DateFragment(), FragmentStringTags.getSM_DelegateDateFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }
