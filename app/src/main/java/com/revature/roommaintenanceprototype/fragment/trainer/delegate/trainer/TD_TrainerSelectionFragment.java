@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.fragment.trainer.delegate.room.TD_RoomSelectionAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

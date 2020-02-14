@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment.trainer.verify.room;
+package com.revature.roommaintenanceprototype.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,14 +8,13 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 
 import java.util.List;
 
-public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelectionAdapter.MyViewHolder>  {
+public class RoomSelectionAdapter extends RecyclerView.Adapter<RoomSelectionAdapter.MyViewHolder>  {
 
     List<String> rooms;
     Activity activity;
@@ -23,6 +22,7 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public View parent;
         public Button button;
+        public NavController navController;
 
         public MyViewHolder(View v){
             super(v);
@@ -30,14 +30,14 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
         }
     }
 
-    public TV_RoomSelectionAdapter(Activity activity, List<String> rooms){
+    public RoomSelectionAdapter(Activity activity, List<String> rooms){
         this.rooms = rooms;
         this.activity = activity;
     }
 
     @NonNull
     @Override
-    public TV_RoomSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RoomSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_selection_option, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         vh.parent = parent;
@@ -50,6 +50,7 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
     }

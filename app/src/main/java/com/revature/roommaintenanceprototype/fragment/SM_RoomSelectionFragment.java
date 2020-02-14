@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.fragment.trainer.verify.room.TV_RoomSelectionAdapter;
+import com.revature.roommaintenanceprototype.adapter.RoomSelectionAdapter;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
@@ -26,7 +26,7 @@ public class SM_RoomSelectionFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.room_selection_recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
         recyclerView.setLayoutManager(linearLayoutManager);
-        TV_RoomSelectionAdapter adapter = new TV_RoomSelectionAdapter(getActivity(), DummyText.getRooms());
+        RoomSelectionAdapter adapter = new RoomSelectionAdapter(getActivity(), DummyText.getRooms());
         recyclerView.setAdapter(adapter);
         return rootView;
     }
