@@ -18,12 +18,12 @@ public interface UserDao {
     LiveData<Boolean> authenticateUser(String email, String password);*/
 
     @Query("SELECT * FROM User WHERE email = :email")
-    LiveData<User> select(String email);
+    LiveData<List<User>> select(String email);
 
     /*@Query("UPDATE User SET password = :password WHERE email = :email;")
     LiveData<Boolean> updatePassword(String email, String password);*/
 
-    @Query("SELECT userRoleId FROM User WHERE email = :email")
-    LiveData<Integer> trainerOrSiteManager(String email);
+    @Query("SELECT * FROM User WHERE userRoleId = :userRoleId")
+    LiveData<List<User>> selectOnUserRoleId(int userRoleId);
 
 }
