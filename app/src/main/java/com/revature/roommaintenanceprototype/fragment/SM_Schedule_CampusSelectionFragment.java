@@ -17,7 +17,7 @@ import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
-public class SM_CampusSelectionFragment extends Fragment implements View.OnClickListener{
+public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener{
     Spinner spnCampus;
     Button btnCampusSelection;
 
@@ -52,7 +52,7 @@ public class SM_CampusSelectionFragment extends Fragment implements View.OnClick
         switch (view.getId()){
             case R.id.btn_campusSelection:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_RoomSelectionFragment(), FragmentStringTags.getSM_RoomSelectionFragmentTag())
+                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_RoomSelectionFragment(), FragmentStringTags.getSM_RoomSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
                 break;

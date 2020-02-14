@@ -2,22 +2,26 @@ package com.revature.roommaintenanceprototype.fragment;
 
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
-public class TR_ReportsDateFragment extends Fragment {
+import java.util.HashMap;
+
+public class SM_Reports_DateFragment extends Fragment {
 
 
-    public TR_ReportsDateFragment() {
+    public SM_Reports_DateFragment() {
     }
 
 
@@ -35,5 +39,7 @@ public class TR_ReportsDateFragment extends Fragment {
 
         return rootView;
     }
+
+
 
 }

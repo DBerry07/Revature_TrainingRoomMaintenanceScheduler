@@ -20,11 +20,11 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 
-public class TR_CriteriaSelectionFragment extends Fragment {
+public class TR_Verify_CriteriaSelectionFragment extends Fragment {
     Button btnCleaningCriteriaSelection;
     RecyclerView rvCleaningCriteria;
 
-    public TR_CriteriaSelectionFragment() {
+    public TR_Verify_CriteriaSelectionFragment() {
     }
 
 
@@ -53,7 +53,7 @@ public class TR_CriteriaSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_SignatureFragment(), FragmentStringTags.getTR_TrainerSignatureFragment())
+                        .replace(R.id.fragment_mainContentContainer, new TR_Verify_SignatureFragment(), FragmentStringTags.getTR_TrainerSignatureFragment())
                         .addToBackStack(null)
                         .commit();
             }

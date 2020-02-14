@@ -1,22 +1,22 @@
 package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.RoomSelectionAdapter;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
-public class TR_RoomSelectionFragment extends Fragment {
-    Button btnRoomSelection;
+public class SM_Schedule_RoomSelectionFragment extends Fragment {
 
 
     @Override
@@ -39,7 +39,7 @@ public class TR_RoomSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_CriteriaSelectionFragment(), FragmentStringTags.getTR_CriteriaSelectionFragmentTag())
+                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_CriteriaSelectionFragment(), FragmentStringTags.getSM_CriteriaSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }

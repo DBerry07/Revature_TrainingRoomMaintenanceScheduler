@@ -3,7 +3,6 @@ package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,9 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
@@ -24,11 +20,11 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 
-public class SM_CriteriaSelectionFragment extends Fragment {
+public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
     Button btnCleaningCriteriaSelection;
     RecyclerView rvCleaningCriteria;
 
-    public SM_CriteriaSelectionFragment() {
+    public SM_Schedule_CriteriaSelectionFragment() {
     }
 
 
@@ -57,7 +53,7 @@ public class SM_CriteriaSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_TrainerSelectionFragment(), FragmentStringTags.getSM_TrainerSelectionFragmentTag())
+                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_TrainerSelectionFragment(), FragmentStringTags.getSM_TrainerSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }

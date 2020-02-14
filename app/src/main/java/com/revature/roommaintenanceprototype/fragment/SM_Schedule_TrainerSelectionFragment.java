@@ -13,10 +13,10 @@ import android.widget.Button;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
-public class SM_TrainerSelectionFragment extends Fragment {
+public class SM_Schedule_TrainerSelectionFragment extends Fragment {
 
 
-    public SM_TrainerSelectionFragment() {
+    public SM_Schedule_TrainerSelectionFragment() {
     }
 
 
@@ -34,7 +34,7 @@ public class SM_TrainerSelectionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_DelegateDateFragment(), FragmentStringTags.getSM_DelegateDateFragmentTag())
+                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_DelegateDateFragment(), FragmentStringTags.getSM_DelegateDateFragmentTag())
                         .addToBackStack(null)
                         .commit();
             }

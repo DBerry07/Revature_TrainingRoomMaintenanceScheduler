@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.revature.roommaintenanceprototype.R;
 
-public class TR_DelegateDateFragment extends Fragment{
+public class TR_Delegate_DateFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

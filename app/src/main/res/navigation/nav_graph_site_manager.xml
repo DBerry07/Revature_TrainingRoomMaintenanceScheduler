@@ -8,14 +8,14 @@
 
     <fragment
         android:id="@+id/scheduleNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_CampusSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_CampusSelectionFragment"
         android:label="@string/title_campus_selection"
         tools:layout="@layout/fragment_campus_selection"
         />
 
     <fragment
         android:id="@+id/reportsSiteManagerNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_ReportsDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.SM_Reports_DateFragment"
         android:label="@string/title_campus_selection"
         tools:layout="@layout/fragment_campus_selection"
         >

@@ -1,29 +1,29 @@
 package com.revature.roommaintenanceprototype.util;
 
 public class FragmentStringTags {
-    private static final String SM_CampusSelectionFragment = "SM_CampusSelectionFragment";
+    private static final String SM_CampusSelectionFragment = "SM_Schedule_CampusSelectionFragment";
 
-    private static final String SM_CriteriaSelectionFragment = "SM_CriteriaSelectionFragment";
+    private static final String SM_CriteriaSelectionFragment = "SM_Schedule_CriteriaSelectionFragment";
 
-    private static final String SM_DelegateDateFragment = "SM_DelegateDateFragment";
+    private static final String SM_DelegateDateFragment = "SM_Schedule_DelegateDateFragment";
 
-    private static final String SM_ReportsDateFragment = "SM_ReportsDateFragment";
+    private static final String SM_ReportsDateFragment = "SM_Reports_DateFragment";
 
-    private static final String SM_RoomSelectionFragment = "SM_RoomSelectionFragment";
+    private static final String SM_RoomSelectionFragment = "SM_Schedule_RoomSelectionFragment";
 
-    private static final String SM_TrainerSelectionFragment = "SM_TrainerSelectionFragment";
+    private static final String SM_TrainerSelectionFragment = "SM_Schedule_TrainerSelectionFragment";
 
-    private static final String TR_CriteriaSelectionFragment = "TR_CriteriaSelectionFragment";
+    private static final String TR_CriteriaSelectionFragment = "TR_Verify_CriteriaSelectionFragment";
 
-    private static final String TR_DelegateDateFragment = "TR_DelegateDateFragment";
+    private static final String TR_DelegateDateFragment = "TR_Delegate_DateFragment";
 
-    private static final String TR_ReportsDateFragment = "TR_ReportsDateFragment";
+    private static final String TR_ReportsDateFragment = "TR_Reports_DateFragment";
 
-    private static final String TR_RoomSelectionFragment = "TR_RoomSelectionFragment";
+    private static final String TR_RoomSelectionFragment = "TR_Verify_RoomSelectionFragment";
 
-    private static final String TR_TrainerSelectionFragment = "TR_TrainerSelectionFragment";
+    private static final String TR_TrainerSelectionFragment = "TR_Delegate_TrainerSelectionFragment";
 
-    private static final String TR_TrainerSignatureFragment = "TR_SignatureFragment";
+    private static final String TR_TrainerSignatureFragment = "TR_Verify_SignatureFragment";
 
     public static String getSM_CampusSelectionFragmentTag() {
         return SM_CampusSelectionFragment;

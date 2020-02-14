@@ -13,7 +13,7 @@ import android.widget.Button;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
-public class SM_DelegateDateFragment extends Fragment {
+public class SM_Schedule_DelegateDateFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

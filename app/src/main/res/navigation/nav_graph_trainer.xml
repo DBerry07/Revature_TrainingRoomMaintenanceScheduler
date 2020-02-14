@@ -9,13 +9,13 @@
 
     <fragment
         android:id="@+id/verifyNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_RoomSelectionFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         />
     <fragment
         android:id="@+id/delegateNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_TrainerSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_TrainerSelectionFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         >
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/reportsTrainerNavFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_ReportsDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Reports_DateFragment"
         android:label="@string/title_room_selection"
         tools:layout="@layout/fragment_room_selection"
         >
