@@ -3,7 +3,7 @@
     <dimen name="global_stroke_width">2dp</dimen>
     <dimen name="global_control_margin">16dp</dimen>
     <dimen name="global_plain_text_size">15sp</dimen>
-    <dimen name="global_card_text_size">30sp</dimen>
+    <dimen name="global_card_text_size">25sp</dimen>
 
     <dimen name="container_padding">24dp</dimen>
     <dimen name="logo_height">150dp</dimen>
@@ -22,6 +22,9 @@
     <dimen name="textView_signature_padding">7dp</dimen>
     <dimen name="textView_signature_top_padding">125dp</dimen>
     <dimen name="textView_signature_bottom_border_width">3dp</dimen>
+
     <dimen name="card_roundRadius">24dp</dimen>
-    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_margin">7dp</dimen>
+    <dimen name="card_padding">10dp</dimen>
+    <dimen name="img_date_icon">50dp</dimen>
 </resources>

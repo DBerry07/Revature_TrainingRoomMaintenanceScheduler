@@ -10,6 +10,7 @@
 
     <!-- BEGIN GLOBAL STYLES -->
     <style name="cardViewGlobal" parent="CardView">
+        <item name="android:padding">@dimen/card_padding</item>
         <item name="android:layout_margin">@dimen/card_margin</item>
         <item name="cardCornerRadius">@dimen/card_roundRadius</item>
         <item name="cardElevation">@dimen/cardview_default_elevation</item>
@@ -61,11 +62,9 @@
         <item name="android:paddingBottom">@dimen/textView_signature_padding</item>
         <item name="android:background">@drawable/background_signature_bottom_border</item>
     </style>
-    <style name="textViewSimpleString">
+    <style name="textViewSimpleStringAdapter">
         <item name="android:padding">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/global_card_text_size</item>
     </style>
-
-    <dimen name="global_text_size">16sp</dimen>
 </resources>

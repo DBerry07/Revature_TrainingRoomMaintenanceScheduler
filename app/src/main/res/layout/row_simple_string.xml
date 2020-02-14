@@ -9,6 +9,6 @@
         android:id="@+id/tv_string"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/textViewSimpleString"
+        style="@style/textViewSimpleStringAdapter"
         android:text="temp" />
 </androidx.cardview.widget.CardView>

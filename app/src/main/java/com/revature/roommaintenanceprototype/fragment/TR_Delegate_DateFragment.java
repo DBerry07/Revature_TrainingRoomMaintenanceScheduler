@@ -34,53 +34,6 @@ public class TR_Delegate_DateFragment extends Fragment{
         Toast.makeText(getContext(), "StartDate", Toast.LENGTH_LONG);
         final View rootView =
                 inflater.inflate(R.layout.fragment_delegate_date, container, false);
-
-        Button startDateBtn = rootView.findViewById(R.id.date_selector_start_btn);
-        Button endDateBtn = rootView.findViewById(R.id.date_selector_end_btn);
-        Button submit = rootView.findViewById(R.id.date_selecter_submit_btn);
-
-        startDateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "StartDate", Toast.LENGTH_LONG);
-                final Calendar calendar = Calendar.getInstance();
-                sYear = calendar.get(Calendar.YEAR);
-                sMonth = calendar.get(Calendar.MONTH);
-                sDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dpd = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                TextView tv = rootView.findViewById(R.id.tv_start_date);
-                                tv.setText(month + "/" + dayOfMonth + "/" + year);
-                            }
-                        }, sYear, sMonth, sDay);
-                dpd.show();
-            }
-        });
-
-        endDateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "EndDate", Toast.LENGTH_LONG);
-                final Calendar calendar = Calendar.getInstance();
-                eYear = calendar.get(Calendar.YEAR);
-                eMonth = calendar.get(Calendar.MONTH);
-                eDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dpd = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                TextView tv = rootView.findViewById(R.id.tv_end_date);
-                                tv.setText(month + "/" + dayOfMonth + "/" + year);
-                            }
-                        }, eYear, eMonth, eDay);
-                dpd.show();
-            }
-        });
-
         return rootView;
     }
 
