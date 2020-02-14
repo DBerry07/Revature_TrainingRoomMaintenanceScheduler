@@ -2,7 +2,9 @@ package com.revature.roommaintenanceprototype.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DummyText {
 
@@ -47,6 +49,16 @@ public class DummyText {
         temp.add("NEC 101");
         temp.add("FTP 107");
         temp.add("EEG 221");
+        return temp;
+    }
+
+    public static Map<String, Boolean> getReports() {
+        Map<String, Boolean> temp = new HashMap<>();
+        temp.put("NEC 101", true);
+        temp.put("FPS 221", false);
+        temp.put("RTP 336", false);
+        temp.put("MMO 111", true);
+        temp.put("HTT 900", false);
         return temp;
     }
 }
