@@ -2,6 +2,8 @@ package com.revature.roommaintenanceprototype.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.revature.roommaintenanceprototype.database.tables.RoomCalendar;
@@ -11,6 +13,9 @@ import java.util.List;
 
 @Dao
 public interface RoomCalendarDao {
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(RoomCalendar roomCalendar);
 
     @Query("SELECT * FROM RoomCalendar")
     LiveData<List<RoomCalendar>> selectAll();
