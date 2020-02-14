@@ -3,6 +3,7 @@ package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -47,7 +49,6 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        super.onViewCreated(view, savedInstanceState);
         btnCleaningCriteriaSelection = (Button) view.findViewById(R.id.btn_cleaningCriteriaSelection);
         btnCleaningCriteriaSelection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +60,9 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
             }
         });
 
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+
+        super.onViewCreated(view, savedInstanceState);
     }
 
 

@@ -12,9 +12,11 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 
 public class TR_Delegate_DateFragment extends Fragment{
 
@@ -80,6 +82,12 @@ public class TR_Delegate_DateFragment extends Fragment{
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_delegate) );
+        super.onViewCreated(view, savedInstanceState);
     }
 
 }

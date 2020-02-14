@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
+import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
@@ -39,7 +41,6 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        super.onViewCreated(view, savedInstanceState);
         Button btnCleaningCriteriaSelection = (Button) view.findViewById(R.id.btn_trainerSelection);
         btnCleaningCriteriaSelection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,8 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment {
                         .commit();
             }
         });
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_delegate) );
+        super.onViewCreated(view, savedInstanceState);
     }
 
 }

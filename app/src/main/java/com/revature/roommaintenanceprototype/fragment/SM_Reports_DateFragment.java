@@ -1,25 +1,32 @@
 package com.revature.roommaintenanceprototype.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.Toolbar;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
+import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.HashMap;
 
 public class SM_Reports_DateFragment extends Fragment {
-
 
     public SM_Reports_DateFragment() {
     }
@@ -40,6 +47,9 @@ public class SM_Reports_DateFragment extends Fragment {
         return rootView;
     }
 
-
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_reports) );
+        super.onViewCreated(view,savedInstanceState);
+    }
 }

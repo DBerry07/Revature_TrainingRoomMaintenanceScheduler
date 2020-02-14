@@ -3,6 +3,7 @@ package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -45,6 +47,7 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
         super.onViewCreated(view, savedInstanceState);
     }
 
