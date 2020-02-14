@@ -8,6 +8,19 @@
         <item name="colorAccent">@color/revGreen</item>
     </style>
 
+    <!-- BEGIN GLOBAL STYLES -->
+    <style name="cardViewGlobal" parent="CardView">
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="cardCornerRadius">@dimen/card_roundRadius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+    </style>
+
+    <style name="scrollViewGlobal">
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+    </style>
+    <!-- END GLOBAL STYLES -->
+
     <style name="frameLayoutContainer">
         <item name="android:background">@color/globalBackgroundColor</item>
     </style>
@@ -47,12 +60,6 @@
         <item name="android:textSize">@dimen/login_title_size</item>
         <item name="android:paddingBottom">@dimen/textView_signature_padding</item>
         <item name="android:background">@drawable/background_signature_bottom_border</item>
-    </style>
-
-    <style name="cardViewGlobal" parent="CardView">
-        <item name="android:layout_margin">@dimen/card_margin</item>
-        <item name="cardCornerRadius">@dimen/card_roundRadius</item>
-        <item name="cardElevation">@dimen/cardview_default_elevation</item>
     </style>
     <style name="textViewSimpleString">
         <item name="android:padding">5dp</item>

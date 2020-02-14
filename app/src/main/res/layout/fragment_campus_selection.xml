@@ -1,52 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="frameLayoutContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/tv_title_campusSelection"
+        style="@style/fragmentTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="@string/title_campus_selection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_title_campusSelection"
-            style="@style/fragmentTitle"
+    <ScrollView
+        android:id="@+id/sv_campusSelection"
+        style="@style/scrollViewGlobal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/global_control_margin"
+        app:layout_constraintBottom_toTopOf="@+id/btn_campusSelection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_campusSelection">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_campusSelection"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title_campus_selection"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
-        <ScrollView
-            android:id="@+id/sv_campusSelection"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/global_control_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_campusSelection"
-            app:layout_constraintBottom_toTopOf="@+id/btn_campusSelection">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_campusSelection"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white" />
-        </ScrollView>
-
-        <Button
-            android:id="@+id/btn_campusSelection"
-            style="@style/buttonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_label_submit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sv_campusSelection" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</FrameLayout>
+    <Button
+        android:id="@+id/btn_campusSelection"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_label_submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sv_campusSelection" />
+</androidx.constraintlayout.widget.ConstraintLayout>
