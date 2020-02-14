@@ -1,5 +1,7 @@
 package com.revature.roommaintenanceprototype.database.dao;
 
+import android.widget.Adapter;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -30,12 +32,12 @@ public interface RoomTaskListDao {
     LiveData<List<RoomTaskList>> selectOnTaskId(int taskId);
 
     @Query("SELECT * FROM RoomTaskList WHERE dateStart = :dateStart")
-    LiveData<List<RoomTaskList>> selectOnDateStart(Date dateStart);
+    LiveData<List<RoomTaskList>> selectOnDateStart(String dateStart);
 
     @Query("SELECT * FROM RoomTaskList WHERE dateEnd = :dateEnd")
-    LiveData<List<RoomTaskList>> selectOnDateEnd(Date dateEnd);
+    LiveData<List<RoomTaskList>> selectOnDateEnd(String dateEnd);
 
     @Query("SELECT * FROM RoomTaskList WHERE dateStart >= :dateStart AND dateEnd <= :dateEnd")
-    LiveData<List<RoomTaskList>> selectOnDates(Date dateStart, Date dateEnd);
+    LiveData<List<RoomTaskList>> selectOnDates(String dateStart, String dateEnd);
 
 }

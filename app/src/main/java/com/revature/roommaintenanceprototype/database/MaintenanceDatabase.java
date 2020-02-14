@@ -49,9 +49,9 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
 
     private static volatile MaintenanceDatabase INSTANCE;
     private static int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    static final public ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static MaintenanceDatabase getDatabase(final Context context) {
+    public static MaintenanceDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (MaintenanceDatabase.class) {
                 if (INSTANCE == null) {
@@ -67,6 +67,7 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    //POPULATE DATABASE WITH THIS METHOD
     private static RoomDatabase.Callback populateDatabase = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
@@ -84,9 +85,17 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                         }
                     }
                     {
-                        LocationDao locationDao = INSTANCE.locationDao();
-                        for (int i = 0; i < 10; i++){
-                            Location location = new Location(i, "location#" + i);
+                        UserRoleDao userRoleDao = INSTANCE.userRoleDao();
+                        UserRole item = new UserRole(0, "Trainer");
+                        userRoleDao.insert(item);
+                        item = new UserRole(1, "Site Manager");
+                        userRoleDao.insert(item);
+                    }
+                    {
+                        UserDao userDao = INSTANCE.userDao();
+                        for (int i = 0; i < 20; i++){
+                            User item = new User(i, "email#" + i, 0);
+                            userDao.insert(item);
                         }
                     }
                 }

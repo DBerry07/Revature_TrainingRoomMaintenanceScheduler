@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.revature.roommaintenanceprototype.database.tables.Campus;
 import com.revature.roommaintenanceprototype.database.tables.User;
 
 import java.util.List;

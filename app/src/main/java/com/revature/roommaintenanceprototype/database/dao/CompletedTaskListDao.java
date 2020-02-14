@@ -26,9 +26,9 @@ public interface CompletedTaskListDao {
     LiveData<List<CompletedTaskList>> selectOnMaintenanceChartId(int maintenanceChartId);
 
     @Query("SELECT * FROM CompletedTaskList WHERE taskId = :taskId")
-    LiveData<CompletedTaskList> selectOnTaskId(int taskId);
+    LiveData<List<CompletedTaskList>> selectOnTaskId(int taskId);
 
     @Query("SELECT * FROM CompletedTaskList WHERE taskCompleted = :taskCompleted")
-    LiveData<List<Boolean>> selectOnTaskCompleted(boolean taskCompleted);
+    LiveData<List<CompletedTaskList>> selectOnTaskCompleted(Boolean taskCompleted);
 
 }

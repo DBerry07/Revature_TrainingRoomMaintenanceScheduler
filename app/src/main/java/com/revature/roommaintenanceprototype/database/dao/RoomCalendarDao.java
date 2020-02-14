@@ -30,12 +30,12 @@ public interface RoomCalendarDao {
     LiveData<List<RoomCalendar>> selectOnAssignedTo(int assignedTo);
 
     @Query("SELECT * FROM RoomCalendar WHERE dateStart = :dateStart")
-    LiveData<List<RoomCalendar>> selectOnDateStart(Date dateStart);
+    LiveData<List<RoomCalendar>> selectOnDateStart(String dateStart);
 
     @Query("SELECT * FROM RoomCalendar WHERE dateEnd = :dateEnd")
-    LiveData<List<RoomCalendar>> selectOnDateEnd(Date dateEnd);
+    LiveData<List<RoomCalendar>> selectOnDateEnd(String dateEnd);
 
     @Query("SELECT * FROM RoomCalendar WHERE dateStart >= :dateStart AND dateEnd <= :dateEnd")
-    LiveData<List<RoomCalendar>> selectOnDates(Date dateStart, Date dateEnd);
+    LiveData<List<RoomCalendar>> selectOnDates(String dateStart, String dateEnd);
 
 }

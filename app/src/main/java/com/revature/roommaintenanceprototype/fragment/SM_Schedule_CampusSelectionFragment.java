@@ -3,7 +3,11 @@ package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +17,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.database.CampusViewModel;
+import com.revature.roommaintenanceprototype.database.tables.Campus;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener{
     Spinner spnCampus;
@@ -25,6 +34,8 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_campus_selection, container, false);
+
+        fetchCampusList(rootView);
 
         spnCampus = (Spinner) rootView.findViewById(R.id.spn_campusSelection);
         if(spnCampus != null){
@@ -57,5 +68,27 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
                         .commit();
                 break;
         }
+    }
+
+    private List<String> fetchCampusList(final View rootView){
+        CampusViewModel campusViewModel;
+        final List<String> names = new ArrayList<>();
+        campusViewModel = new ViewModelProvider(this).get(CampusViewModel.class);
+
+        campusViewModel.getCampuses().observe(getViewLifecycleOwner(), new Observer<List<Campus>>() {
+            @Override
+            public void onChanged(@Nullable final List<Campus> campi) {
+                for (Campus each : campi){
+                    names.add(each.getName());
+                }
+
+                spnCampus.setAdapter( new ArrayAdapter<String>(rootView.getContext(),
+                        android.R.layout.simple_spinner_item,
+                        names) );
+            }
+        });
+
+        return names;
+
     }
 }

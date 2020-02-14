@@ -8,6 +8,11 @@ import androidx.room.PrimaryKey;
 @Entity
 public class UserRole {
 
+    public UserRole(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     @PrimaryKey
     @ColumnInfo(name = "id")
     private int id;

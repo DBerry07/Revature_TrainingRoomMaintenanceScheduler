@@ -1,7 +1,10 @@
-package com.revature.roommaintenanceprototype.database;
+package com.revature.roommaintenanceprototype.database.repository;
 
 import android.app.Application;
 
+import androidx.lifecycle.LiveData;
+
+import com.revature.roommaintenanceprototype.database.MaintenanceDatabase;
 import com.revature.roommaintenanceprototype.database.dao.CampusDao;
 import com.revature.roommaintenanceprototype.database.dao.CompletedTaskListDao;
 import com.revature.roommaintenanceprototype.database.dao.LocationDao;
@@ -12,35 +15,27 @@ import com.revature.roommaintenanceprototype.database.dao.RoomTaskListDao;
 import com.revature.roommaintenanceprototype.database.dao.TaskDao;
 import com.revature.roommaintenanceprototype.database.dao.UserDao;
 import com.revature.roommaintenanceprototype.database.dao.UserRoleDao;
+import com.revature.roommaintenanceprototype.database.tables.Campus;
 import com.revature.roommaintenanceprototype.database.tables.User;
 
-public class Repository {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CampusRepository {
 
     private CampusDao campusDao;
-    private CompletedTaskListDao completedTaskListDao;
-    private LocationDao locationDao;
-    private MaintenanceChartDao maintenanceChartDao;
-    private RoomCalendarDao roomCalendarDao;
-    private RoomDao roomDao;
-    private RoomTaskListDao roomTaskListDao;
-    private TaskDao taskDao;
-    private UserDao userDao;
-    private UserRoleDao userRoleDao;
 
-    Repository(Application application) {
+    LiveData<List<Campus>> campusList;
+
+    public CampusRepository(Application application) {
         MaintenanceDatabase db = MaintenanceDatabase.getDatabase(application);
 
-        userDao = db.userDao();
-        //mAllWords = mWordDao.getAlphabetizedWords();
+        campusDao = db.campusDao();
+        campusList = campusDao.selectAll();
     }
 
-    void insertUser(final User user) {
-        MaintenanceDatabase.databaseWriteExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                userDao.insert(user);
-            }
-        });
+    public LiveData<List<Campus>> getCampuses(){
+        return campusList;
     }
 
 }

@@ -14,6 +14,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.database.MaintenanceDatabase;
+import com.revature.roommaintenanceprototype.database.MaintenanceDatabase_Impl;
 
 public class TrainerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
