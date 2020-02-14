@@ -36,7 +36,7 @@
                 android:id="@+id/rv_cleaningCriteria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"></androidx.recyclerview.widget.RecyclerView>
+                android:background="@android:color/white"/>
         </ScrollView>
 
         <Button
@@ -44,7 +44,7 @@
             style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="@string/btn_label_submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

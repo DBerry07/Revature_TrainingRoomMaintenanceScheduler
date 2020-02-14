@@ -11,5 +11,8 @@
 
     <color name="black">#000</color>
 
+    <color name="globalBackgroundColor">@color/testingBackgroundColor</color>
+    <color name="testingBackgroundColor">#afa</color>
+
 
 </resources>

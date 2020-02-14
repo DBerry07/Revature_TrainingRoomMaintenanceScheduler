@@ -19,15 +19,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/spn_campusSelection"
-            style="@style/spinnerStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:id="@+id/sv_campusSelection"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_margin="@dimen/global_control_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_campusSelection" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_campusSelection"
+            app:layout_constraintBottom_toTopOf="@+id/btn_campusSelection">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_campusSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white" />
+        </ScrollView>
 
         <Button
             android:id="@+id/btn_campusSelection"
@@ -35,9 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_label_submit"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spn_campusSelection" />
+            app:layout_constraintTop_toBottomOf="@+id/sv_campusSelection" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

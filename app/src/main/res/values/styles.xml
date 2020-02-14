@@ -9,7 +9,7 @@
     </style>
 
     <style name="frameLayoutContainer">
-        <item name="android:background">@android:color/white</item>
+        <item name="android:background">@color/globalBackgroundColor</item>
     </style>
 
     <style name="fragmentTitle">
@@ -48,4 +48,17 @@
         <item name="android:paddingBottom">@dimen/textView_signature_padding</item>
         <item name="android:background">@drawable/background_signature_bottom_border</item>
     </style>
+
+    <style name="cardViewGlobal" parent="CardView">
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="cardCornerRadius">@dimen/card_roundRadius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+    </style>
+    <style name="textViewSimpleString">
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/global_card_text_size</item>
+    </style>
+
+    <dimen name="global_text_size">16sp</dimen>
 </resources>
