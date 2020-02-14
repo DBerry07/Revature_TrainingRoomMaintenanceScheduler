@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment.trainer.delegate.trainer;
+package com.revature.roommaintenanceprototype.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,14 +8,13 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 
 import java.util.List;
 
-public class TD_TrainerSelectionAdapter extends RecyclerView.Adapter<TD_TrainerSelectionAdapter.MyViewHolder>  {
+public class TrainerSelectionAdapter extends RecyclerView.Adapter<TrainerSelectionAdapter.MyViewHolder>  {
 
     List<String> trainers;
     Activity activity;
@@ -31,14 +30,14 @@ public class TD_TrainerSelectionAdapter extends RecyclerView.Adapter<TD_TrainerS
         }
     }
 
-    public TD_TrainerSelectionAdapter(Activity activity, List<String> trainers){
+    public TrainerSelectionAdapter(Activity activity, List<String> trainers){
         this.trainers = trainers;
         this.activity = activity;
     }
 
     @NonNull
     @Override
-    public TD_TrainerSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TrainerSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.trainer_selection_option, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         vh.parent = parent;

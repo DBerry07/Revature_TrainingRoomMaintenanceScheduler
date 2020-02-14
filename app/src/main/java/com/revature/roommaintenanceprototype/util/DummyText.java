@@ -44,6 +44,7 @@ public class DummyText {
         temp.add("Tables");
         return temp;
     }
+
     public static List<String> getRooms() {
         List<String> temp = new ArrayList<String>();
         temp.add("NEC 101");
@@ -59,6 +60,14 @@ public class DummyText {
         temp.put("RTP 336", false);
         temp.put("MMO 111", true);
         temp.put("HTT 900", false);
+        return temp;
+    }
+
+    public static List<String> getTrainers() {
+        List<String> temp = new ArrayList<String>();
+        temp.add("Nick");
+        temp.add("Mayur");
+        temp.add("Uday");
         return temp;
     }
 }
