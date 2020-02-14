@@ -30,22 +30,22 @@ public class RoomCalendar {
     private int assignedTo;
 
     @ColumnInfo(name = "dateStart")
-    private String dateStart;
+    private Date dateStart;
 
     @ColumnInfo(name = "dateEnd")
-    private String dateEnd;
+    private Date dateEnd;
 
     //GETTERS
     public int getId() { return id; }
     public int getRoomId() { return roomId; }
     public int getAssignedTo() { return assignedTo; }
-    public String getDateStart() { return dateStart; }
-    public String getDateEnd() { return dateEnd; }
+    public Date getDateStart() { return dateStart; }
+    public Date getDateEnd() { return dateEnd; }
 
     //SETTERS
     public void setId(int id) { this.id = id; }
     public void setRoomId(int roomId) { this.roomId = roomId; }
     public void setAssignedTo(int assignedTo) { this.assignedTo = assignedTo; }
-    public void setDateStart(String dateStart) { this.dateStart = dateStart; }
-    public void setDateEnd(String dateEnd) { this.dateEnd = dateEnd; }
+    public void setDateStart(Date dateStart) { this.dateStart = dateStart; }
+    public void setDateEnd(Date dateEnd) { this.dateEnd = dateEnd; }
 }

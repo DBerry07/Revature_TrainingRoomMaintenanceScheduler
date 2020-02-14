@@ -14,6 +14,12 @@ public class Campus {
     @ColumnInfo(name = "name")
     private String name;
 
+    //CONSTRUCTOR
+    public Campus(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     //GETTERS
     public int getId() { return id; }
     public String getName() { return name; }

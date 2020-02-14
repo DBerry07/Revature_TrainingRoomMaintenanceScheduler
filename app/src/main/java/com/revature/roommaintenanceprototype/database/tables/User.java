@@ -24,6 +24,13 @@ public class User {
     @ColumnInfo(name = "userRoleId")
     private int userRoleId;
 
+    //CONSTRUCTOR
+    public User(int id, String email, int userRoleId){
+        this.id = id;
+        this.email = email;
+        this.userRoleId = userRoleId;
+    }
+
     /*@NonNull
     @ColumnInfo(name = "password")
     private String password;*/
