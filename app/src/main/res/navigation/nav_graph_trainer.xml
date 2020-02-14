@@ -4,46 +4,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_trainer"
-    app:startDestination="@id/verifyRoomSelectionFragment">
+    app:startDestination="@+id/verifyNavFragment"
+    >
+
     <fragment
-        android:id="@+id/verifyRoomSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.verify.room.TV_RoomSelectionFragment"
-        android:label="fragment_room_selection"
-        tools:layout="@layout/fragment_room_selection" >
+        android:id="@+id/verifyNavFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_RoomSelectionFragment"
+        android:label="@string/title_room_selection"
+        tools:layout="@layout/fragment_room_selection"
+        />
+    <fragment
+        android:id="@+id/delegateNavFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_TrainerSelectionFragment"
+        android:label="@string/title_room_selection"
+        tools:layout="@layout/fragment_room_selection"
+        >
         <action
-            android:id="@+id/action_verifyRoomSelectionFragment_to_TV_CriteriaSelectionFragment"
-            app:destination="@id/TV_CriteriaSelectionFragment" />
+            android:id="@+id/action_delegateNavFragment_to_verifyNavFragment"
+            app:destination="@id/verifyNavFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/delegateTrainerSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.trainer.TD_TrainerSelectionFragment"
-        android:label="fragment_trainer_selection"
-        tools:layout="@layout/fragment_trainer_selection" >
+        android:id="@+id/reportsTrainerNavFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Reports_DateFragment"
+        android:label="@string/title_room_selection"
+        tools:layout="@layout/fragment_room_selection"
+        >
         <action
-            android:id="@+id/action_delegateTrainerSelectionFragment_to_TD_RoomSelectionFragment"
-            app:destination="@id/TD_RoomSelectionFragment" />
+            android:id="@+id/action_reportsTrainerNavFragment_to_verifyNavFragment"
+            app:destination="@id/verifyNavFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/TD_RoomSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.room.TD_RoomSelectionFragment"
-        android:label="fragment_room_selection"
-        tools:layout="@layout/fragment_room_selection" >
-        <action
-            android:id="@+id/action_TD_RoomSelectionFragment_to_TD_DateSelecterFragment"
-            app:destination="@id/TD_DateSelecterFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/TD_DateSelecterFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.delegate.date.TD_DateSelecterFragment"
-        android:label="TD_DateSelecterFragment" />
-    <fragment
-        android:id="@+id/TV_CriteriaSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.verify.criteria.TV_CriteriaSelectionFragment"
-        android:label="fragment_criteria_selection"
-        tools:layout="@layout/fragment_criteria_selection" />
-    <fragment
-        android:id="@+id/reportsDateFragment2"
-        android:name="com.revature.roommaintenanceprototype.fragment.trainer.reports.ReportsFragment"
-        android:label="fragment_reports_date"
-        tools:layout="@layout/fragment_reports" />
 </navigation>

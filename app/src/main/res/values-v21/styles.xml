@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="buttonStyle_v21" parent="buttonStyle">
+        <item name="android:strokeColor">@color/black</item>
+        <item name="android:strokeWidth">@dimen/button_stroke_width</item>
+    </style>
+
+    <style name="textViewSignature_v21" parent="textViewSignature">
+        <item name="android:strokeColor">@color/black</item>
+        <item name="android:strokeWidth">@dimen/global_stroke_width</item>
+    </style>
+</resources>

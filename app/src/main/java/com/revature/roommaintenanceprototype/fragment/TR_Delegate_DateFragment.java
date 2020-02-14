@@ -1,4 +1,5 @@
-package com.revature.roommaintenanceprototype.fragment.trainer.delegate.date;
+package com.revature.roommaintenanceprototype.fragment;
+
 
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
@@ -15,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.revature.roommaintenanceprototype.R;
 
-public class TD_DateSelecterFragment extends Fragment {
+public class TR_Delegate_DateFragment extends Fragment{
 
     private int sYear;
     private int sMonth;
@@ -30,7 +31,7 @@ public class TD_DateSelecterFragment extends Fragment {
                              Bundle savedInstanceState) {
         Toast.makeText(getContext(), "StartDate", Toast.LENGTH_LONG);
         final View rootView =
-                inflater.inflate(R.layout.fragment_date_selector, container, false);
+                inflater.inflate(R.layout.fragment_delegate_date, container, false);
 
         Button startDateBtn = rootView.findViewById(R.id.date_selector_start_btn);
         Button endDateBtn = rootView.findViewById(R.id.date_selector_end_btn);

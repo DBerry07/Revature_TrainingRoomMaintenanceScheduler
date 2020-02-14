@@ -60,13 +60,13 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_trainer_verify:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.verifyRoomSelectionFragment);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.verifyNavFragment);
                 break;
             case R.id.menuItem_trainer_delegate:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.delegateTrainerSelectionFragment);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.delegateNavFragment);
                 break;
             case R.id.menuItem_trainer_reports:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsDateFragment2);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsTrainerNavFragment);
                 break;
             case R.id.menuItem_trainer_logout:
                 finish();

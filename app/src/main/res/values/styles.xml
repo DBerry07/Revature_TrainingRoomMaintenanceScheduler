@@ -8,4 +8,44 @@
         <item name="colorAccent">@color/revGreen</item>
     </style>
 
+    <style name="frameLayoutContainer">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="fragmentTitle">
+        <item name="android:textColor">@color/revOrange</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/fragment_title_text_size</item>
+    </style>
+
+    <style name="buttonStyle">
+        <item name="android:layout_margin">@dimen/global_control_margin</item>
+        <item name="android:textColor">@color/revGreen</item>
+        <item name="android:background">@drawable/background_black_stroke</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="spinnerStyle">
+        <item name="android:layout_margin">@dimen/global_control_margin</item>
+        <item name="android:padding">@dimen/global_control_margin</item>
+    </style>
+
+    <style name="switchGreen">
+    </style>
+
+    <style name="containerSignature">
+        <item name="android:background">@drawable/background_black_stroke</item>
+        <item name="android:layout_marginLeft">@dimen/global_control_margin</item>
+        <item name="android:layout_marginRight">@dimen/global_control_margin</item>
+        <item name="android:layout_marginTop">@dimen/container_signature_top_margin</item>
+        <item name="android:paddingBottom">@dimen/global_control_margin</item>
+        <item name="android:paddingTop">@dimen/textView_signature_top_padding</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="textViewSignature">
+        <item name="android:textSize">@dimen/login_title_size</item>
+        <item name="android:paddingBottom">@dimen/textView_signature_padding</item>
+        <item name="android:background">@drawable/background_signature_bottom_border</item>
+    </style>
 </resources>

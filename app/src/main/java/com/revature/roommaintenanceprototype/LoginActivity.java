@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if( email.equals("trainer") ){
                         intent = new Intent(LoginActivity.this, TrainerActivity.class);
                     }else{
-                        intent = new Intent(LoginActivity.this, SIteManagerActivity.class);
+                        intent = new Intent(LoginActivity.this, SiteManagerActivity.class);
                     }
                     startActivity(intent);
                     Log.d(LogStrings.LOGIN_TAG, "Login button clicked!");
