@@ -27,7 +27,6 @@ public class TV_RoomSelectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_room_selection, container, false);
-        navController = Navigation.findNavController(this.getActivity(), R.id.fragment_mainContentContainer);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.room_selection_recycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));

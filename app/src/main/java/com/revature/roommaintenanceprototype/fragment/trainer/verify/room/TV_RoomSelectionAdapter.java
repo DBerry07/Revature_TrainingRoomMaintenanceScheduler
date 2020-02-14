@@ -23,7 +23,6 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
     public class MyViewHolder extends RecyclerView.ViewHolder{
         public View parent;
         public Button button;
-        public NavController navController;
 
         public MyViewHolder(View v){
             super(v);
@@ -51,7 +50,6 @@ public class TV_RoomSelectionAdapter extends RecyclerView.Adapter<TV_RoomSelecti
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(activity, R.id.fragment_mainContentContainer).navigate(R.id.action_verifyRoomSelectionFragment_to_verifyCriteriaSelectionFragment);
             }
         });
     }

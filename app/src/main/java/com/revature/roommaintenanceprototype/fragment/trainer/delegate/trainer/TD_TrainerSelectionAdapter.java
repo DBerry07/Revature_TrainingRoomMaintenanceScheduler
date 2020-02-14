@@ -51,8 +51,6 @@ public class TD_TrainerSelectionAdapter extends RecyclerView.Adapter<TD_TrainerS
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(activity, R.id.fragment_mainContentContainer);
-                navController.navigate(R.id.action_delegateTrainerSelectionFragment_to_TD_RoomSelectionFragment);
             }
         });
     }

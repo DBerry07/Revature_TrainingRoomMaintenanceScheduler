@@ -51,8 +51,7 @@ public class TD_RoomSelectionAdapter extends RecyclerView.Adapter<TD_RoomSelecti
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(activity, R.id.fragment_mainContentContainer);
-                navController.navigate(R.id.action_TD_RoomSelectionFragment_to_TD_DateSelecterFragment);
+
             }
         });
     }

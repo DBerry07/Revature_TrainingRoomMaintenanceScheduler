@@ -7,39 +7,46 @@ import java.util.List;
 public class DummyText {
 
     public static List<String> getCampuses() {
-        List<String> campuses = new ArrayList<String>();
-        campuses.add("USF");
-        campuses.add("UH");
-        campuses.add("TSU");
-        return campuses;
+        List<String> temp = new ArrayList<String>();
+        temp.add("USF");
+        temp.add("UH");
+        temp.add("TSU");
+        return temp;
     }
 
     public static List<String> getCleaningCriteria() {
-        List<String> cleaningCriteria = new ArrayList<String>();
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        cleaningCriteria.add("Desks");
-        cleaningCriteria.add("Chairs");
-        cleaningCriteria.add("Whiteboards");
-        cleaningCriteria.add("Tables");
-        return cleaningCriteria;
+        List<String> temp = new ArrayList<String>();
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        temp.add("Desks");
+        temp.add("Chairs");
+        temp.add("Whiteboards");
+        temp.add("Tables");
+        return temp;
+    }
+    public static List<String> getRooms() {
+        List<String> temp = new ArrayList<String>();
+        temp.add("NEC 101");
+        temp.add("FTP 107");
+        temp.add("EEG 221");
+        return temp;
     }
 }
