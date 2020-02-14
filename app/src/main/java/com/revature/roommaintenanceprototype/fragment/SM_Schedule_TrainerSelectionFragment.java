@@ -28,8 +28,8 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView =
-                inflater.inflate(R.layout.fragment_room_selection, container, false);
-        RecyclerView recyclerView = rootView.findViewById(R.id.room_selection_recycler);
+                inflater.inflate(R.layout.fragment_trainer_selection, container, false);
+        RecyclerView recyclerView = rootView.findViewById(R.id.trainer_selection_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
