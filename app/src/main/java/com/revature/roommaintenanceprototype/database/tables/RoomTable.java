@@ -38,6 +38,14 @@ public class RoomTable {
     @ColumnInfo(name = "assignedTo")
     private int assignedTo;
 
+    public RoomTable(int id, String name, int locationId, int campusId, int assignedTo){
+        this.id = id;
+        this.name = name;
+        this.locationId = locationId;
+        this.campusId = campusId;
+        this.assignedTo = assignedTo;
+    }
+
     //SETTERS
     public void setId(int id) { this.id = id; }
     public void setName(@NonNull String name) { this.name = name; }

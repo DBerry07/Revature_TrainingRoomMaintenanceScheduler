@@ -32,7 +32,7 @@ import com.revature.roommaintenanceprototype.database.tables.UserRole;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Campus.class, CompletedTaskList.class, Location.class, MaintenanceChart.class, RoomTable.class, RoomCalendar.class, RoomTaskList.class, Task.class, User.class, UserRole.class}, version = 1, exportSchema = false)
+@Database(entities = {Campus.class, CompletedTaskList.class, Location.class, MaintenanceChart.class, RoomTable.class, RoomCalendar.class, RoomTaskList.class, Task.class, User.class, UserRole.class}, version = 2, exportSchema = false)
 public abstract class MaintenanceDatabase extends RoomDatabase {
 
     //DAOs
@@ -60,6 +60,7 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                             MaintenanceDatabase.class,
                             "MaintenanceDatabase")
                             .addCallback(populateDatabase)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -79,7 +80,7 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                 public void run() {
                     {
                         CampusDao campusDao = INSTANCE.campusDao();
-                        for (int i = 0; i < 4; i++) {
+                        for (int i = 0; i < 5; i++) {
                             Campus campus = new Campus(i, "campus#" + i);
                             campusDao.insert(campus);
                         }
@@ -96,6 +97,27 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                         for (int i = 0; i < 20; i++){
                             User item = new User(i, "email#" + i, 0);
                             userDao.insert(item);
+                        }
+                    }
+                    {
+                        LocationDao locationDao = INSTANCE.locationDao();
+                        for (int i = 0; i < 7; i++){
+                            Location item = new Location(i, "location#" + i);
+                            locationDao.insert(item);
+                        }
+                    }
+                    {
+                        RoomCalendarDao dao = INSTANCE.roomCalendarDao();
+                        for (int i = 0; i < 10; i++){
+                            RoomCalendar item = new RoomCalendar(i, i % 30, "1-1-2000", "2-2-2001");
+                            dao.insert(item);
+                        }
+                    }
+                    {
+                        RoomDao roomDao = INSTANCE.roomDao();
+                        for (int i = 0; i < 30; i++){
+                            RoomTable item = new RoomTable(i, "room#" + i, i % 7, i % 5, i % 10);
+                            roomDao.insert(item);
                         }
                     }
                 }

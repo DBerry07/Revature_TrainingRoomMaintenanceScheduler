@@ -23,8 +23,8 @@ public interface RoomCalendarDao {
     @Query("SELECT * FROM RoomCalendar WHERE id = :id")
     LiveData<List<RoomCalendar>> select(int id);
 
-    @Query("SELECT * FROM RoomCalendar WHERE roomId = :roomId")
-    LiveData<List<RoomCalendar>> selectOnRoomId(int roomId);
+    /*@Query("SELECT * FROM RoomCalendar WHERE roomId = :roomId")
+    LiveData<List<RoomCalendar>> selectOnRoomId(int roomId);*/
 
     @Query("SELECT * FROM RoomCalendar WHERE assignedTo = :assignedTo")
     LiveData<List<RoomCalendar>> selectOnAssignedTo(int assignedTo);

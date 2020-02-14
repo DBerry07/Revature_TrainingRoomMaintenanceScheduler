@@ -2,7 +2,10 @@ package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,8 +16,16 @@ import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.RoomSelectionAdapter;
+import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
+import com.revature.roommaintenanceprototype.database.tables.RoomTable;
+import com.revature.roommaintenanceprototype.database.tables.User;
+import com.revature.roommaintenanceprototype.database.view_model.RoomViewModel;
+import com.revature.roommaintenanceprototype.database.view_model.UserViewModel;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SM_Schedule_RoomSelectionFragment extends Fragment {
 
@@ -28,6 +39,10 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         RoomSelectionAdapter adapter = new RoomSelectionAdapter(getActivity(), DummyText.getRooms());
         recyclerView.setAdapter(adapter);
+
+        //For database
+        fetchNames(recyclerView);
+
         return rootView;
     }
 
@@ -42,6 +57,27 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
                         .replace(R.id.fragment_mainContentContainer, new SM_Schedule_CriteriaSelectionFragment(), FragmentStringTags.getSM_CriteriaSelectionFragmentTag())
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+    }
+
+    private void fetchNames(final RecyclerView recyclerView){
+        RoomViewModel viewModel;
+        final List<String> names = new ArrayList<>();
+        viewModel = new ViewModelProvider(this).get(
+                RoomViewModel.class
+        );
+
+        viewModel.getCampuses().observe(getViewLifecycleOwner(), new Observer<List<RoomTable>>() {
+            @Override
+            //This method gets called every time the data in the User table changes...
+            public void onChanged(@Nullable final List<RoomTable> list) {
+                for (RoomTable each : list){
+                    names.add(each.getName());
+                }
+                //...hence the reinitialization of the Adapter
+                TrainerSelectionAdapter trainerSelectionAdapter = new TrainerSelectionAdapter(getActivity(), names);
+                recyclerView.setAdapter(trainerSelectionAdapter);
             }
         });
     }

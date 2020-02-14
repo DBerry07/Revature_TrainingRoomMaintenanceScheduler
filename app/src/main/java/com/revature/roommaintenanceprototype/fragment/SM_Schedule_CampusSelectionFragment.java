@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -17,7 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.database.CampusViewModel;
+import com.revature.roommaintenanceprototype.database.view_model.CampusViewModel;
 import com.revature.roommaintenanceprototype.database.tables.Campus;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;

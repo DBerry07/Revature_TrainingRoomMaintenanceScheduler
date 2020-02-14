@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.database;
+package com.revature.roommaintenanceprototype.database.view_model;
 
 import android.app.Application;
 

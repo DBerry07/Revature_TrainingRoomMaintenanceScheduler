@@ -13,14 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
-import com.revature.roommaintenanceprototype.database.CampusViewModel;
-import com.revature.roommaintenanceprototype.database.UserViewModel;
-import com.revature.roommaintenanceprototype.database.tables.Campus;
+import com.revature.roommaintenanceprototype.database.view_model.UserViewModel;
 import com.revature.roommaintenanceprototype.database.tables.User;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
