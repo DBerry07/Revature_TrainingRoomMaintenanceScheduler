@@ -8,27 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
-import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
-import com.revature.roommaintenanceprototype.database.tables.RoomTable;
-import com.revature.roommaintenanceprototype.database.tables.Task;
-import com.revature.roommaintenanceprototype.database.view_model.RoomViewModel;
-import com.revature.roommaintenanceprototype.database.view_model.TaskViewModel;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class TR_Verify_CriteriaSelectionFragment extends Fragment {
@@ -53,10 +44,6 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment {
             }
         });
         rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria() ) );
-
-        //Database
-        fetchNames(rvCleaningCriteria);
-
         return rootView;
     }
 
@@ -74,29 +61,5 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment {
         });
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_verify) );
         super.onViewCreated(view, savedInstanceState);
-    }
-
-    private void fetchNames(final RecyclerView recyclerView){
-        TaskViewModel viewModel;
-        final ArrayList<String> names = new ArrayList<>();
-        viewModel = new ViewModelProvider(this).get(
-                TaskViewModel.class
-        );
-
-        viewModel
-                //ViewModel method
-                .getAll()
-                .observe(getViewLifecycleOwner(), new Observer<List<Task>>() {
-                    @Override
-                    //This method gets called every time the data in the User table changes...
-                    public void onChanged(@Nullable final List<Task> list) {
-                        for (Task each : list){
-                            names.add(each.getName());
-                        }
-                        //...hence the reinitialization of the Adapter
-                        CriteriaAdapter adapter = new CriteriaAdapter(names);
-                        recyclerView.setAdapter(adapter);
-                    }
-                });
     }
 }
