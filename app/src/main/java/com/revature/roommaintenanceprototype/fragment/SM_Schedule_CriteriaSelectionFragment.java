@@ -15,7 +15,7 @@ import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
-import com.revature.roommaintenanceprototype.helper.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;

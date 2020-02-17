@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.helper;
+package com.revature.roommaintenanceprototype.util;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

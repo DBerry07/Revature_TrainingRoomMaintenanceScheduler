@@ -15,8 +15,7 @@ import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
-import com.revature.roommaintenanceprototype.adapter.TrainerSelectionAdapter;
-import com.revature.roommaintenanceprototype.helper.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 

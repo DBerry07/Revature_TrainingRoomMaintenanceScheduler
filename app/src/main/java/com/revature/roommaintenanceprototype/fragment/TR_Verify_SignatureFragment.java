@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.helper.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.FragmentHelper;
 
 public class TR_Verify_SignatureFragment extends Fragment {
 

@@ -3,7 +3,7 @@
 
     <!-- LOGIN STRINGS -->
     <string name="login_title">Log In</string>
-    <string name="login_label_email">E-mail Address</string>
+    <string name="login_label_email">Email</string>
     <string name="login_hint_email">Enter email</string>
     <string name="login_label_password">Password</string>
     <string name="login_hint_password">Enter password</string>

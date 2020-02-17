@@ -12,13 +12,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
-import com.revature.roommaintenanceprototype.helper.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;

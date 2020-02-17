@@ -1,12 +1,19 @@
 package com.revature.roommaintenanceprototype.controller;
 
+import android.util.Log;
+
+import com.revature.roommaintenanceprototype.util.DummyText;
+
 public class LoginController {
 
-    public LoginController(){}
-
-    public boolean processLogin(String email, String password){
-        if(email.equals("")) return false;
-        if(password.equals("")) return false;
-        return true;
+    public static boolean testLoginCredentials(String entryEmail, String entryPassword){
+        Log.d("TESTING LOGGIN",entryEmail+" : "+entryPassword);
+        if( entryEmail.equals(DummyText.getTestTrainerEmail()) && entryPassword.equals(DummyText.getTestTrainerPassword()) ){
+            return true;
+        }else if( entryEmail.equals(DummyText.getTestSiteManagerEmail()) && entryPassword.equals(DummyText.getTestSiteManagerPassword()) ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

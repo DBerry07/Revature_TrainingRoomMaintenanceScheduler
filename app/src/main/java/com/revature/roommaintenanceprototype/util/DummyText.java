@@ -7,6 +7,27 @@ import java.util.List;
 import java.util.Map;
 
 public class DummyText {
+    private final static String testTrainerEmail = "trainer@rev.com";
+    private final static String testTrainerPassword = "123456";
+
+    private final static String testSiteManagerEmail = "site@rev.com";
+    private final static String testSiteManagerPassword = "123456";
+
+    public static String getTestTrainerEmail() {
+        return testTrainerEmail;
+    }
+
+    public static String getTestTrainerPassword() {
+        return testTrainerPassword;
+    }
+
+    public static String getTestSiteManagerEmail() {
+        return testSiteManagerEmail;
+    }
+
+    public static String getTestSiteManagerPassword() {
+        return testSiteManagerPassword;
+    }
 
     public static List<String> getCampuses() {
         List<String> temp = new ArrayList<String>();
