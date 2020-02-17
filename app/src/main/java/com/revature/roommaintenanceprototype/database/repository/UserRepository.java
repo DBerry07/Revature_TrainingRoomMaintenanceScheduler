@@ -12,16 +12,17 @@ import java.util.List;
 
 public class UserRepository {
 
-    private UserDao userDao;
-    private static LiveData<List<User>> users;
+    private UserDao dao;
+    private static LiveData<List<User>> list;
 
     public UserRepository(Application application){
         MDatabase db = MDatabase.getDatabase(application);
-        users = userDao.selectAll();
+        dao = db.userDao();
+        list = dao.selectAll();
     }
 
     public static LiveData<List<User>> getAll(){
-        return users;
+        return list;
     }
 
 }
