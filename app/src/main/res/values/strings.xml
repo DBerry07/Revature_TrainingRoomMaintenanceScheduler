@@ -10,6 +10,9 @@
     <string name="login_msg_forgotPassword">Forgot your password?</string>
     <string name="login_link_forgotPassword">Click here</string>
 
+    <!-- LOGOUT STRINGS -->
+    <string name="logout_confirmation_message">Are you sure you want to log out?</string>
+
     <string name="menu_option_logout">Log Out</string>
     <!-- TRAINER MENU STRINGS -->
     <string name="trainer_option_verify">Verify</string>
@@ -21,15 +24,17 @@
     <string name="siteManager_option_reports">Reports</string>
 
     <!-- FRAGMENT TITLES -->
-    <string name="title_campus_selection">Campus Selection</string>
-    <string name="title_room_selection">Room Selection</string>
-    <string name="title_cleaningCriteria_selection">Cleaning Criteria</string>
-    <string name="title_trainer_selection">Trainer Selection</string>
-    <string name="title_date_selection">Date Selection</string>
+    <string name="title_campus_selection">Select A Campus</string>
+    <string name="title_room_selection">Select A Room</string>
+    <string name="title_cleaningCriteria_selection">Select Cleaning Criteria</string>
+    <string name="title_trainer_selection">Select A Trainer</string>
+    <string name="title_date_selection">Select Date</string>
     <string name="title_signature">Signature</string>
 
 
     <string name="hello_blank_fragment">Temp</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 
     <!-- DRAWER LAYOUT STRINGS -->
     <string name="drawerOpen">Open Drawer</string>

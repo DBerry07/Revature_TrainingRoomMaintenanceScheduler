@@ -1,7 +1,10 @@
 package com.revature.roommaintenanceprototype;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -14,6 +17,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.controller.LogOutController;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class TrainerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
@@ -43,6 +48,14 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = getIntent();
+        if( intent != null ){
+            String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
+            setNavDrawerUserEmail(userEmail);
+        }else{
+            Log.d("TESTING NAVDisplay","null intent");
+        }
     }
 
     public void addOpenCloseToggleActionToToolbar(){
@@ -69,11 +82,22 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsTrainerNavFragment);
                 break;
             case R.id.menuItem_trainer_logout:
-                finish();
+                ScreenMessage.confirmLogOut(this);
                 break;
         }
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    private void setNavDrawerUserEmail(String username){
+
+        TextView textView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.tv_nav_username);
+        if( textView != null ){
+            textView.setText(username);
+        }else{
+            Log.d("TESTING NAVDisplay","null nav textView");
+        }
     }
 }

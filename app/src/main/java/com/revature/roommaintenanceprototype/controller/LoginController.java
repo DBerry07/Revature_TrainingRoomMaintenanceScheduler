@@ -7,7 +7,6 @@ import com.revature.roommaintenanceprototype.util.DummyText;
 public class LoginController {
 
     public static boolean testLoginCredentials(String entryEmail, String entryPassword){
-        Log.d("TESTING LOGGIN",entryEmail+" : "+entryPassword);
         if( entryEmail.equals(DummyText.getTestTrainerEmail()) && entryPassword.equals(DummyText.getTestTrainerPassword()) ){
             return true;
         }else if( entryEmail.equals(DummyText.getTestSiteManagerEmail()) && entryPassword.equals(DummyText.getTestSiteManagerPassword()) ){

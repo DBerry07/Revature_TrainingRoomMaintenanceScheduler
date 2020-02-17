@@ -11,10 +11,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.controller.LogOutController;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class SiteManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
@@ -45,6 +50,14 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = getIntent();
+        if( intent != null ){
+            String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
+            setNavDrawerUserEmail(navigationView,userEmail);
+        }else{
+            Log.d("TESTING NAVDisplay","null intent");
+        }
     }
 
     public void addOpenCloseToggleActionToToolbar(){
@@ -68,11 +81,21 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsSiteManagerNavFragment);
                 break;
             case R.id.menuItem_siteManager_logout:
-                finish();
+                ScreenMessage.confirmLogOut(this);
                 break;
         }
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setNavDrawerUserEmail(NavigationView navigationView, String userEmail){
+
+        TextView textView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.tv_nav_username);
+        if( textView != null ){
+            textView.setText(userEmail);
+        }else{
+            Log.d("TESTING NAVDisplay","null nav textView");
+        }
     }
 }
