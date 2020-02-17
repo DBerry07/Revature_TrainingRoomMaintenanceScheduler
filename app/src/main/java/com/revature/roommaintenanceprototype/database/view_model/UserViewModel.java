@@ -12,13 +12,13 @@ import java.util.List;
 
 public class UserViewModel extends AndroidViewModel {
 
-    private UserRepository userRepository;
-    private LiveData<List<User>> users;
+    private UserRepository repository;
+    private LiveData<List<User>> list;
 
     public UserViewModel (Application application) {
         super(application);
-        userRepository = new UserRepository(application);
-        users = UserRepository.getAll();
+        repository = new UserRepository(application);
+        list = repository.getAll();
     }
 
 }
