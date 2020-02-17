@@ -46,7 +46,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment {
                         .commit();
             }
         });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_delegate) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

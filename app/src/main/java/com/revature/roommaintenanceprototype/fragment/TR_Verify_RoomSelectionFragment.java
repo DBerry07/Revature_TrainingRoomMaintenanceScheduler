@@ -46,7 +46,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment {
                         .commit();
             }
         });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_verify) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

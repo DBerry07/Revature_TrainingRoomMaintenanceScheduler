@@ -28,7 +28,7 @@ public class TR_Verify_SignatureFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_verify) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_signature) );
         super.onViewCreated(view, savedInstanceState);
     }
 

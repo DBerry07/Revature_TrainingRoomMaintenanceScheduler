@@ -59,7 +59,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment {
                         .commit();
             }
         });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_verify) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 }

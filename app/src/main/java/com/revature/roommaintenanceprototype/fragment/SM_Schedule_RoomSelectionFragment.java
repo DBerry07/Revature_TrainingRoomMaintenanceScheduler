@@ -46,7 +46,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
                         .commit();
             }
         });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

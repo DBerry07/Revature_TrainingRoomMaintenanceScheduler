@@ -40,7 +40,7 @@ public class TR_Reports_DateFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.trainer_option_reports) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_view_reports) );
         super.onViewCreated(view, savedInstanceState);
     }
 

@@ -49,7 +49,7 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_campus_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

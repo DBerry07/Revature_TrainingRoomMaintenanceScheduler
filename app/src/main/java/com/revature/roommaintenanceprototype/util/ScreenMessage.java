@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.controller.TransactionController;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ScreenMessage {
 
@@ -31,6 +36,7 @@ public class ScreenMessage {
 
     public static void confirmLogOut(final AppCompatActivity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setMessage(R.string.title_log_out);
         builder.setTitle(R.string.logout_confirmation_message);
         builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener(){
             @Override
@@ -44,6 +50,15 @@ public class ScreenMessage {
 
             }
         });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    public static void displayCompleteTransaction(String transactionValues, AppCompatActivity activity){
+        String transactionString = transactionValues;
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.title_confirmation);
+        builder.setMessage(transactionString);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }

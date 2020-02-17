@@ -60,7 +60,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
             }
         });
 
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
 
         super.onViewCreated(view, savedInstanceState);
     }

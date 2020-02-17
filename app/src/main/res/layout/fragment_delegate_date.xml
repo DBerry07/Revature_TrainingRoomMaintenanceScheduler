@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <!--
     <TextView
         android:id="@+id/tv_title_delegateDate"
         style="@style/fragmentTitle"
@@ -16,13 +17,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        -->
 
     <include layout="@layout/include_data_picker"
         android:id="@+id/include"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_delegateDate"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <Button

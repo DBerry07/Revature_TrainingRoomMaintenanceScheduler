@@ -23,7 +23,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_date_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 }

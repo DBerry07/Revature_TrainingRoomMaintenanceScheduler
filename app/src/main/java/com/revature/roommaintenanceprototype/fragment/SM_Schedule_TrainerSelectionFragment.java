@@ -53,7 +53,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment {
                         .commit();
             }
         });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.siteManager_option_schedule) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_trainer_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 
