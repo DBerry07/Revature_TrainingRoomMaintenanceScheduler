@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 
-import com.revature.roommaintenanceprototype.database.table.Campus;
+import com.revature.roommaintenanceprototype.database.table.Location;
 
 import java.util.List;
 
 @Dao
-public interface CampusDao {
+public interface LocationDao {
 
-    @Query("SELECT * FROM Campus")
-    LiveData<List<Campus>> selectAll();
+    @Query("SELECT * FROM Location")
+    LiveData<List<Location>> selectAll();
 
 }
