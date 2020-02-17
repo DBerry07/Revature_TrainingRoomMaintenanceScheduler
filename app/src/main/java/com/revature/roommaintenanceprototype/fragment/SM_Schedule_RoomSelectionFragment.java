@@ -68,7 +68,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
                 RoomViewModel.class
         );
 
-        viewModel.getCampuses().observe(getViewLifecycleOwner(), new Observer<List<RoomTable>>() {
+        viewModel.getRooms().observe(getViewLifecycleOwner(), new Observer<List<RoomTable>>() {
             @Override
             //This method gets called every time the data in the User table changes...
             public void onChanged(@Nullable final List<RoomTable> list) {
@@ -76,8 +76,8 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
                     names.add(each.getName());
                 }
                 //...hence the reinitialization of the Adapter
-                TrainerSelectionAdapter trainerSelectionAdapter = new TrainerSelectionAdapter(getActivity(), names);
-                recyclerView.setAdapter(trainerSelectionAdapter);
+                RoomSelectionAdapter selectionAdapter = new RoomSelectionAdapter(getActivity(), names);
+                recyclerView.setAdapter(selectionAdapter);
             }
         });
     }

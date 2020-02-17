@@ -29,4 +29,8 @@ public class RoomRepository {
         return roomList;
     }
 
+    public LiveData<List<RoomTable>> selectOnUserId(int userId){
+        return roomDao.selectOnUser(userId);
+    }
+
 }

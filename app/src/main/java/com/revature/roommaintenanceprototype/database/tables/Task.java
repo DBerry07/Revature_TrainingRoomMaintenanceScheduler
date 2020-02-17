@@ -14,6 +14,12 @@ public class Task {
     @ColumnInfo(name = "name")
     private String name;
 
+    //CONSTRUCTOR
+    public Task(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     //GETTERS
     public int getId() { return id; }
     public String getName() { return name; }

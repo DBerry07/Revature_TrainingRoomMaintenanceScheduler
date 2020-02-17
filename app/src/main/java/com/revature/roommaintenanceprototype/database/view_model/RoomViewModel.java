@@ -23,7 +23,12 @@ public class RoomViewModel extends AndroidViewModel {
         list = repository.getAll();
     }
 
-    public LiveData<List<RoomTable>> getCampuses(){
+    public LiveData<List<RoomTable>> getRooms(){
         return list;
     }
+
+    public LiveData<List<RoomTable>> selectOnUserId(int userId){
+        return repository.selectOnUserId(userId);
+    }
+
 }

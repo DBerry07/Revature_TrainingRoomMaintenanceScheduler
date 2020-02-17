@@ -120,6 +120,16 @@ public abstract class MaintenanceDatabase extends RoomDatabase {
                             roomDao.insert(item);
                         }
                     }
+                    {
+                        TaskDao taskDao = INSTANCE.taskDao();
+                        for (int i = 0; i < 10; i++){
+                            Task item = new Task(i, "task#" + i);
+                            taskDao.insert(item);
+                        }
+                    }
+                    {
+
+                    }
                 }
             });
         }

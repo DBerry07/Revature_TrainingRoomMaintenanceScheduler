@@ -34,4 +34,7 @@ public interface RoomDao {
     @Query("SELECT * FROM RoomTable WHERE assignedTo = :roomCalendarId")
     LiveData<List<RoomTable>> selectOnAssignedTo(int roomCalendarId);
 
+    @Query("SELECT * FROM RoomTable INNER JOIN RoomCalendar ON RoomTable.assignedTo = RoomCalendar.id WHERE RoomCalendar.assignedTo = :assignedTo")
+    LiveData<List<RoomTable>> selectOnUser(int assignedTo);
+
 }
