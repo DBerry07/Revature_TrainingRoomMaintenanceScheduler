@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +26,7 @@ import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import java.util.ArrayList;
 
 public class SM_Schedule_TrainerSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
-
+    NavController navController;
 
     public SM_Schedule_TrainerSelectionFragment() {
     }
@@ -46,6 +48,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_trainer_selection) );
+        navController = Navigation.findNavController(view);
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -57,7 +60,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "ID: "+view.getId()+" | POSITION: "+position, Toast.LENGTH_LONG).show();
+        navController.navigate(R.id.action_SM_Schedule_TrainerSelectionFragment_to_SM_Schedule_DelegateDateFragment);
     }
 
 }

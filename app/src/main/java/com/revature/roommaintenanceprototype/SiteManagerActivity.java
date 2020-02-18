@@ -45,8 +45,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         addOpenCloseToggleActionToToolbar();
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
-        navController.setGraph(R.navigation.nav_graph_site_manager);
-        //NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+        navController.setGraph(R.navigation.sm_schedule);
+        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -73,10 +73,14 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_siteManager_schedule:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.scheduleNavFragment);
+                navController.setGraph(R.navigation.sm_schedule);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
                 break;
             case R.id.menuItem_siteManager_reports:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsSiteManagerNavFragment);
+                navController.setGraph(R.navigation.sm_reports);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Reports_DateFragment);
                 break;
             case R.id.menuItem_siteManager_logout:
                 ScreenMessage.confirmLogOut(this);
