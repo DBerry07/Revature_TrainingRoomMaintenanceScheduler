@@ -54,4 +54,8 @@ public class InputProcessing {
         TOO_SHORT,
         TOO_LONG;
     }
+
+    public static String formatDate(int year, int month, int day){
+        return year+"/"+month+"/"+day;
+    }
 }

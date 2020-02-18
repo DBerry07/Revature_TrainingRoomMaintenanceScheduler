@@ -10,11 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.controller.TransactionController;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class ScreenMessage {
 

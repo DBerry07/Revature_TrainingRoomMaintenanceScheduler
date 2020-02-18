@@ -5,23 +5,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.InputProcessing;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
-public class TR_Delegate_DateFragment extends Fragment{
+public class TR_Delegate_DateFragment extends Fragment implements View.OnClickListener{
+    ImageView iconStartDate, iconEndDate;
+    EditText etStartDate, etEndDate;
 
-    private int sYear;
-    private int sMonth;
-    private int sDay;
-
-    private int eYear;
-    private int eMonth;
-    private int eDay;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,7 +37,42 @@ public class TR_Delegate_DateFragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_date_selection) );
+
+        iconStartDate = (ImageView)view.findViewById(R.id.img_startDate_icon);
+        iconStartDate.setOnClickListener(this);
+        iconEndDate = (ImageView)view.findViewById(R.id.img_endDate_icon);
+        iconEndDate.setOnClickListener(this);
+
+        etStartDate = (EditText)view.findViewById(R.id.et_startDate);
+        etEndDate = (EditText)view.findViewById(R.id.et_endDate);
+
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onClick(View view){
+        switch(view.getId()){
+            case R.id.img_startDate_icon:
+                ScreenMessage.toastShortMsg(getContext(),"Start Date");
+                DialogFragment startDatePicker = new DatePickerFragment(new OnSetDateListener() {
+                    @Override
+                    public void onSetDate(DatePicker view, int year, int month, int day) {
+                        etStartDate.setText(InputProcessing.formatDate(year,month,day));
+                    }
+                });
+                startDatePicker.show(getActivity().getSupportFragmentManager(),"StartDate");
+                break;
+            case R.id.img_endDate_icon:
+                ScreenMessage.toastShortMsg(getContext(),"End Date");
+                DialogFragment endDatePicker = new DatePickerFragment(new OnSetDateListener() {
+                    @Override
+                    public void onSetDate(DatePicker view, int year, int month, int day) {
+                        etEndDate.setText(InputProcessing.formatDate(year,month,day));
+                    }
+                });
+                endDatePicker.show(getActivity().getSupportFragmentManager(),"EndDate");
+                break;
+        }
     }
 
 }
