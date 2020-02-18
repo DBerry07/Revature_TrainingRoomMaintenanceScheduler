@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.revature.roommaintenanceprototype.database.api.APIrequester;
 import com.revature.roommaintenanceprototype.controller.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
@@ -34,49 +35,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.btn_login:
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                processLogin(email, password);
-                break;
-        }
-    }
-
-    private void processLogin(String email, String password){
-        InputProcessing.InputReturn emailStatus = InputProcessing.validateEmail(email);
-        if( emailStatus == InputProcessing.InputReturn.EMPTY_STRING){
-            ScreenMessage.toastLongMsg(getApplicationContext(), "Email field cannot be empty");
-            return;
-        }else if( emailStatus == InputProcessing.InputReturn.INVALID_EMAIL ){
-            ScreenMessage.toastLongMsg(getApplicationContext(), "Invalid email entry.");
-            return;
-        }else if( emailStatus == InputProcessing.InputReturn.OK ){
-            InputProcessing.InputReturn passwordStatus = InputProcessing.validatePassword(password);
-            if(  passwordStatus == InputProcessing.InputReturn.EMPTY_STRING ){
-                ScreenMessage.toastLongMsg(getApplicationContext(), "Password field cannot be empty");
-                return;
-            }else if(passwordStatus == InputProcessing.InputReturn.TOO_SHORT){
-                ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be longer than "+
-                        InputProcessing.getPasswordMinLength()+" characters.");
-            }else if(passwordStatus == InputProcessing.InputReturn.TOO_LONG){
-                ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be shorter than "+
-                    InputProcessing.getPasswordMaxLength()+" characters.");
-            }else if( passwordStatus == InputProcessing.InputReturn.OK){
-                if( LoginController.testLoginCredentials(email, password) ){
-                    if(email.equals(DummyText.getTestSiteManagerEmail())){
-                        launchSiteManagerActivity(email);
-                    }else if(email.equals(DummyText.getTestTrainerEmail())){
-                        launchTrainerActivity(email);
-                    }
-                }else{
-                    ScreenMessage.toastLongMsg(getApplicationContext(), "Invalid login credentials.");
-                }
-            }
-        }
-    }
 
     private void launchSiteManagerActivity(String email){
         Intent intent = new Intent( this, SiteManagerActivity.class );
