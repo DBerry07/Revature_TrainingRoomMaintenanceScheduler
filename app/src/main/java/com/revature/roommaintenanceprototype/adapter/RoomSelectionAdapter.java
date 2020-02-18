@@ -38,7 +38,7 @@ public class RoomSelectionAdapter extends RecyclerView.Adapter<RoomSelectionAdap
     @NonNull
     @Override
     public RoomSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_selection_option, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_room_selection, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         vh.parent = parent;
         return vh;

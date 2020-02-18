@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
@@ -23,7 +22,6 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.MyViewHo
     Activity activity;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        public NavController navController;
         TextView roomName;
         TextView roomStatus;
 
@@ -42,7 +40,7 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.MyViewHo
     @NonNull
     @Override
     public ReportsAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_reports, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_reports, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }

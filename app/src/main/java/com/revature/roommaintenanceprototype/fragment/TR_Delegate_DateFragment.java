@@ -24,7 +24,6 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
     ImageView iconStartDate, iconEndDate;
     EditText etStartDate, etEndDate;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,9 +51,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View view){
         switch(view.getId()){
-            case R.id.img_startDate_icon:
-                ScreenMessage.toastShortMsg(getContext(),"Start Date");
-                DialogFragment startDatePicker = new DatePickerFragment(new OnSetDateListener() {
+            case R.id.img_startDate_icon:DialogFragment startDatePicker = new DatePickerFragment(new OnSetDateListener() {
                     @Override
                     public void onSetDate(DatePicker view, int year, int month, int day) {
                         etStartDate.setText(InputProcessing.formatDate(year,month,day));
@@ -62,9 +59,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
                 });
                 startDatePicker.show(getActivity().getSupportFragmentManager(),"StartDate");
                 break;
-            case R.id.img_endDate_icon:
-                ScreenMessage.toastShortMsg(getContext(),"End Date");
-                DialogFragment endDatePicker = new DatePickerFragment(new OnSetDateListener() {
+            case R.id.img_endDate_icon:DialogFragment endDatePicker = new DatePickerFragment(new OnSetDateListener() {
                     @Override
                     public void onSetDate(DatePicker view, int year, int month, int day) {
                         etEndDate.setText(InputProcessing.formatDate(year,month,day));

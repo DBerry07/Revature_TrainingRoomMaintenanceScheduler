@@ -29,7 +29,7 @@ public class SM_Reports_DateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_reports, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.reports_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_reports);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
         recyclerView.setLayoutManager(linearLayoutManager);

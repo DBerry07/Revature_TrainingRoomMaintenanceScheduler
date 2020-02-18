@@ -8,15 +8,23 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_string"
-        android:layout_width="match_parent"
+        android:id="@+id/reports_room_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/textViewSimpleStringAdapter"
-        android:text="temp" />
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/reports_room_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/global_control_margin"
+        android:text="TextView" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black" />
+
 </LinearLayout>

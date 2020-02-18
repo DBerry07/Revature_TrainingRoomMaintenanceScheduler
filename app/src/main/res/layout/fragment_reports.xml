@@ -38,10 +38,20 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/btn_label_submit" />
 
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rv_reports"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reports_recycler_view"
+        android:id="@+id/rv_reports"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/global_control_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_reports"
         app:layout_constraintEnd_toEndOf="parent"
