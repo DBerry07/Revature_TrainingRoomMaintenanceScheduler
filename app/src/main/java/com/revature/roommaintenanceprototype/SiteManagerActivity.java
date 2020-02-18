@@ -46,7 +46,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
         navController.setGraph(R.navigation.nav_graph_site_manager);
-        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+        //NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -62,8 +62,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
 
     public void addOpenCloseToggleActionToToolbar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tr_reports"
+    app:startDestination="@id/TR_Verify_RoomSelectionFragment">
+    <fragment
+        android:id="@+id/TR_Verify_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_RoomSelectionFragment"
+        android:label="fragment_room_selection"
+        tools:layout="@layout/fragment_room_selection" >
+        <action
+            android:id="@+id/action_TR_Verify_RoomSelectionFragment_to_TR_Verify_CriteriaSelectionFragment"
+            app:destination="@id/TR_Verify_CriteriaSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TR_Verify_CriteriaSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_CriteriaSelectionFragment"
+        android:label="fragment_criteria_selection"
+        tools:layout="@layout/fragment_criteria_selection" >
+        <action
+            android:id="@+id/action_TR_Verify_CriteriaSelectionFragment_to_TR_Verify_SignatureFragment"
+            app:destination="@id/TR_Verify_SignatureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TR_Verify_SignatureFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_SignatureFragment"
+        android:label="fragment_signature"
+        tools:layout="@layout/fragment_signature" />
+</navigation>

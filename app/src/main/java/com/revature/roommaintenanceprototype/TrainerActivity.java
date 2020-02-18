@@ -44,7 +44,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         addOpenCloseToggleActionToToolbar();
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
-        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+        //NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -60,8 +60,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
 
     public void addOpenCloseToggleActionToToolbar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);
