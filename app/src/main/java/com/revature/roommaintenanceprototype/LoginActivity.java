@@ -35,6 +35,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view){
+
+    }
+
 
     private void launchSiteManagerActivity(String email){
         Intent intent = new Intent( this, SiteManagerActivity.class );
