@@ -40,17 +40,7 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        Button btnCleaningCriteriaSelection = (Button) view.findViewById(R.id.btn_trainerSelection);
-        btnCleaningCriteriaSelection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_Delegate_RoomSelectionFragment(), FragmentStringTags.getTR_RoomSelectionFragmentTag())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_trainer_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_trainer_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

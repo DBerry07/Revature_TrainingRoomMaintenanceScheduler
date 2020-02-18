@@ -42,7 +42,7 @@ public class SM_Reports_DateFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_view_reports) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Reports | "+getString(R.string.title_view_reports) );
         super.onViewCreated(view,savedInstanceState);
     }
 }

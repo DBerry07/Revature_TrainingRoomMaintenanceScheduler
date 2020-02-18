@@ -23,7 +23,6 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
-    Button btnCleaningCriteriaSelection;
     RecyclerView rvCleaningCriteria;
 
     public SM_Schedule_CriteriaSelectionFragment() {
@@ -49,18 +48,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        btnCleaningCriteriaSelection = (Button) view.findViewById(R.id.btn_cleaningCriteriaSelection);
-        btnCleaningCriteriaSelection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_TrainerSelectionFragment(), FragmentStringTags.getSM_TrainerSelectionFragmentTag())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_cleaningCriteria_selection) );
 
         super.onViewCreated(view, savedInstanceState);
     }

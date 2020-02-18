@@ -44,7 +44,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         addOpenCloseToggleActionToToolbar();
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
-        //NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+        NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -60,7 +60,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
 
     public void addOpenCloseToggleActionToToolbar(){
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -71,13 +71,16 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_trainer_verify:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.verifyNavFragment);
+                navController.setGraph(R.navigation.tr_verify);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Verify_RoomSelectionFragment2);
                 break;
             case R.id.menuItem_trainer_delegate:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.delegateNavFragment);
+                navController.setGraph(R.navigation.tr_delegate);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Delegate_TrainerSelectionFragment);
                 break;
             case R.id.menuItem_trainer_reports:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsTrainerNavFragment);
+                navController.setGraph(R.navigation.tr_reports);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Reports_DateFragment);
                 break;
             case R.id.menuItem_trainer_logout:
                 ScreenMessage.confirmLogOut(this);

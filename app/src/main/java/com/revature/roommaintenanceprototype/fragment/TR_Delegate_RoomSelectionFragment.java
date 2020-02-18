@@ -36,17 +36,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        Button btnRoomSelection = (Button) view.findViewById(R.id.btn_roomSelection);
-        btnRoomSelection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_Delegate_DateFragment(), FragmentStringTags.getSM_DelegateDateFragmentTag())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_room_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 

@@ -3,28 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tr_reports"
-    app:startDestination="@id/TR_Verify_RoomSelectionFragment">
+    app:startDestination="@id/TR_Reports_DateFragment">
     <fragment
-        android:id="@+id/TR_Verify_RoomSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_RoomSelectionFragment"
-        android:label="fragment_room_selection"
-        tools:layout="@layout/fragment_room_selection" >
-        <action
-            android:id="@+id/action_TR_Verify_RoomSelectionFragment_to_TR_Verify_CriteriaSelectionFragment"
-            app:destination="@id/TR_Verify_CriteriaSelectionFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/TR_Verify_CriteriaSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_CriteriaSelectionFragment"
-        android:label="fragment_criteria_selection"
-        tools:layout="@layout/fragment_criteria_selection" >
-        <action
-            android:id="@+id/action_TR_Verify_CriteriaSelectionFragment_to_TR_Verify_SignatureFragment"
-            app:destination="@id/TR_Verify_SignatureFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/TR_Verify_SignatureFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_SignatureFragment"
-        android:label="fragment_signature"
-        tools:layout="@layout/fragment_signature" />
+        android:id="@+id/TR_Reports_DateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragment.TR_Reports_DateFragment"
+        android:label="fragment_reports"
+        tools:layout="@layout/fragment_reports" />
 </navigation>

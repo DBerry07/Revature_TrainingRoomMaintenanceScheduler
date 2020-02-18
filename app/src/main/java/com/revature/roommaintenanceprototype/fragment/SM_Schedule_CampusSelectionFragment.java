@@ -24,20 +24,12 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener{
-    Button btnCampusSelection;
     RecyclerView rvCampuses;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_campus_selection, container, false);
-
-        btnCampusSelection = (Button)rootView.findViewById(R.id.btn_campusSelection);
-        if(btnCampusSelection != null){
-            btnCampusSelection.setOnClickListener(this);
-        }else{
-            ScreenMessage.toastLongMsg(rootView.getContext(),"Error loading button action for campus selection.");
-        }
 
         rvCampuses = (RecyclerView) rootView.findViewById(R.id.rv_campusSelection);
         rvCampuses.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -49,18 +41,12 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_campus_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_campus_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
 
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.btn_campusSelection:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new SM_Schedule_RoomSelectionFragment(), FragmentStringTags.getSM_RoomSelectionFragmentTag())
-                        .addToBackStack(null)
-                        .commit();
-                break;
         }
     }
 }

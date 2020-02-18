@@ -9,9 +9,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
@@ -23,12 +26,9 @@ import java.util.ArrayList;
 
 
 public class TR_Verify_CriteriaSelectionFragment extends Fragment {
-    Button btnCleaningCriteriaSelection;
     RecyclerView rvCleaningCriteria;
 
-    public TR_Verify_CriteriaSelectionFragment() {
-    }
-
+    NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,17 +49,8 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        btnCleaningCriteriaSelection = (Button) view.findViewById(R.id.btn_cleaningCriteriaSelection);
-        btnCleaningCriteriaSelection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_mainContentContainer, new TR_Verify_SignatureFragment(), FragmentStringTags.getTR_TrainerSignatureFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_cleaningCriteria_selection) );
+
         super.onViewCreated(view, savedInstanceState);
     }
 }
