@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.revature.roommaintenanceprototype.database.api.APIrequester;
 import com.revature.roommaintenanceprototype.controller.LoginController;
 import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -41,6 +42,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 password = etPassword.getText().toString();
                 if( loginController.processLogin(email, password) ){
                     Intent intent = null;
+
+                    APIrequester.requestLogin(this, email, password);
+
                     if( email.equals("trainer") ){
                         intent = new Intent(LoginActivity.this, TrainerActivity.class);
                     }else{

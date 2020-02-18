@@ -2,9 +2,11 @@ package com.revature.roommaintenanceprototype.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.revature.roommaintenanceprototype.database.dao.CampusDao;
 import com.revature.roommaintenanceprototype.database.dao.CompletedTaskListDao;
@@ -63,5 +65,22 @@ public abstract class MDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            super.onOpen(db);
+            databaseWriteExecutor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    CampusDao dao = INSTANCE.campusDao();
+                    for (int i = 0; i < 5; i++) {
+                        Campus item = new Campus(i, "campus #" + i);
+                        dao.insert(item);
+                    }
+                }
+            });
+        }
+    };
 
 }
