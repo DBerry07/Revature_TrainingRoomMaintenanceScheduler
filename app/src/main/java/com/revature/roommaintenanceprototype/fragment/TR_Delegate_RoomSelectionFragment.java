@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 
 public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     RecyclerView recyclerView;
+    NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +42,8 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
 
         recyclerView.setOnClickListener(this);
 
+        navController = Navigation.findNavController(view);
+
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -50,6 +55,6 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "ID: "+view.getId()+" | POSITION: "+position, Toast.LENGTH_LONG).show();
+        navController.navigate(R.id.action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment);
     }
 }
