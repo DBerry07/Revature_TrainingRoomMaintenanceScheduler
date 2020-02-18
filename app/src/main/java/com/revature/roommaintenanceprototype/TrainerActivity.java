@@ -48,6 +48,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         addOpenCloseToggleActionToToolbar();
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
+        navController.setGraph(R.navigation.tr_verify);
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
@@ -76,14 +77,17 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         switch (menuItem.getItemId()){
             case R.id.menuItem_trainer_verify:
                 navController.setGraph(R.navigation.tr_verify);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Verify_RoomSelectionFragment2);
                 break;
             case R.id.menuItem_trainer_delegate:
                 navController.setGraph(R.navigation.tr_delegate);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Delegate_TrainerSelectionFragment);
                 break;
             case R.id.menuItem_trainer_reports:
                 navController.setGraph(R.navigation.tr_reports);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Reports_DateFragment);
                 break;
             case R.id.menuItem_trainer_logout:
