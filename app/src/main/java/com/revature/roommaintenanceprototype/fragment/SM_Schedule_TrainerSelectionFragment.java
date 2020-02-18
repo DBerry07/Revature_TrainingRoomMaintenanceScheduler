@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -21,7 +23,7 @@ import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 
 import java.util.ArrayList;
 
-public class SM_Schedule_TrainerSelectionFragment extends Fragment {
+public class SM_Schedule_TrainerSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
 
 
     public SM_Schedule_TrainerSelectionFragment() {
@@ -36,7 +38,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment {
         RecyclerView recyclerView = rootView.findViewById(R.id.trainer_selection_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms()));
+        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this));
 
         return rootView;
     }
@@ -45,6 +47,17 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_trainer_selection) );
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+        }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "ID: "+view.getId()+" | POSITION: "+position, Toast.LENGTH_LONG).show();
     }
 
 }

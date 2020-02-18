@@ -3,6 +3,7 @@ package com.revature.roommaintenanceprototype.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 
 public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.StringViewHolder>{
     ArrayList<String> list;
+    OnItemClickListener listener;
 
-    public SimpleStringAdapter(ArrayList<String> list){
+    public SimpleStringAdapter(ArrayList<String> list, OnItemClickListener listener){
         this.list = list;
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,8 +30,14 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StringViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull StringViewHolder holder, final int position) {
         holder.tvString.setText(list.get(position));
+        holder.container.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                listener.onItemClick(view,position);
+            }
+        });
     }
 
     @Override
@@ -38,9 +47,11 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
 
     class StringViewHolder extends RecyclerView.ViewHolder{
         TextView tvString;
+        LinearLayout container;
 
         public StringViewHolder(@NonNull final View itemView) {
             super(itemView);
+            container = itemView.findViewById(R.id.container_row_simple_string);
             tvString = itemView.findViewById(R.id.tv_string);
         }
     }

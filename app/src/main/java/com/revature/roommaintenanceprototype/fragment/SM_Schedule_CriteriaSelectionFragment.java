@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
@@ -22,7 +24,7 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 
-public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
+public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     RecyclerView rvCleaningCriteria;
 
     public SM_Schedule_CriteriaSelectionFragment() {
@@ -53,6 +55,15 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+        }
+    }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "ID: "+view.getId()+" | POSITION: "+position, Toast.LENGTH_LONG).show();
+    }
 
 }

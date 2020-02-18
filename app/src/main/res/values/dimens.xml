@@ -23,9 +23,10 @@
     <dimen name="textView_signature_top_padding">125dp</dimen>
     <dimen name="textView_signature_bottom_border_width">3dp</dimen>
 
-    <dimen name="card_roundRadius">24dp</dimen>
-    <dimen name="card_margin">7dp</dimen>
+    <dimen name="card_roundRadius">0dp</dimen>
+    <dimen name="card_margin">3dp</dimen>
     <dimen name="card_padding">10dp</dimen>
+
     <dimen name="img_date_icon">30dp</dimen>
     <dimen name="nav_icon_size">50dp</dimen>
 </resources>

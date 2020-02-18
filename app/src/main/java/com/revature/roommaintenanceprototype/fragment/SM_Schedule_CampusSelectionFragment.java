@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -23,18 +25,18 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 
-public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener{
-    RecyclerView rvCampuses;
+public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_campus_selection, container, false);
 
-        rvCampuses = (RecyclerView) rootView.findViewById(R.id.rv_campusSelection);
-        rvCampuses.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Log.d("TESTING", ""+(new SimpleStringAdapter( (ArrayList<String>) DummyText.getCampuses())).getItemCount() );
-        rvCampuses.setAdapter(new SimpleStringAdapter( (ArrayList<String>) DummyText.getCampuses()));
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_campusSelection);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this));
+        recyclerView.setOnClickListener(this);
 
         return rootView;
     }
@@ -44,9 +46,14 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_campus_selection) );
         super.onViewCreated(view, savedInstanceState);
     }
-
-    public void onClick(View view){
-        switch (view.getId()){
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getContext(), "ID: "+view.getId()+" | POSITION: "+position, Toast.LENGTH_LONG).show();
     }
 }
