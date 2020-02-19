@@ -28,6 +28,7 @@ import com.revature.roommaintenanceprototype.util.InputProcessing;
 public class SM_Reports_DateFragment extends Fragment implements View.OnClickListener{
     ImageView iconStartDate, iconEndDate;
     EditText etStartDate, etEndDate;
+    RecyclerView recyclerView;
 
     public SM_Reports_DateFragment() {
     }
@@ -36,15 +37,8 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_reports, container, false);
-
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_reports);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        ReportsAdapter adapter = new ReportsAdapter(getActivity(), DummyText.getReports());
-        recyclerView.setAdapter(adapter);
-
+        recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_reports, getActivity(),
+                new ReportsAdapter(getActivity(), DummyText.getReports()));
         return rootView;
     }
 
