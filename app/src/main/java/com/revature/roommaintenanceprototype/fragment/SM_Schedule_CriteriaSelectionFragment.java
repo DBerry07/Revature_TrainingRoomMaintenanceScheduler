@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -15,23 +14,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapter.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
-import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
-import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
-import com.revature.roommaintenanceprototype.util.FragmentStringTags;
-import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener , OnChangeSwitchState {
+    private static String TOOLBAR_TITLE = "SM_Schedule | ";
+    
     RecyclerView rvCleaningCriteria;
     NavController navController;
     Button button;
@@ -44,26 +43,31 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_criteria_selection, container, false);
-        rvCleaningCriteria = FragmentHelper.initRecyclerView(rootView,R.id.rv_cleaningCriteria, getActivity(),
-                new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this ));
-        button = (Button)rootView.findViewById(R.id.btn_criteriaSelection);
-        button.setOnClickListener(this);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_criteria_selection, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_cleaningCriteria_selection) );
-        navController = Navigation.findNavController(view);
+        init(view);
         super.onViewCreated(view, savedInstanceState);
+    }
+    
+    public void init(View view){
+        rvCleaningCriteria = FragmentHelper.initRecyclerView(view,R.id.rv_cleaningCriteria, getActivity(),
+                new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this ));
+        button = (Button)view.findViewById(R.id.btn_criteriaSelection);
+        button.setOnClickListener(this);
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), TOOLBAR_TITLE+getString(R.string.title_cleaningCriteria_selection) );
+        navController = Navigation.findNavController(view);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_criteriaSelection:
-                navController.navigate(R.id.action_SM_Schedule_CriteriaSelectionFragment_to_SM_Schedule_TrainerSelectionFragment);
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_SM_Schedule_CriteriaSelectionFragment_to_SM_Schedule_TrainerSelectionFragment);
                 break;
         }
     }
@@ -71,24 +75,13 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     @Override
     public void onItemClick(View view, int position) {
         Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
-        if(swt != null){
-            swt.setChecked(!swt.isChecked());
-        }else{
-            ScreenMessage.toastShortMsg(getContext(), "Switch is null");
-        }
+        TextView tvTitle = view.findViewById(R.id.tv_cleaningCriteria_item);
+        CriteriaSelectionHelper.updateSwitchState(swt, getContext());
+        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,tvTitle.getText().toString(), swt.isChecked());
     }
 
     @Override
     public void onSwitchChanged(String title,View view, boolean isChecked){
-        updateChosenCriteria(title, isChecked);
+        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,title, isChecked);
     }
-
-    private void updateChosenCriteria(String title, boolean isChecked){
-        if( isChecked){
-            choosenCriteria.add(title);
-        }else{
-            choosenCriteria.remove(title);
-        }
-    }
-
 }

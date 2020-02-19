@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -21,7 +20,7 @@ import android.widget.ImageView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
 import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
-import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 

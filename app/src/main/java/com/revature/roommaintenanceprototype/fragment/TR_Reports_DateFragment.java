@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
 import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
-import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 

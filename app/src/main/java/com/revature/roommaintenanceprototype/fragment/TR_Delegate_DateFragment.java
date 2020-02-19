@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
-import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
