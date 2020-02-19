@@ -24,7 +24,6 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
-    RecyclerView recyclerView;
     NavController navController;
     Bundle bundle;
 
@@ -32,18 +31,14 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_room_selection, container, false);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_room_selection);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_room_selection, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_room_selection) );
-
-        recyclerView.setOnClickListener(this);
         bundle = new Bundle();
         navController = Navigation.findNavController(view);
 

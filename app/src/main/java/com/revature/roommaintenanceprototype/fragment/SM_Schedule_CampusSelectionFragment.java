@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -35,12 +36,8 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_campus_selection, container, false);
-
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_campusSelection);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this));
-        recyclerView.setOnClickListener(this);
-
+        recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_campusSelection, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this));
         return rootView;
     }
 

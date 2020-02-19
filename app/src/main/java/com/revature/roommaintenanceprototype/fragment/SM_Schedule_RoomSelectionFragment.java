@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
@@ -30,10 +31,8 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_room_selection, container, false);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_room_selection);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_room_selection, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
         return rootView;
     }
 

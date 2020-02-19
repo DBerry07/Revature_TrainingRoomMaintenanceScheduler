@@ -37,11 +37,8 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
                              Bundle savedInstanceState) {
         final View rootView =
                 inflater.inflate(R.layout.fragment_trainer_selection, container, false);
-        RecyclerView recyclerView = rootView.findViewById(R.id.trainer_selection_recycler);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(rootView.getContext().getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this));
-
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.trainer_selection_recycler, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this));
         return rootView;
     }
 

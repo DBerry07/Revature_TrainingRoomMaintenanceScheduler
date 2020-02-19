@@ -27,7 +27,6 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
-    RecyclerView recyclerView;
     NavController navController;
     Bundle bundle;
 
@@ -35,11 +34,8 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_room_selection, container, false);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_room_selection);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
-        recyclerView.setOnClickListener(this);
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_room_selection, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
 
         return rootView;
     }

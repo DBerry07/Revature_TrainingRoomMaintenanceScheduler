@@ -32,7 +32,6 @@ import java.util.Set;
 
 
 public class TR_Verify_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener, OnChangeSwitchState {
-    RecyclerView rvCleaningCriteria;
     NavController navController;
     Button button;
     Set<String> choosenCriteria = new HashSet<>();
@@ -43,16 +42,8 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_criteria_selection, container, false);
 
-        rvCleaningCriteria = (RecyclerView) rootView.findViewById(R.id.rv_cleaningCriteria);
-        rvCleaningCriteria.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvCleaningCriteria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ScreenMessage.toastShortMsg(getContext(),"Clicked on RVs");
-            }
-        });
-        rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(), this,this ));
-
+        RecyclerView rvCleaningCriteria = FragmentHelper.initRecyclerView(rootView,R.id.rv_cleaningCriteria, getActivity(),
+                new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this ));
         button = (Button)rootView.findViewById(R.id.btn_criteriaSelection);
         button.setOnClickListener(this);
         return rootView;

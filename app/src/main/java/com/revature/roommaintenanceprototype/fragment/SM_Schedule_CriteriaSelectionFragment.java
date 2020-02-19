@@ -19,18 +19,23 @@ import android.widget.Toast;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.adapter.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener , OnChangeSwitchState {
     RecyclerView rvCleaningCriteria;
     NavController navController;
     Button button;
+    Set<String> choosenCriteria = new HashSet<>();
 
     public SM_Schedule_CriteriaSelectionFragment() {
     }
@@ -40,17 +45,8 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_criteria_selection, container, false);
-
-        rvCleaningCriteria = (RecyclerView) rootView.findViewById(R.id.rv_cleaningCriteria);
-        rvCleaningCriteria.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvCleaningCriteria.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ScreenMessage.toastShortMsg(getContext(),"Clicked on RVs");
-            }
-        });
-        rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this ) );
-
+        rvCleaningCriteria = FragmentHelper.initRecyclerView(rootView,R.id.rv_cleaningCriteria, getActivity(),
+                new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this ));
         button = (Button)rootView.findViewById(R.id.btn_criteriaSelection);
         button.setOnClickListener(this);
         return rootView;
@@ -79,6 +75,19 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
             swt.setChecked(!swt.isChecked());
         }else{
             ScreenMessage.toastShortMsg(getContext(), "Switch is null");
+        }
+    }
+
+    @Override
+    public void onSwitchChanged(String title,View view, boolean isChecked){
+        updateChosenCriteria(title, isChecked);
+    }
+
+    private void updateChosenCriteria(String title, boolean isChecked){
+        if( isChecked){
+            choosenCriteria.add(title);
+        }else{
+            choosenCriteria.remove(title);
         }
     }
 
