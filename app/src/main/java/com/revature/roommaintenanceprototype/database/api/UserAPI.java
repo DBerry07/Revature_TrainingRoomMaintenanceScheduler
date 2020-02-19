@@ -41,7 +41,6 @@ public class UserAPI {
     static List<Task> taskList;
 
     static String loginURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/login";
-    static String userURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchAllUsers";
 
     public static void requestLogin(final Activity activity, String username, String email) {
         myActivity = activity;
