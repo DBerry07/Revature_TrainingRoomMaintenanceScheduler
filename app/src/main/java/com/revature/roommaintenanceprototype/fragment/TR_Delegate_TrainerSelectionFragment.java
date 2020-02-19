@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +22,14 @@ import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 
 public class TR_Delegate_TrainerSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
 
     NavController navController;
+    Bundle bundle;
 
     public TR_Delegate_TrainerSelectionFragment() {
     }
@@ -48,7 +51,7 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment implements Vi
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_trainer_selection) );
 
         navController = Navigation.findNavController(view);
-
+        bundle = new Bundle();
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -60,7 +63,22 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment implements Vi
 
     @Override
     public void onItemClick(View view, int position) {
-        navController.navigate(R.id.action_TR_Delegate_TrainerSelectionFragment_to_TR_Delegate_RoomSelectionFragment);
+        if(view != null){
+            ViewGroup container = (ViewGroup)view;
+            if( container != null){
+                TextView textView = container.findViewById(R.id.tv_string);
+                if(textView != null){
+                    bundle.putString(getString(R.string.argument_tr_delegate_selected_trainer),textView.getText().toString());
+                    navController.navigate(R.id.action_TR_Delegate_TrainerSelectionFragment_to_TR_Delegate_RoomSelectionFragment,bundle);
+                }else{
+                    ScreenMessage.toastShortMsg(getContext(),"Error reading text.");
+                }
+            }else{
+                ScreenMessage.toastShortMsg(getContext(),"Error selecting container.");
+            }
+        }else{
+            ScreenMessage.toastShortMsg(getContext(),"Error selecting view.");
+        }
     }
 
 }

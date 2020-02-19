@@ -21,10 +21,17 @@
         <action
             android:id="@+id/action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment"
             app:destination="@id/TR_Delegate_DateFragment" />
+        <argument android:name="@string/argument_tr_delegate_selected_room"
+            android:defaultValue="selected room"/>
     </fragment>
     <fragment
         android:id="@+id/TR_Delegate_DateFragment"
         android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_DateFragment"
         android:label="fragment_delegate_date"
-        tools:layout="@layout/fragment_delegate_date" />
+        tools:layout="@layout/fragment_delegate_date">
+        <argument android:name="@string/argument_tr_delegate_selected_room"
+            android:defaultValue="selected room"/>
+        <argument android:name="@string/argument_tr_delegate_selected_trainer"
+            android:defaultValue="selected trainer"/>
+    </fragment>
 </navigation>

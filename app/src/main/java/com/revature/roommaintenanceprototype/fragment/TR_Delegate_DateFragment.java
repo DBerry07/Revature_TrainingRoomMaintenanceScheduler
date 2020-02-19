@@ -45,6 +45,13 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
         etStartDate = (EditText)view.findViewById(R.id.et_startDate);
         etEndDate = (EditText)view.findViewById(R.id.et_endDate);
 
+        String results = "";
+        String chosenTrainer = getArguments().getString( getString(R.string.argument_tr_delegate_selected_trainer) );
+        results+=" TRAINER: "+chosenTrainer;
+        String chosenRoom = getArguments().getString( getString(R.string.argument_tr_delegate_selected_room) );
+        results+=" ROOM: "+chosenRoom;
+        ScreenMessage.toastShortMsg(getContext(),results);
+
         super.onViewCreated(view, savedInstanceState);
     }
 

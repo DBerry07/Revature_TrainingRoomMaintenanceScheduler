@@ -44,6 +44,10 @@
     <string name="title_log_out">Log Out</string>
     <string name="title_confirmation">Confirmation</string>
     <string name="title_date_picker">Pick a Date</string>
-    <string name="argument_tr_verify_selected_room">trVerifySelectedRoom</string>
-    <string name="argument_tr_verify_selected_criteria">trVerifySelectedCriteria</string>
+
+    <!-- ARGUEMENTS PASSED BETWEEN FRAGMENTS -->
+    <string name="argument_tr_verify_selected_room">tr_verify_selected_room</string>
+    <string name="argument_tr_verify_selected_criteria">tr_verify_selected_criteria</string>
+    <string name="argument_tr_delegate_selected_trainer">tr_delegate_selected_trainer</string>
+    <string name="argument_tr_delegate_selected_room">tr_delegate_selected_room</string>
 </resources>

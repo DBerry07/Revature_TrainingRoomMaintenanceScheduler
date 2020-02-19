@@ -61,7 +61,6 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.d("ARUGMENT",view.toString());
         if(view != null){
             ViewGroup container = (ViewGroup)view;
             if( container != null){
@@ -79,4 +78,5 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
             ScreenMessage.toastShortMsg(getContext(),"Error selecting view.");
         }
     }
+
 }
