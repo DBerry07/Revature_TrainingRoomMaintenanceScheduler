@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.revature.roommaintenanceprototype.database.api.APIrequester;
 import com.revature.roommaintenanceprototype.controller.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btn_login:
+
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 processLogin(email, password);
