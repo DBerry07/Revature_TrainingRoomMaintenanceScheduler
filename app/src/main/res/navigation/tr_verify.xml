@@ -35,8 +35,8 @@
             android:defaultValue="default room"
             />
         <argument
-            android:name="@string/argument_tr_verify_selected_trainer"
-            android:defaultValue="selected trainer"
+            android:name="@string/argument_tr_verify_selected_criteria"
+            android:defaultValue="[]"
             />
     </fragment>
 </navigation>

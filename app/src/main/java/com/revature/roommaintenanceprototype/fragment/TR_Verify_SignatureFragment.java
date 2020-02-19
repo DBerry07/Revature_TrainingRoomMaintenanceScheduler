@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
+
+import java.util.ArrayList;
 
 public class TR_Verify_SignatureFragment extends Fragment {
 
@@ -29,6 +32,20 @@ public class TR_Verify_SignatureFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_signature) );
+        String selectedRoom = getArguments().getString( getString(R.string.argument_tr_verify_selected_room) );
+        String[] selectedCriteria = getArguments().getStringArray(getString(R.string.argument_tr_verify_selected_criteria));
+
+        String results = "";
+        results+=selectedRoom;
+
+        if( selectedCriteria != null){
+            results+="\n"+selectedCriteria.toString();
+        }else{
+            ScreenMessage.toastShortMsg(getContext(),"Criteria list is null");
+        }
+
+        ScreenMessage.toastShortMsg(getContext(),results);
+
         super.onViewCreated(view, savedInstanceState);
     }
 

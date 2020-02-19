@@ -19,13 +19,16 @@ import java.util.ArrayList;
 public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.CriteriaViewHolder>{
     ArrayList<String> criteriaItemsList;
     OnItemClickListener listener;
-
-    public CriteriaAdapter(ArrayList<String> criteriaItemList){
-        this.criteriaItemsList = criteriaItemList;
-    }
+    OnChangeSwitchState switchListener;
 
     public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener){
         this.criteriaItemsList = criteriaItemList;
+        this.listener = listener;
+    }
+
+    public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener,OnChangeSwitchState switchListener){
+        this.criteriaItemsList = criteriaItemList;
+        this.switchListener = switchListener;
         this.listener = listener;
     }
 
@@ -39,18 +42,14 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
     @Override
     public void onBindViewHolder(@NonNull CriteriaViewHolder holder, final int position) {
         holder.tvCleaningItem.setText(criteriaItemsList.get(position));
-        holder.container.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                listener.onItemClick(view, position);
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
         return criteriaItemsList.size();
     }
+
+
 
     class CriteriaViewHolder extends RecyclerView.ViewHolder{
         Switch swtCleaningItem;
@@ -59,6 +58,12 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
 
         public CriteriaViewHolder(@NonNull final View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    listener.onItemClick(view, 0);
+                }
+            });
             container = itemView.findViewById(R.id.linearLayout);
 
             tvCleaningItem = itemView.findViewById(R.id.tv_cleaningCriteria_item);
@@ -67,7 +72,12 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
             swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    ScreenMessage.snackBarLongMsg(itemView,tvCleaningItem.getText().toString());
+                }
+            });
+            swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    switchListener.onSwitchChanged(tvCleaningItem.getText().toString(),buttonView,isChecked);
                 }
             });
         }

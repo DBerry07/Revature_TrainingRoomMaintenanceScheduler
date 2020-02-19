@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -61,6 +62,21 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
     @Override
     public void onItemClick(View view, int position) {
         Log.d("ARUGMENT",view.toString());
-        navController.navigate(R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2);
+        if(view != null){
+            ViewGroup container = (ViewGroup)view;
+            if( container != null){
+                TextView textView = container.findViewById(R.id.tv_string);
+                if(textView != null){
+                    bundle.putString(getString(R.string.argument_tr_verify_selected_room),textView.getText().toString());
+                    navController.navigate(R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2,bundle);
+                }else{
+                    ScreenMessage.toastShortMsg(getContext(),"Error reading text.");
+                }
+            }else{
+                ScreenMessage.toastShortMsg(getContext(),"Error selecting container.");
+            }
+        }else{
+            ScreenMessage.toastShortMsg(getContext(),"Error selecting view.");
+        }
     }
 }
