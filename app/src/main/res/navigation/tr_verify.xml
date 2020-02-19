@@ -19,13 +19,24 @@
         android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_CriteriaSelectionFragment"
         android:label="fragment_criteria_selection"
         tools:layout="@layout/fragment_criteria_selection" >
+        <argument android:name="@string/argument_tr_verify_selected_room"
+            android:defaultValue="default room"
+            />
         <action
             android:id="@+id/action_TR_Verify_CriteriaSelectionFragment2_to_TR_Verify_SignatureFragment2"
-            app:destination="@id/TR_Verify_SignatureFragment2" />
+            app:destination="@id/TR_Verify_SignatureFragment2"/>
     </fragment>
     <fragment
         android:id="@+id/TR_Verify_SignatureFragment2"
         android:name="com.revature.roommaintenanceprototype.fragment.TR_Verify_SignatureFragment"
         android:label="fragment_signature"
-        tools:layout="@layout/fragment_signature" />
+        tools:layout="@layout/fragment_signature">
+        <argument android:name="@string/argument_tr_verify_selected_room"
+            android:defaultValue="default room"
+            />
+        <argument
+            android:name="@string/argument_tr_verify_selected_trainer"
+            android:defaultValue="selected trainer"
+            />
+    </fragment>
 </navigation>

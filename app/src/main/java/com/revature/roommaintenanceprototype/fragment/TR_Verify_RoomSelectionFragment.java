@@ -1,6 +1,7 @@
 package com.revature.roommaintenanceprototype.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,12 +21,14 @@ import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     RecyclerView recyclerView;
     NavController navController;
+    Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +46,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_room_selection) );
-
+        bundle = new Bundle();
         navController = Navigation.findNavController(view);
 
         super.onViewCreated(view, savedInstanceState);
@@ -57,6 +60,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
     @Override
     public void onItemClick(View view, int position) {
+        Log.d("ARUGMENT",view.toString());
         navController.navigate(R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2);
     }
 }

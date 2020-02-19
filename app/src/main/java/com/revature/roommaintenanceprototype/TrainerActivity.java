@@ -35,7 +35,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        APIrequester.populateDatabase(this);
+        //APIrequester.populateDatabase(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
