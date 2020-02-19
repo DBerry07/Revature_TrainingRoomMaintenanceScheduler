@@ -12,13 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.RoomSelectionAdapter;
-import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
-import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
-
-import java.util.ArrayList;
+import com.revature.roommaintenanceprototype.database.api.RoomAPI;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment {
     Button btnRoomSelection;
@@ -31,7 +27,9 @@ public class TR_Verify_RoomSelectionFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.room_selection_recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms()));
+
+        RoomAPI.fetchRoomByCalendar(0, getActivity(), rootView);
+        //recyclerView.setAdapter(new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms()));
         return rootView;
     }
 

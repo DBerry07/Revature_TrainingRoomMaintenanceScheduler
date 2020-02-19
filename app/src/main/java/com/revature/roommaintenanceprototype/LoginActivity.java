@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.revature.roommaintenanceprototype.database.api.APIrequester;
+import com.revature.roommaintenanceprototype.database.api.UserAPI;
 import com.revature.roommaintenanceprototype.controller.LoginController;
 import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -42,15 +42,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 password = etPassword.getText().toString();
                 if( loginController.processLogin(email, password) ){
                     Intent intent = null;
+                    boolean wait = true;
+                    /*while (wait == true) {
+                        wait = UserAPI.requestLogin(this, email, password);
+                    }*/
+                    Log.d("UserRole22", Integer.toString(this.getIntent().getIntExtra("userRole", -1)));
 
-                    APIrequester.requestLogin(this, email, password);
+                    UserAPI.requestLogin(this, email, password);
 
-                    if( email.equals("trainer") ){
+                    /*if( email.equals("trainer") ){
                         intent = new Intent(LoginActivity.this, TrainerActivity.class);
                     }else{
                         intent = new Intent(LoginActivity.this, SiteManagerActivity.class);
                     }
-                    startActivity(intent);
+                    startActivity(intent);*/
                     Log.d(LogStrings.LOGIN_TAG, "Login button clicked!");
                 }else{
                     ScreenMessage.toastShortMsg(getApplicationContext(),"Invalid Entry");

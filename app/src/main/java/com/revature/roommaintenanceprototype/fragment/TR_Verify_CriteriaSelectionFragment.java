@@ -13,13 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
-import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
-
-import java.util.ArrayList;
+import com.revature.roommaintenanceprototype.database.api.TaskAPI;
 
 
 public class TR_Verify_CriteriaSelectionFragment extends Fragment {
@@ -43,7 +40,11 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment {
                 ScreenMessage.toastShortMsg(getContext(),"Clicked on RVs");
             }
         });
-        rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria() ) );
+
+        TaskAPI taskAPI = new TaskAPI(getActivity());
+        taskAPI.trainerGetTasks(0, getActivity(), rootView);
+
+        //rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria() ) );
         return rootView;
     }
 

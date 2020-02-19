@@ -15,8 +15,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
-import com.revature.roommaintenanceprototype.database.api.APIrequester;
-
 public class TrainerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -30,7 +28,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        APIrequester.populateDatabase(this);
+        //UserAPI.populateDatabase(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 

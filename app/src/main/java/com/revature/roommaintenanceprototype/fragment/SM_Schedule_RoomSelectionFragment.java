@@ -15,6 +15,7 @@ import android.widget.Button;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.RoomSelectionAdapter;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.database.api.RoomAPI;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
@@ -31,7 +32,9 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.room_selection_recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((rootView.getContext()));
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new SimpleStringAdapter( (ArrayList<String>) DummyText.getRooms()));
+
+        RoomAPI.getRoomByCampusAndLocation(0, 0, getActivity(), rootView);
+        //recyclerView.setAdapter(new SimpleStringAdapter( (ArrayList<String>) DummyText.getRooms()));
         return rootView;
     }
 

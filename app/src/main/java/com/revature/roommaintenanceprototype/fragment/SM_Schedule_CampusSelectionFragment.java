@@ -12,9 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
@@ -22,6 +20,7 @@ import com.revature.roommaintenanceprototype.helper.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
+import com.revature.roommaintenanceprototype.database.api.CampusAPI;
 
 import java.util.ArrayList;
 
@@ -41,10 +40,16 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
             ScreenMessage.toastLongMsg(rootView.getContext(),"Error loading button action for campus selection.");
         }
 
+
+
         rvCampuses = (RecyclerView) rootView.findViewById(R.id.rv_campusSelection);
         rvCampuses.setLayoutManager(new LinearLayoutManager(getActivity()));
         Log.d("TESTING", ""+(new SimpleStringAdapter( (ArrayList<String>) DummyText.getCampuses())).getItemCount() );
+
+        CampusAPI.getCampuses(getActivity(), rootView);
+        /*
         rvCampuses.setAdapter(new SimpleStringAdapter( (ArrayList<String>) DummyText.getCampuses()));
+        */
 
         return rootView;
     }

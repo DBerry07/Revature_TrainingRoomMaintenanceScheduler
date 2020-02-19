@@ -14,13 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.helper.FragmentHelper;
-import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.FragmentStringTags;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
-
-import java.util.ArrayList;
+import com.revature.roommaintenanceprototype.database.api.TaskAPI;
 
 public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
     Button btnCleaningCriteriaSelection;
@@ -43,7 +40,9 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
                 ScreenMessage.toastShortMsg(getContext(),"Clicked on RVs");
             }
         });
-        rvCleaningCriteria.setAdapter( new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria() ) );
+
+        TaskAPI tAPI = new TaskAPI(getActivity());
+        tAPI.siteManagerGetTasks(getActivity(), rootView);
         return rootView;
     }
 
@@ -64,7 +63,6 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
     }
-
 
 
 }
