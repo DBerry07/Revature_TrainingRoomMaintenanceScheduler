@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -49,6 +50,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
     @Override
     public void onItemClick(View view, int position) {
+        TRVerifyPersistance.setRoom( FragmentHelper.getSelectedItem(view) );
         FragmentHelper.navigateBetweenFragments(navController,
                 null,
                 R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2 );

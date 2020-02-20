@@ -19,6 +19,7 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -32,7 +33,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     RecyclerView rvCleaningCriteria;
     NavController navController;
     Button button;
-    Set<String> choosenCriteria = new HashSet<>();
+    Set<String> chosenCriteria = new HashSet<>();
     Bundle bundle;
 
     @Override
@@ -60,6 +61,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_criteriaSelection:
+                TRVerifyPersistance.setCleaningCriteria( CriteriaSelectionHelper.convertSetToList(chosenCriteria) );
                 FragmentHelper.navigateBetweenFragments(navController,
                         null,
                         R.id.action_TR_Verify_CriteriaSelectionFragment2_to_TR_Verify_SignatureFragment2);
@@ -72,11 +74,11 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
         Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
         TextView tvTitle = view.findViewById(R.id.tv_cleaningCriteria_item);
         CriteriaSelectionHelper.updateSwitchState(swt, getContext());
-        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,tvTitle.getText().toString(), swt.isChecked());
+        CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,tvTitle.getText().toString(), swt.isChecked());
     }
 
     @Override
     public void onSwitchChanged(String title,View view, boolean isChecked){
-        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,title, isChecked);
+        CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,title, isChecked);
     }
 }

@@ -11,15 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class TR_Verify_SignatureFragment extends Fragment {
-
-
-    public TR_Verify_SignatureFragment() {
-    }
-
+    private static final String DEBUG_TAG = "TR_Verify_SignatureFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,22 +26,12 @@ public class TR_Verify_SignatureFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_signature) );
-        String selectedRoom = getArguments().getString( getString(R.string.argument_tr_verify_selected_room) );
-        String[] selectedCriteria = getArguments().getStringArray(getString(R.string.argument_tr_verify_selected_criteria));
-
-        String results = "";
-        results+=selectedRoom;
-
-        if( selectedCriteria != null){
-            results+="\n"+selectedCriteria.toString();
-        }else{
-            ScreenMessage.toastShortMsg(getContext(),"Criteria list is null");
-        }
-
-        ScreenMessage.toastShortMsg(getContext(),results);
-
+        init(view);
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void init(View view){
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_signature) );
     }
 
 }
