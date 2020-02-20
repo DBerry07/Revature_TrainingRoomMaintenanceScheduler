@@ -28,7 +28,9 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_delegate_date, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_container, container, false);
+        FragmentHelper.includeFragmentContent(R.layout.fragment_delegate_date, (ViewGroup) rootView,inflater);
+        return rootView;
     }
 
     @Override

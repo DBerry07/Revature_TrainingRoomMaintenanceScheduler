@@ -28,7 +28,9 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_room_selection, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_container, container, false);
+        FragmentHelper.includeFragmentContent(R.layout.fragment_room_selection, (ViewGroup) rootView,inflater);
+        return rootView;
     }
 
     @Override
