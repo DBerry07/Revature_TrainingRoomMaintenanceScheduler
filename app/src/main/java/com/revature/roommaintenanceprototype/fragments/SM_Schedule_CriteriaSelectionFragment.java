@@ -21,6 +21,7 @@ import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -56,8 +57,11 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     }
     
     public void init(View view){
-        rvCleaningCriteria = FragmentHelper.initRecyclerView(view,R.id.rv_cleaningCriteria, getActivity(),
-                new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this ));
+        CriteriaAdapter adapter = new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this );
+        rvCleaningCriteria = FragmentHelper.initRecyclerView(view,R.id.rv_cleaningCriteria, getActivity(), adapter);
+
+        ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
+
         button = (Button)view.findViewById(R.id.btn_criteriaSelection);
         button.setOnClickListener(this);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), TOOLBAR_TITLE+getString(R.string.title_cleaningCriteria_selection) );

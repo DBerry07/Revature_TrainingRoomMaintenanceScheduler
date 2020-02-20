@@ -8,6 +8,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import com.revature.roommaintenanceprototype.database.api.UserAPI;
+import com.revature.roommaintenanceprototype.controllers.LoginController;
+import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.controllers.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
@@ -64,7 +68,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be shorter than "+
                         InputProcessing.getPasswordMaxLength()+" characters.");
             }else if( passwordStatus == InputProcessing.InputReturn.OK){
-                if( LoginController.testLoginCredentials(email, password) ){
+                UserAPI.requestLogin(this, email, password);
+
+                /*if( LoginController.testLoginCredentials(email, password) ){
                     if(email.equals(DummyText.getTestSiteManagerEmail())){
                         launchSiteManagerActivity(email);
                     }else if(email.equals(DummyText.getTestTrainerEmail())){
@@ -72,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }else{
                     ScreenMessage.toastLongMsg(getApplicationContext(), "Invalid login credentials.");
-                }
+                }*/
             }
         }
     }

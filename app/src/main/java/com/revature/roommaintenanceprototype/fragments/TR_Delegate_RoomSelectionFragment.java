@@ -15,6 +15,7 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -40,8 +41,11 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     }
 
     public void init(View view){
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(),
-                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
+
+        ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);
+
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
     }
