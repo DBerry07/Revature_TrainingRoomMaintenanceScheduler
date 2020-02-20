@@ -61,6 +61,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
         button.setOnClickListener(this);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_criteria),R.drawable.ic_menu_cleaningcriteria);
     }
 
     @Override

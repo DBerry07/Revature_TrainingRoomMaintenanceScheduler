@@ -48,6 +48,7 @@ public class TR_Verify_SignatureFragment extends Fragment {
     private void init(View view){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_signature) );
         imgSignature = view.findViewById(R.id.img_Signature);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_signature),R.drawable.ic_menu_signature);
     }
 
     private void drawSignature(ImageView imageView){

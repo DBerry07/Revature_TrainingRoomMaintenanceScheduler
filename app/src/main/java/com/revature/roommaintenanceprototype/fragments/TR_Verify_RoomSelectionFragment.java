@@ -47,6 +47,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_room),R.drawable.ic_menu_room);
     }
 
     @Override

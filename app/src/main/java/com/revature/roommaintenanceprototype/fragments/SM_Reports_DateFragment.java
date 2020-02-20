@@ -42,6 +42,7 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         init(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_rpt_reports),R.drawable.ic_reports);
         super.onViewCreated(view,savedInstanceState);
     }
 

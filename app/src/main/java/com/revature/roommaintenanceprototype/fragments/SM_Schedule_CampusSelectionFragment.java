@@ -9,9 +9,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
@@ -20,17 +22,19 @@ import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMS
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.database.api.CampusAPI;
 import com.revature.roommaintenanceprototype.database.table.Campus;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
 import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 
-public class SM_Schedule_CampusSelectionFragment extends Fragment
-        implements View.OnClickListener, OnItemClickListener
-        {
+public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+    private static final String DEBUG_TAG = "SM_Schedule_CampusSelectionFragment";
+
     RecyclerView recyclerView;
     NavController navController;
+    String description;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,10 +51,16 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_campus_selection) );
-        navController = Navigation.findNavController(view);
+        init(view);
         super.onViewCreated(view, savedInstanceState);
     }
+
+    private void init(View view){
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_campus_selection) );
+        navController = Navigation.findNavController(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_campus),R.drawable.ic_menu_campus);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){

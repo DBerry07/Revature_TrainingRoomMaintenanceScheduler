@@ -49,6 +49,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
         etEndDate = view.findViewById(R.id.et_endDate);
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_date),R.drawable.ic_menu_date);
     }
 
     @Override

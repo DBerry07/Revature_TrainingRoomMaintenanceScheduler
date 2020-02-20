@@ -48,6 +48,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
         ApiRequester.getInstance(getActivity()).getRoomByCampusAndLocation(getActivity(), 0, 0, adapter, recyclerView);
 
         navController = Navigation.findNavController(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_room),R.drawable.ic_menu_room);
     }
 
     @Override

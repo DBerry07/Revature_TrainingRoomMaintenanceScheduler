@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,5 +70,13 @@ public class FragmentHelper {
             Log.d(DEBUG_TAG,"EditText is null");
             return null;
         }
+    }
+
+    public static void initFragmentHeader(View rootView, String description, int iconID){
+        TextView textView = rootView.findViewById(R.id.tv_descriptionHeader);
+        textView.setText(description);
+
+        ImageView imageView = rootView.findViewById(R.id.img_iconHeader);
+        imageView.setImageResource(iconID);
     }
 }

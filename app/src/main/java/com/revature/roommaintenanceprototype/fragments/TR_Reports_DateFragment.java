@@ -55,6 +55,7 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
 
         etStartDate = (view.findViewById(R.id.et_startDate));
         etEndDate = view.findViewById(R.id.et_endDate);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_rpt_reports),R.drawable.ic_reports);
     }
 
     @Override

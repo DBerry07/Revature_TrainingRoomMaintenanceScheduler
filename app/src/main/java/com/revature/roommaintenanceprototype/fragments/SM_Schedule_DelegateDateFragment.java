@@ -50,6 +50,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
         etEndDate = view.findViewById(R.id.et_endDate);
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_date),R.drawable.ic_menu_date);
     }
 
     @Override

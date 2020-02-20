@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Revature Training Room Maintenance Scheduler</string>
+    <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
     <!-- LOGIN STRINGS -->
     <string name="login_title">Log In</string>
@@ -33,7 +34,84 @@
 
 
     <!-- DESCRIPTIONS -->
+    <!-- SITE MANAGER -->
+        <!-- SCHEDULE -->
+        <string name="description_sm_sch_campus">
+            Click on a campus below
+            to start scheduling a room cleaning.
+        </string>
+        <string name="description_sm_sch_room">
+            Click a room from the list below
+            to set it as the room to schedule for cleaning.
+        </string>
+        <string name="description_sm_sch_criteria">
+            For each item, swipe left or right.
+            Left to remove it from the criteria list.
+            Right to add it to the criteria list.
+        </string>
+        <string name="description_sm_sch_trainer">
+            Select a trainer from the list below.
+            This trainer will be responsible for
+            verifying that the room is clean.
+        </string>
+        <string name="description_sm_sch_date">
+            Sign in the box provided below.
+            By signing you are verifying the
+            information you have provided.
+        </string>
 
+        <!-- REPORTS -->
+        <string name="description_sm_rpt_reports">
+            Select a start date (left) and
+            an end date (right).
+            Click the submit button to generate the
+            reports based on the dates you have entered.
+        </string>
+
+    <!-- TRAINER -->
+        <!-- VERIFY -->
+        <string name="description_tr_verify_room">
+            Select a room from the list below.
+            You will verify whether or not the
+            items in this room are clean.
+        </string>
+
+        <string name="description_tr_verify_criteria">
+            For each item, swipe left or right.
+            Left means the item is not clean.
+            Right means that the item is clean.
+        </string>
+
+        <string name="description_tr_verify_signature">
+            Sign in the box provided below.
+            By signing you are verifying the
+            information you have provided.
+        </string>
+
+        <!-- DELEGATE -->
+        <string name="description_tr_delegate_trainer">
+            Select a trainer from the list below.
+            The trainer you select will be responsible
+            for verifying that the room is clean.
+        </string>
+
+        <string name="description_tr_delegate_room">
+            Select a room from the list below.
+            The trainer will verify that this room is clean.
+        </string>
+
+        <string name="description_tr_delegate_date">
+            Select a start date (left) and an end date (right).
+            Click the submit button to set the dates for
+            which you will delegate.
+        </string>
+
+        <!-- REPORTS -->
+        <string name="description_tr_rpt_reports">
+            Select a start date (left) and an end date (right).
+            Click the submit button to generate the reports based on
+            the dates you have entered.
+        </string>
 
     <string name="hello_blank_fragment">Temp</string>
     <string name="Yes">Yes</string>

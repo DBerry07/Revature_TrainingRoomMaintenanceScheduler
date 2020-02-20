@@ -66,6 +66,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
         button.setOnClickListener(this);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), TOOLBAR_TITLE+getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);
+        FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_criteria),R.drawable.ic_menu_cleaningcriteria);
     }
 
     @Override
