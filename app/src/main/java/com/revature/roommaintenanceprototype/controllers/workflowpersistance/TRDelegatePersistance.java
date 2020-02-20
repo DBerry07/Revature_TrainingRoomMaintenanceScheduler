@@ -1,6 +1,6 @@
 package com.revature.roommaintenanceprototype.controllers.workflowpersistance;
 
-public class TRDelegatePersistance {
+public final class TRDelegatePersistance {
     private static final String DEBUG_TAG = "TRDelegatePersistance";
 
     private static String room = "";

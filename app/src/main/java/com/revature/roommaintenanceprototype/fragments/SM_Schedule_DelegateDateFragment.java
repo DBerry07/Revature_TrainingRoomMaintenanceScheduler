@@ -62,19 +62,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
             case R.id.btn_delegateDate:
                 SMSchedulePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
                 SMSchedulePersistance.setEndDate( FragmentHelper.getSelectedDate(etEndDate) );
-                String results = getResults();
-                Log.d(DEBUG_TAG,results);
                 break;
         }
-    }
-
-    private String getResults(){
-        String results = "\n\nCAMPUS: "+SMSchedulePersistance.getCampus();
-        results+= "\nROOMS: "+SMSchedulePersistance.getRoom();
-        results+= "\nCLEANING CRITERIA: "+SMSchedulePersistance.getCleaningCriteria().toString();
-        results+= "\nTRAINER: "+SMSchedulePersistance.getTrainer();
-        results+= "\nSTART DATE: "+SMSchedulePersistance.getStartDate();
-        results+= "\nEND DATE: "+SMSchedulePersistance.getEndDate();
-        return results;
     }
 }
