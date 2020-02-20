@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -50,6 +51,7 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment implements Vi
 
     @Override
     public void onItemClick(View view, int position) {
+        TRDelegatePersistance.setTrainer( FragmentHelper.getSelectedItem(view) );
         FragmentHelper.navigateBetweenFragments(navController,
                 null,
                 R.id.action_TR_Delegate_TrainerSelectionFragment_to_TR_Delegate_RoomSelectionFragment);

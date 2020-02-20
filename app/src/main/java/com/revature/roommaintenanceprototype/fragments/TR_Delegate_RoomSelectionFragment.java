@@ -14,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
 import java.util.ArrayList;
 
 public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+    private static final String DEBUG_TAG = "TR_Delegate_RoomSelectionFragment";
+
     private NavController navController;
 
     @Override
@@ -49,6 +52,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
 
     @Override
     public void onItemClick(View view, int position) {
+        TRDelegatePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
         FragmentHelper.navigateBetweenFragments(navController,
                 null,
                 R.id.action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment );
