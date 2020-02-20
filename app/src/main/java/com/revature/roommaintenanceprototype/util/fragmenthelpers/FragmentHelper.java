@@ -3,7 +3,9 @@ package com.revature.roommaintenanceprototype.util.fragmenthelpers;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,6 +32,10 @@ public class FragmentHelper {
         } else {
             ScreenMessage.toastShortMsg(activity.getApplicationContext(), "Error cannot set title of null activity");
         }
+    }
+
+    public static void includeFragmentContent(int fragmentLayoutID, ViewGroup parentLayout, LayoutInflater layoutInflater){
+        View fragmentView = layoutInflater.inflate(fragmentLayoutID,(ViewGroup)parentLayout.findViewById(R.id.fragmentPlaceholder));
     }
 
     public static RecyclerView initRecyclerView(View rootView, int recyclerID, Activity activity, RecyclerView.Adapter recyclerAdapter) {

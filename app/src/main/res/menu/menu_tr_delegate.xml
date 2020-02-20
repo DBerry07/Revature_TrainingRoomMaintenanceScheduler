@@ -13,8 +13,4 @@
         android:id="@+id/menuItem_tr_delegate_date"
         android:icon="@drawable/ic_menu_date"
         android:title="@string/title_date_selection" />
-    <item
-        android:id="@+id/menuItem_tr_delegate_review"
-        android:icon="@drawable/ic_menu_confirm"
-        android:title="@string/review_inputs" />
 </menu>

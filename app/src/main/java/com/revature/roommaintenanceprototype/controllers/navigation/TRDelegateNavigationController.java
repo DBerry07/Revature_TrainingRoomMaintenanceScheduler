@@ -38,8 +38,6 @@ public class TRDelegateNavigationController implements BottomNavigationView.OnNa
                         null,
                         R.id.TR_Delegate_DateFragment);
                 break;
-            case R.id.menuItem_tr_verify_review:
-                break;
         }
         return true;
     }

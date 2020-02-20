@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRDelegateNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRVerifyNavigationController;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
@@ -32,6 +34,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
 
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
+
+    ImageView imgHoverButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -63,6 +67,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         setUserDetails();
+        imgHoverButton = findViewById(R.id.img_hover_btn);
     }
 
     private void setUserDetails(){
@@ -95,6 +100,12 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_verify);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
+                    }
+                });
                 break;
             case R.id.menuItem_trainer_delegate:
                 navController.setGraph(R.navigation.tr_delegate);
@@ -104,6 +115,12 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_delegate);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRDelegateNavigationController(navController));
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
                 break;
             case R.id.menuItem_trainer_reports:
                 bottomNavigationView.setVisibility(View.INVISIBLE);

@@ -12,6 +12,16 @@ public final class SMSchedulePersistance {
     private static String startDate = "";
     private static String endDate = "";
 
+    public static String getResults(){
+        StringBuilder results = new StringBuilder();
+        results.append("CAMPUS | "+campus);
+        results.append("ROOM | "+room);
+        results.append("CLEANING CRITERIA | "+cleaningCriteria.toString());
+        results.append("START DATE | "+startDate);
+        results.append("END DATE | "+endDate);
+        return results.toString();
+    }
+
     public static String getCampus() {
         return campus;
     }

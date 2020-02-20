@@ -11,10 +11,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +32,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
 
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
+
+    ImageView imgHoverButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -57,6 +61,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         navigationView.getMenu().getItem(0).setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
         setUserDetails();
+
+        imgHoverButton = findViewById(R.id.img_hover_btn);
     }
 
     private void addOpenCloseToggleActionToToolbar(){
@@ -86,6 +92,12 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
                 break;
             case R.id.menuItem_siteManager_reports:
                 navController.setGraph(R.navigation.sm_reports);

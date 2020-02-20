@@ -39,8 +39,6 @@ public class TRVerifyNavigationController implements BottomNavigationView.OnNavi
                         null,
                         R.id.TR_Verify_SignatureFragment2);
                 break;
-            case R.id.menuItem_tr_verify_review:
-                break;
         }
         return true;
     }

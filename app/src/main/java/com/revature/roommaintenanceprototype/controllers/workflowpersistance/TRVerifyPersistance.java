@@ -9,6 +9,13 @@ public final class TRVerifyPersistance {
     private static ArrayList<String> cleaningCriteria = new ArrayList<>();
     private static Bitmap signature;
 
+    public static String getResults(){
+        StringBuilder results = new StringBuilder();
+        results.append("ROOM | "+room);
+        results.append("CLEANING CRITERIA | "+cleaningCriteria.toString());
+        results.append("SIGNATURE | ");
+        return results.toString();
+    }
     public static String getRoom() {
         return room;
     }

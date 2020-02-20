@@ -3,6 +3,7 @@ package com.revature.roommaintenanceprototype.util;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -55,5 +56,12 @@ public class ScreenMessage {
         builder.setMessage(transactionString);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    public static void displayResults(String results, AppCompatActivity activity){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(R.string.review_inputs);
+        builder.setView(R.layout.confirmation);
+        ((TextView) activity.findViewById(R.id.tv_results)).setText(results);
     }
 }
