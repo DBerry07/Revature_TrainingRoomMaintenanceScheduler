@@ -22,26 +22,25 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
-    NavController navController;
-    Bundle bundle;
+    private NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_room_selection, container, false);
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_room_selection, getActivity(),
-                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_room_selection, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_room_selection) );
-        bundle = new Bundle();
-        navController = Navigation.findNavController(view);
-
+        init(view);
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    public void init(View view){
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(),
+                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_room_selection) );
+        navController = Navigation.findNavController(view);
     }
 
     @Override
@@ -52,22 +51,9 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
     @Override
     public void onItemClick(View view, int position) {
-        if(view != null){
-            ViewGroup container = (ViewGroup)view;
-            if( container != null){
-                TextView textView = container.findViewById(R.id.tv_string);
-                if(textView != null){
-                    bundle.putString(getString(R.string.argument_tr_verify_selected_room),textView.getText().toString());
-                    navController.navigate(R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2,bundle);
-                }else{
-                    ScreenMessage.toastShortMsg(getContext(),"Error reading text.");
-                }
-            }else{
-                ScreenMessage.toastShortMsg(getContext(),"Error selecting container.");
-            }
-        }else{
-            ScreenMessage.toastShortMsg(getContext(),"Error selecting view.");
-        }
+        FragmentHelper.navigateBetweenFragments(navController,
+                null,
+                R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2 );
     }
 
 }
