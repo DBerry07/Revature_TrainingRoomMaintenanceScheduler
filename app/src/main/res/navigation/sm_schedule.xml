@@ -32,8 +32,6 @@
         <action
             android:id="@+id/action_SM_Schedule_CriteriaSelectionFragment_to_SM_Schedule_TrainerSelectionFragment"
             app:destination="@id/SM_Schedule_TrainerSelectionFragment" />
-        <argument android:name="@string/argument_sm_schedule_selected_campus"/>
-        <argument android:name="@string/argument_tr_delegate_selected_room"/>
     </fragment>
     <fragment
         android:id="@+id/SM_Schedule_TrainerSelectionFragment"
