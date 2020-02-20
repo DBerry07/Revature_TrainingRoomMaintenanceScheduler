@@ -34,7 +34,7 @@ public class DummyText {
         temp.add("USF");
         temp.add("UH");
         temp.add("TSU");
-        return temp;
+        return new ArrayList<String>();
     }
 
     public static List<String> getCleaningCriteria() {
@@ -63,7 +63,7 @@ public class DummyText {
         temp.add("Chairs");
         temp.add("Whiteboards");
         temp.add("Tables");
-        return temp;
+        return new ArrayList<String>();
     }
 
     public static List<String> getRooms() {
@@ -71,7 +71,7 @@ public class DummyText {
         temp.add("NEC 101");
         temp.add("FTP 107");
         temp.add("EEG 221");
-        return temp;
+        return new ArrayList<String>();
     }
 
     public static Map<String, Boolean> getReports() {
@@ -81,7 +81,7 @@ public class DummyText {
         temp.put("RTP 336", false);
         temp.put("MMO 111", true);
         temp.put("HTT 900", false);
-        return temp;
+        return new HashMap<>();
     }
 
     public static List<String> getTrainers() {
@@ -89,6 +89,6 @@ public class DummyText {
         temp.add("Nick");
         temp.add("Mayur");
         temp.add("Uday");
-        return temp;
+        return new ArrayList<String>();
     }
 }

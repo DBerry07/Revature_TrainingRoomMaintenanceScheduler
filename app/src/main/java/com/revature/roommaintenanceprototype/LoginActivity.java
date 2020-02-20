@@ -20,7 +20,7 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_TAG_USER_EMAIL = "EXTRA_TAG_USER_EMAIL";
 
-    private Button btnLogin;
+    private Button btnLogin,btnLogin2;
     private EditText etEmail, etPassword;
 
     @Override
@@ -35,15 +35,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = (EditText) findViewById(R.id.et_login_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
+        btnLogin2 = (Button) findViewById(R.id.btn_login2);
+        btnLogin2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view){
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
         switch (view.getId()){
             case R.id.btn_login:
-                String email = etEmail.getText().toString();
-                String password = etPassword.getText().toString();
-                processLogin(email, password);
+                launchTrainerActivity(email);
+                break;
+            case R.id.btn_login2:
+                launchSiteManagerActivity(email);
                 break;
         }
     }
@@ -68,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be shorter than "+
                         InputProcessing.getPasswordMaxLength()+" characters.");
             }else if( passwordStatus == InputProcessing.InputReturn.OK){
-                UserAPI.requestLogin(this, email, password);
+                //UserAPI.requestLogin(this, email, password);
 
                 /*if( LoginController.testLoginCredentials(email, password) ){
                     if(email.equals(DummyText.getTestSiteManagerEmail())){

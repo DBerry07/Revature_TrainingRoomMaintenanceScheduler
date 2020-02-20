@@ -345,7 +345,7 @@ public class ApiRequester {
                         for (User each : list){
                             names.add(each.getEmail());
                         }
-                        adapter.updateList(names);
+                        //adapter.updateList(names);
                         recyclerView.setAdapter(adapter);
                     }
                 },

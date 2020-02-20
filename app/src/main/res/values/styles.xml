@@ -63,11 +63,7 @@
         <item name="android:background">@drawable/background_signature_bottom_border</item>
     </style>
     <style name="textViewSimpleStringAdapter">
-        <item name="android:paddingTop">@dimen/global_control_margin</item>
-        <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingStart">@dimen/global_control_margin</item>
-        <item name="android:paddingEnd">@dimen/global_control_margin</item>
-        <item name="android:gravity">start</item>
+        <item name="android:gravity">start|center_vertical</item>
         <item name="android:textSize">@dimen/global_card_text_size</item>
     </style>
 </resources>

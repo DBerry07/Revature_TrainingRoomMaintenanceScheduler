@@ -5,13 +5,15 @@
     android:id="@+id/container_row_simple_string"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/global_control_margin">
 
     <TextView
         android:id="@+id/tv_string"
+        style="@style/textViewSimpleStringAdapter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/textViewSimpleStringAdapter"
+        android:gravity="clip_vertical"
         android:text="temp" />
 
     <View

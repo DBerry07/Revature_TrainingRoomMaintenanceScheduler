@@ -17,4 +17,16 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="unchecked_nav_text">#eee</color>
 
+
+    <color name="primeLight1">#FFA678</color>
+    <color name="primeLight2">#FF8B50</color>
+    <color name="prime">#F26A25</color>
+    <color name="primeDark1">#C94A09</color>
+    <color name="primeDark2">#9F3600</color>
+
+    <color name="primeContrastLight1">#5CC3A1</color>
+    <color name="primeContrastLight2">#36AB85</color>
+    <color name="primeContrast">#19A174</color>
+    <color name="primeContrastDark1">#06865C</color>
+    <color name="primeContrastDark2">#006A47</color>
 </resources>
