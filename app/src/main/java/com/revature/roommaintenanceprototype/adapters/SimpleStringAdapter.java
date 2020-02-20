@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.StringViewHolder>{
     ArrayList<String> list;
@@ -54,5 +55,9 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
             container = itemView.findViewById(R.id.container_row_simple_string);
             tvString = itemView.findViewById(R.id.tv_string);
         }
+    }
+
+    public void updateList(ArrayList<String> list){
+        this.list = list;
     }
 }

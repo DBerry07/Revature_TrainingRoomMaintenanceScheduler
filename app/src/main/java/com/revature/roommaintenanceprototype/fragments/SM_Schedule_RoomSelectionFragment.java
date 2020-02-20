@@ -16,6 +16,7 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -40,9 +41,12 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
     }
 
     public void init(View view){
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(),
-                new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this));
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
+        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_room_selection) );
+
+        ApiRequester.getInstance(getActivity()).getRoomByCampusAndLocation(getActivity(), 0, 0, adapter, recyclerView);
+
         navController = Navigation.findNavController(view);
     }
 

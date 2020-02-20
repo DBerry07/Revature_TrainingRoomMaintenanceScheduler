@@ -1,3 +1,4 @@
+/*
 package com.revature.roommaintenanceprototype.database.api;
 
 import android.view.View;
@@ -5,8 +6,8 @@ import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
-import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.database.table.RoomTaskList;
 import com.revature.roommaintenanceprototype.database.table.Task;
 
@@ -39,3 +40,4 @@ public class TaskUpdater {
         recyclerView.setAdapter(new CriteriaAdapter((ArrayList<String>) names));
     }
 }
+*/

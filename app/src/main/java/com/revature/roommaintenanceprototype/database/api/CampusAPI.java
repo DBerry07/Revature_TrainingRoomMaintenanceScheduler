@@ -4,24 +4,34 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 
+import androidx.navigation.NavController;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.database.table.Campus;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CampusAPI {
 
-    static String campusURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchAllCampus";
+    private interface VolleyCallback<T>{
+        void onSuccess(List<T> result);
+    }
 
-    public static void getCampuses(final Activity activity, final View rootView) {
+    static String campusURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchAllCampus";
+    List<Campus> list;
+
+    public void getCampuses(final Activity activity, final SimpleStringAdapter adapter, final RecyclerView recyclerView) {
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
 
         String url = campusURL;
@@ -39,8 +49,14 @@ public class CampusAPI {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        List<Campus> list = JsonResponseParser.parseCampuses(response);
-                        CampusUpdater.updateSiteManagerCampus(list, rootView);
+                        list = JsonResponseParser.parseCampuses(response);
+                        ArrayList<String> names = new ArrayList<>();
+                        for (Campus each : list){
+                            names.add(each.getName());
+                        }
+
+                        adapter.updateList(names);
+                        recyclerView.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {
@@ -51,6 +67,5 @@ public class CampusAPI {
                 });
 
         requestQueue.add(jsonObjectRequest);
-
     }
 }

@@ -3,6 +3,10 @@ package com.revature.roommaintenanceprototype.database.api;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+
+import androidx.navigation.NavController;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -10,11 +14,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.database.table.RoomData;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomAPI {
@@ -22,7 +28,9 @@ public class RoomAPI {
     static String roomsByCalendarURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchRoomsOnCalendar";
     static String roomsByCampusAndLocationURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchAllRoom";
 
-    public static void fetchRoomByCalendar(int calendarId, final Activity activity, final View rootView){
+    public static void fetchRoomByCalendar(Activity activity, int calendarId,
+                                           final SimpleStringAdapter adapter,
+                                           final RecyclerView recyclerView){
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         String url = roomsByCalendarURL;
         JSONObject jsonObject = new JSONObject();
@@ -43,7 +51,12 @@ public class RoomAPI {
                     @Override
                     public void onResponse(JSONObject response) {
                         List<RoomData> list = JsonResponseParser.parseRooms(response);
-                        RoomUpdater.updateRoomList(list, activity, rootView);
+                        ArrayList<String> names = new ArrayList<>();
+                        for (RoomData each : list){
+                            names.add(each.getName());
+                        }
+                        adapter.updateList(names);
+                        recyclerView.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {
@@ -56,7 +69,9 @@ public class RoomAPI {
 
     }
 
-    public static void getRoomByCampusAndLocation(int campusId, int locationId, final Activity activity, final View rootView){
+    public static void getRoomByCampusAndLocation(Activity activity, int campusId, int locationId,
+                                                  final SimpleStringAdapter adapter,
+                                                  final RecyclerView recyclerView){
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         String url = roomsByCampusAndLocationURL;
         JSONObject jsonObject = new JSONObject();
@@ -76,7 +91,12 @@ public class RoomAPI {
                     @Override
                     public void onResponse(JSONObject response) {
                         List<RoomData> list = JsonResponseParser.parseRooms(response);
-                        RoomUpdater.updateRoomList(list, activity, rootView);
+                        ArrayList<String> names = new ArrayList<>();
+                        for (RoomData each : list){
+                            names.add(each.getName());
+                        }
+                        adapter.updateList(names);
+                        recyclerView.setAdapter(adapter);
                     }
                 },
                 new Response.ErrorListener() {

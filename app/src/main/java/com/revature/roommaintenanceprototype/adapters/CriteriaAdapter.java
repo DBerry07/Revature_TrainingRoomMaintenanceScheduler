@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.CriteriaViewHolder>{
     ArrayList<String> criteriaItemsList;
@@ -80,5 +81,9 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
                 }
             });
         }
+    }
+
+    public void updateList(ArrayList<String> list){
+        this.criteriaItemsList = list;
     }
 }

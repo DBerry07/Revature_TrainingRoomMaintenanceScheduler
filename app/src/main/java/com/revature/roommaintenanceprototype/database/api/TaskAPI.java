@@ -78,7 +78,7 @@ public class TaskAPI {
             @Override
             public void onResponse(JSONObject response) {
                 taskList = JsonResponseParser.parseTasks(response);
-                TaskUpdater.changeSMCriteriaList(taskList, rootView);
+                //TaskUpdater.changeSMCriteriaList(taskList, rootView);
             }
         };
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -117,7 +117,7 @@ public class TaskAPI {
                     @Override
                     public void onResponse(JSONObject response) {
                         List<RoomTaskList> rList = JsonResponseParser.parseTaskList(response);
-                        TaskUpdater.updateTRCriteriaList(rList, taskList, rootView);
+                        //TaskUpdater.updateTRCriteriaList(rList, taskList, rootView);
                     }
                 },
                 new Response.ErrorListener() {

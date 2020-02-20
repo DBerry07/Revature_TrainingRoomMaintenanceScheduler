@@ -17,22 +17,31 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
+import com.revature.roommaintenanceprototype.database.api.CampusAPI;
+import com.revature.roommaintenanceprototype.database.table.Campus;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
 
-public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+public class SM_Schedule_CampusSelectionFragment extends Fragment
+        implements View.OnClickListener, OnItemClickListener
+        {
     RecyclerView recyclerView;
     NavController navController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this);
         View rootView = inflater.inflate(R.layout.fragment_container, container, false);
         FragmentHelper.includeFragmentContent(R.layout.fragment_campus_selection, (ViewGroup) rootView,inflater);
-        recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_campusSelection, getActivity(),
-                new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this));
+        recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_campusSelection, getActivity(), adapter);
+
+        ApiRequester.getInstance(getActivity()).getCampuses(getActivity(), adapter, recyclerView);
+
         return rootView;
     }
 
