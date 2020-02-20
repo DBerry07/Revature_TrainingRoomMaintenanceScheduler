@@ -6,46 +6,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constriantLayout_user_contentContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constriantLayout_user_contentContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            style="@style/frameLayoutContainer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" >
+            android:layout_height="match_parent">
 
-            <fragment
-                android:id="@+id/fragment_mainContentContainer"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                app:navGraph="@navigation/nav_graph_trainer"/>
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleTextColor="@android:color/white" />
+
+            <LinearLayout
+                style="@style/frameLayoutContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <fragment
+                    android:id="@+id/fragment_mainContentContainer"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:defaultNavHost="true" />
+            </LinearLayout>
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/revOrange"
+                app:itemIconTint="@color/black"
+                app:itemTextColor="@color/black"
+                android:paddingTop="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="50dp"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:id="@+id/img_hover_btn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="15dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/background_circle_bottom_hover"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_menu_confirm" />
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView_main"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/revOrange"
+        app:headerLayout="@layout/header_nav_drawer"
+        app:itemBackground="@color/transparent"
+        app:itemIconTint="@color/drawer_item"
+        app:itemTextColor="@color/drawer_item"
         app:menu="@menu/menu_trainer" />
 </androidx.drawerlayout.widget.DrawerLayout>

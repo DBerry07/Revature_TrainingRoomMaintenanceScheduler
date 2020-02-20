@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sm_schedule"
+    app:startDestination="@id/SM_Schedule_CampusSelectionFragment">
+
+    <fragment
+        android:id="@+id/SM_Schedule_CampusSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_CampusSelectionFragment"
+        android:label="fragment_campus_selection"
+        tools:layout="@layout/fragment_campus_selection" >
+        <action
+            android:id="@+id/action_SM_Schedule_CampusSelectionFragment_to_SM_Schedule_RoomSelectionFragment"
+            app:destination="@id/SM_Schedule_RoomSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SM_Schedule_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_RoomSelectionFragment"
+        android:label="fragment_room_selection"
+        tools:layout="@layout/fragment_room_selection" >
+        <action
+            android:id="@+id/action_SM_Schedule_RoomSelectionFragment_to_SM_Schedule_CriteriaSelectionFragment"
+            app:destination="@id/SM_Schedule_CriteriaSelectionFragment" />
+        <argument android:name="@string/argument_sm_schedule_selected_campus" />
+    </fragment>
+    <fragment
+        android:id="@+id/SM_Schedule_CriteriaSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_CriteriaSelectionFragment"
+        android:label="fragment_criteria_selection"
+        tools:layout="@layout/fragment_criteria_selection" >
+        <action
+            android:id="@+id/action_SM_Schedule_CriteriaSelectionFragment_to_SM_Schedule_TrainerSelectionFragment"
+            app:destination="@id/SM_Schedule_TrainerSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SM_Schedule_TrainerSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_TrainerSelectionFragment"
+        android:label="fragment_trainer_selection"
+        tools:layout="@layout/fragment_trainer_selection" >
+        <action
+            android:id="@+id/action_SM_Schedule_TrainerSelectionFragment_to_SM_Schedule_DelegateDateFragment"
+            app:destination="@id/SM_Schedule_DelegateDateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SM_Schedule_DelegateDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_DelegateDateFragment"
+        android:label="fragment_delegate_date"
+        tools:layout="@layout/fragment_delegate_date" />
+</navigation>

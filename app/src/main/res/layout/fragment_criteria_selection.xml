@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
     <TextView
         android:id="@+id/tv_title_cleaningCriteria_selection"
         style="@style/fragmentTitle"
@@ -15,32 +16,23 @@
         android:text="@string/title_cleaningCriteria_selection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ScrollView
-        android:id="@+id/sv_cleaningCriteria"
-        style="@style/scrollViewGlobal"
+        -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cleaningCriteria"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cleaningCriteriaSelection"
+        app:layout_constraintBottom_toTopOf="@+id/btn_criteriaSelection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_cleaningCriteria_selection">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_cleaningCriteria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
-        android:id="@+id/btn_cleaningCriteriaSelection"
-        style="@style/buttonStyle"
+        android:id="@+id/btn_criteriaSelection"
+        android:text="@string/btn_label_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_label_submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_cleaningCriteria" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/buttonStyle"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

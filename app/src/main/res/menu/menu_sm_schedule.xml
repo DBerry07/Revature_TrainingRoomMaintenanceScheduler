@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_sm_schedule_campus"
+        android:icon="@drawable/ic_menu_campus"
+        android:title="@string/title_campus_selection" />
+    <item
+        android:id="@+id/menuItem_sm_schedule_room"
+        android:icon="@drawable/ic_menu_room"
+        android:title="@string/title_room_selection" />
+    <item
+        android:id="@+id/menuItem_sm_schedule_criteria"
+        android:icon="@drawable/ic_menu_cleaningcriteria"
+        android:title="@string/title_cleaningCriteria_selection" />
+    <item
+        android:id="@+id/menuItem_sm_schedule_trainer"
+        android:icon="@drawable/ic_menu_trainer"
+        android:title="@string/title_trainer_selection" />
+    <item
+        android:id="@+id/menuItem_sm_schedule_date"
+        android:icon="@drawable/ic_menu_date"
+        android:title="@string/title_date_selection" />
+    <!-- MAX 5 Items, Change later
+    <item
+        android:id="@+id/menuItem_sm_schedule_review"
+        android:icon="@drawable/ic_menu_confirm"
+        android:title="@string/review_inputs" />
+        -->
+</menu>

@@ -4,15 +4,19 @@
     <group >
         <item
             android:id="@+id/menuItem_trainer_verify"
+            android:icon="@drawable/ic_verify"
             android:title="@string/trainer_option_verify" />
         <item
             android:id="@+id/menuItem_trainer_delegate"
+            android:icon="@drawable/ic_delegate"
             android:title="@string/trainer_option_delegate" />
         <item
             android:id="@+id/menuItem_trainer_reports"
+            android:icon="@drawable/ic_reports"
             android:title="@string/trainer_option_reports" />
         <item
             android:id="@+id/menuItem_trainer_logout"
-            android:title="@string/menu_option_logout"/>
+            android:icon="@drawable/ic_logout"
+            android:title="@string/menu_option_logout" />
     </group>
 </menu>

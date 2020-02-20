@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tr_delegate"
+    app:startDestination="@id/TR_Delegate_TrainerSelectionFragment">
+    <fragment
+        android:id="@+id/TR_Delegate_TrainerSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_TrainerSelectionFragment"
+        android:label="fragment_trainer_selection"
+        tools:layout="@layout/fragment_trainer_selection" >
+        <action
+            android:id="@+id/action_TR_Delegate_TrainerSelectionFragment_to_TR_Delegate_RoomSelectionFragment"
+            app:destination="@id/TR_Delegate_RoomSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TR_Delegate_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_RoomSelectionFragment"
+        android:label="fragment_room_selection"
+        tools:layout="@layout/fragment_room_selection" >
+        <action
+            android:id="@+id/action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment"
+            app:destination="@id/TR_Delegate_DateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TR_Delegate_DateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_DateFragment"
+        android:label="fragment_delegate_date"
+        tools:layout="@layout/fragment_delegate_date">
+    </fragment>
+</navigation>

@@ -6,69 +6,116 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
+import com.revature.roommaintenanceprototype.util.MainActivityHelper;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class SiteManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     NavController navController;
+    BottomNavigationView bottomNavigationView;
 
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
+
+    ImageView imgHoverButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
-        navigationView = (NavigationView) findViewById(R.id.navigationView_main);
+        navigationView = findViewById(R.id.navigationView_main);
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.menu_site_manager);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout_main);
+        drawerLayout = findViewById(R.id.drawerLayout_main);
 
         addOpenCloseToggleActionToToolbar();
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
-        navController.setGraph(R.navigation.nav_graph_site_manager);
+        navController.setGraph(R.navigation.sm_schedule);
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
-
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().clear();
+        bottomNavigationView.inflateMenu(R.menu.menu_sm_schedule);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
+        setUserDetails();
+
+        imgHoverButton = findViewById(R.id.img_hover_btn);
+        imgHoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("RESULTS", SMSchedulePersistance.getResults());
+            }
+        });
     }
 
-    public void addOpenCloseToggleActionToToolbar(){
+    private void addOpenCloseToggleActionToToolbar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
 
+    private void setUserDetails(){
+        Intent intent = getIntent();
+        if( intent != null ){
+            String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
+            MainActivityHelper.setDrawerUserDetails(navigationView,userEmail);
+        }else{
+            Log.d("TESTING NAVDisplay","null intent");
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_siteManager_schedule:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.scheduleNavFragment);
+                navController.setGraph(R.navigation.sm_schedule);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
+                bottomNavigationView.setVisibility(View.VISIBLE);
+                bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.d("RESULTS", SMSchedulePersistance.getResults());
+                    }
+                });
                 break;
             case R.id.menuItem_siteManager_reports:
-                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.reportsSiteManagerNavFragment);
+                navController.setGraph(R.navigation.sm_reports);
+                NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
+                Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Reports_DateFragment);
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.menuItem_siteManager_logout:
-                finish();
+                bottomNavigationView.setVisibility(View.INVISIBLE);
+                ScreenMessage.confirmLogOut(this);
                 break;
         }
         menuItem.setChecked(true);
