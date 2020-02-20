@@ -57,5 +57,6 @@
     <string name="argument_sm_schedule_selected_room">sm_schedule_selected_room</string>
     <string name="argument_sm_schedule_selected_criteria">sm_schedule_selected_criteria</string>
     <string name="argument_sm_schedule_selected_trainer">sm_schedule_selected_trainer</string>
+    <string name="review_inputs">Review Inputs</string>
 
 </resources>

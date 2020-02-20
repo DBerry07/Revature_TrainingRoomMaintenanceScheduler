@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -50,6 +51,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().clear();
+        bottomNavigationView.inflateMenu(R.menu.menu_sm_schedule);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
@@ -81,14 +84,17 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 navController.setGraph(R.navigation.sm_schedule);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
+                bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
                 break;
             case R.id.menuItem_siteManager_reports:
                 navController.setGraph(R.navigation.sm_reports);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Reports_DateFragment);
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.menuItem_siteManager_logout:
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 ScreenMessage.confirmLogOut(this);
                 break;
         }

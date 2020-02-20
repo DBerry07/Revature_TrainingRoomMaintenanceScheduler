@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,7 +16,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
+import com.revature.roommaintenanceprototype.controllers.navigation.TRVerifyNavigationController;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
@@ -23,6 +27,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     NavController navController;
+    BottomNavigationView bottomNavigationView;
 
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
@@ -49,8 +54,17 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
 
-        navigationView.setNavigationItemSelectedListener(this);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.getMenu().clear();
+        bottomNavigationView.inflateMenu(R.menu.menu_tr_verify);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
 
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        setUserDetails();
+    }
+
+    private void setUserDetails(){
         Intent intent = getIntent();
         if( intent != null ){
             String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
@@ -76,6 +90,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 navController.setGraph(R.navigation.tr_verify);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Verify_RoomSelectionFragment2);
+                bottomNavigationView.setVisibility(View.VISIBLE);
+                bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
                 break;
             case R.id.menuItem_trainer_delegate:
                 navController.setGraph(R.navigation.tr_delegate);
@@ -83,11 +99,13 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Delegate_TrainerSelectionFragment);
                 break;
             case R.id.menuItem_trainer_reports:
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 navController.setGraph(R.navigation.tr_reports);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Reports_DateFragment);
                 break;
             case R.id.menuItem_trainer_logout:
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 ScreenMessage.confirmLogOut(this);
                 break;
         }

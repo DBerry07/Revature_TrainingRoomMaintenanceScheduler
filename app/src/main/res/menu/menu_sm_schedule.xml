@@ -21,4 +21,10 @@
         android:id="@+id/menuItem_sm_schedule_date"
         android:icon="@drawable/ic_menu_date"
         android:title="@string/title_date_selection" />
+    <!-- MAX 5 Items, Change later
+    <item
+        android:id="@+id/menuItem_sm_schedule_review"
+        android:icon="@drawable/ic_menu_confirm"
+        android:title="@string/review_inputs" />
+        -->
 </menu>

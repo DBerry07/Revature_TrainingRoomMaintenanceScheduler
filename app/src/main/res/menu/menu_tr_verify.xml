@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_tr_verify_room"
+        android:icon="@drawable/ic_menu_room"
+        android:title="@string/title_room_selection" />
+    <item
+        android:id="@+id/menuItem_tr_verify_criteria"
+        android:icon="@drawable/ic_menu_cleaningcriteria"
+        android:title="@string/title_cleaningCriteria_selection" />
+    <item
+        android:id="@+id/menuItem_tr_verify_signature"
+        android:icon="@drawable/ic_menu_signature"
+        android:title="@string/title_signature" />
+    <item
+        android:id="@+id/menuItem_tr_verify_review"
+        android:icon="@drawable/ic_menu_confirm"
+        android:title="@string/review_inputs" />
+</menu>
