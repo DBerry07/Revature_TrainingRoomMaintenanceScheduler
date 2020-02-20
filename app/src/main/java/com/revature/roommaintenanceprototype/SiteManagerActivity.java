@@ -15,7 +15,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
@@ -23,6 +25,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     NavController navController;
+    BottomNavigationView bottomNavigationView;
 
     ActionBarDrawerToggle toggle;
     Toolbar toolbar;
@@ -46,9 +49,22 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         navController.setGraph(R.navigation.sm_schedule);
         NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
         NavigationUI.setupWithNavController(navigationView,navController);
-
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
+        setUserDetails();
+    }
 
+    private void addOpenCloseToggleActionToToolbar(){
+        setSupportActionBar(toolbar);
+
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    private void setUserDetails(){
         Intent intent = getIntent();
         if( intent != null ){
             String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
@@ -58,15 +74,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         }
     }
 
-    public void addOpenCloseToggleActionToToolbar(){
-        setSupportActionBar(toolbar);
-
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-    }
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
@@ -74,6 +81,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 navController.setGraph(R.navigation.sm_schedule);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
+                bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
                 break;
             case R.id.menuItem_siteManager_reports:
                 navController.setGraph(R.navigation.sm_reports);
