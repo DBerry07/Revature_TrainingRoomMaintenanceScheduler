@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.revature.roommaintenanceprototype.controllers.LoginController;
-import com.revature.roommaintenanceprototype.controller.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
