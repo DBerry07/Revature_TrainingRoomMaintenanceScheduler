@@ -1,12 +1,10 @@
 package com.revature.roommaintenanceprototype.util.fragmenthelpers;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Switch;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
-import java.util.ArrayList;
-
 public class FragmentHelper {
+    private static final String DEBUG_TAG = "FragmentHelper";
 
     public static void updateToolbarTitle(final AppCompatActivity activity, String title) {
         if (activity != null) {
@@ -51,6 +47,21 @@ public class FragmentHelper {
             navController.navigate(actionID, bundle);
         }else{
             navController.navigate(actionID);
+        }
+    }
+
+    public static String getSelectedItem(View view){
+        TextView tvItemTitle = view.findViewById(R.id.tv_string);
+        return tvItemTitle.getText().toString();
+    }
+
+    public static String getSelectedDate(EditText editText){
+        if(editText != null){
+            Log.d(DEBUG_TAG,editText.getText().toString());
+            return editText.getText().toString();
+        }else{
+            Log.d(DEBUG_TAG,"EditText is null");
+            return null;
         }
     }
 }

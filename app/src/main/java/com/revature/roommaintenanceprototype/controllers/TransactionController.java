@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.controller;
+package com.revature.roommaintenanceprototype.controllers;
 
 import java.util.HashMap;
 import java.util.Iterator;

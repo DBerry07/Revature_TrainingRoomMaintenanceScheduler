@@ -2,19 +2,15 @@ package com.revature.roommaintenanceprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.revature.roommaintenanceprototype.database.api.APIrequester;
-import com.revature.roommaintenanceprototype.controller.LoginController;
+import com.revature.roommaintenanceprototype.controllers.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
-import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{

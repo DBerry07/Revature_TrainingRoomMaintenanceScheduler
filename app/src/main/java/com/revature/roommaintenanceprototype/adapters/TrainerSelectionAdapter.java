@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.adapter;
+package com.revature.roommaintenanceprototype.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import com.revature.roommaintenanceprototype.R;
 
 import java.util.List;
 
-public class RoomSelectionAdapter extends RecyclerView.Adapter<RoomSelectionAdapter.MyViewHolder>  {
+public class TrainerSelectionAdapter extends RecyclerView.Adapter<TrainerSelectionAdapter.MyViewHolder>  {
 
-    List<String> rooms;
+    List<String> trainers;
     Activity activity;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -26,37 +26,36 @@ public class RoomSelectionAdapter extends RecyclerView.Adapter<RoomSelectionAdap
 
         public MyViewHolder(View v){
             super(v);
-            button = v.findViewById(R.id.room_selection_option_btn);
+            button = v.findViewById(R.id.trainer_selection_option_btn);
         }
     }
 
-    public RoomSelectionAdapter(Activity activity, List<String> rooms){
-        this.rooms = rooms;
+    public TrainerSelectionAdapter(Activity activity, List<String> trainers){
+        this.trainers = trainers;
         this.activity = activity;
     }
 
     @NonNull
     @Override
-    public RoomSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_room_selection, parent, false);
+    public TrainerSelectionAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.trainer_selection_option, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         vh.parent = parent;
         return vh;
     }
 
     public void onBindViewHolder(final MyViewHolder holder, final int position){
-        holder.button.setText(rooms.get(position));
+        holder.button.setText(trainers.get(position));
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
     }
 
     public int getItemCount() {
-        return rooms.size();
+        return trainers.size();
     }
 
 }

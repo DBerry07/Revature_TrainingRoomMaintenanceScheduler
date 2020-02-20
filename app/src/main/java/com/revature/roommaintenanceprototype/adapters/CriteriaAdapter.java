@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.adapter;
+package com.revature.roommaintenanceprototype.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 

@@ -1,17 +1,11 @@
 package com.revature.roommaintenanceprototype.util.fragmenthelpers;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.Switch;
 
-import androidx.navigation.NavController;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.OnChangeSwitchState;
-import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class CriteriaSelectionHelper{
@@ -30,5 +24,11 @@ public class CriteriaSelectionHelper{
         }else{
             ScreenMessage.toastShortMsg(context, "Switch is null");
         }
+    }
+
+    public static ArrayList<String> convertSetToList(Set<String> criteriaSet){
+        ArrayList<String> criteriaList = new ArrayList<>();
+        criteriaList.addAll(criteriaSet);
+        return criteriaList;
     }
 }

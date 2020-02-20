@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -7,7 +7,7 @@ import android.widget.DatePicker;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
+import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
 
 import java.util.Calendar;
 

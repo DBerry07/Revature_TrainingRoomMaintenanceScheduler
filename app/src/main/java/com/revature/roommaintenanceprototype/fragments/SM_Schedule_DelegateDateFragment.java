@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
@@ -6,19 +6,25 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
 public class SM_Schedule_DelegateDateFragment extends Fragment implements View.OnClickListener {
+    private static final String DEBUG_TAG = "SM_Schedule_DelegateDateFragment";
+
     private ImageView iconStartDate, iconEndDate;
     private EditText etStartDate, etEndDate;
+    private Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,12 +40,14 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
 
     public void init(View view) {
         FragmentHelper.updateToolbarTitle((AppCompatActivity) getActivity(), "SM_Schedule | " + getString(R.string.title_date_selection));
-        iconStartDate = (ImageView) view.findViewById(R.id.img_startDate_icon);
+        iconStartDate = view.findViewById(R.id.img_startDate_icon);
         iconStartDate.setOnClickListener(this);
-        iconEndDate = (ImageView) view.findViewById(R.id.img_endDate_icon);
+        iconEndDate = view.findViewById(R.id.img_endDate_icon);
         iconEndDate.setOnClickListener(this);
-        etStartDate = (EditText) view.findViewById(R.id.et_startDate);
-        etEndDate = (EditText) view.findViewById(R.id.et_endDate);
+        etStartDate = view.findViewById(R.id.et_startDate);
+        etEndDate = view.findViewById(R.id.et_endDate);
+        button = view.findViewById(R.id.btn_delegateDate);
+        button.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +59,22 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
             case R.id.img_endDate_icon:
                 DelegateDateHelper.openStartDatePicker(etEndDate,getActivity().getSupportFragmentManager());
                 break;
+            case R.id.btn_delegateDate:
+                SMSchedulePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
+                SMSchedulePersistance.setEndDate( FragmentHelper.getSelectedDate(etEndDate) );
+                String results = getResults();
+                Log.d(DEBUG_TAG,results);
+                break;
         }
+    }
+
+    private String getResults(){
+        String results = "\n\nCAMPUS: "+SMSchedulePersistance.getCampus();
+        results+= "\nROOMS: "+SMSchedulePersistance.getRoom();
+        results+= "\nCLEANING CRITERIA: "+SMSchedulePersistance.getCleaningCriteria().toString();
+        results+= "\nTRAINER: "+SMSchedulePersistance.getTrainer();
+        results+= "\nSTART DATE: "+SMSchedulePersistance.getStartDate();
+        results+= "\nEND DATE: "+SMSchedulePersistance.getEndDate();
+        return results;
     }
 }

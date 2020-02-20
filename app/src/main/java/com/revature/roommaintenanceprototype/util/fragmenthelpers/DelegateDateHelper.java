@@ -7,10 +7,9 @@ import android.widget.EditText;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
-import com.revature.roommaintenanceprototype.fragment.DatePickerFragment;
+import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
+import com.revature.roommaintenanceprototype.fragments.DatePickerFragment;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
-import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class DelegateDateHelper {
     private static final String DEBUG_TAG = "DelegateDateHelper";
@@ -28,6 +27,7 @@ public class DelegateDateHelper {
             DialogFragment startDatePicker = new DatePickerFragment(new OnSetDateListener() {
                 @Override
                 public void onSetDate(DatePicker view, int year, int month, int day) {
+                    month++; //Because month is zero indexed
                     editText.setText(InputProcessing.formatDate(year, month, day));
                 }
             });

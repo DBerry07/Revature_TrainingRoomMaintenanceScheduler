@@ -6,7 +6,7 @@
     app:startDestination="@id/TR_Delegate_TrainerSelectionFragment">
     <fragment
         android:id="@+id/TR_Delegate_TrainerSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_TrainerSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_TrainerSelectionFragment"
         android:label="fragment_trainer_selection"
         tools:layout="@layout/fragment_trainer_selection" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/TR_Delegate_RoomSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_RoomSelectionFragment"
         android:label="fragment_room_selection"
         tools:layout="@layout/fragment_room_selection" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/TR_Delegate_DateFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Delegate_DateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Delegate_DateFragment"
         android:label="fragment_delegate_date"
         tools:layout="@layout/fragment_delegate_date">
     </fragment>

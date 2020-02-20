@@ -1,6 +1,4 @@
-package com.revature.roommaintenanceprototype.controller;
-
-import android.util.Log;
+package com.revature.roommaintenanceprototype.controllers;
 
 import com.revature.roommaintenanceprototype.util.DummyText;
 

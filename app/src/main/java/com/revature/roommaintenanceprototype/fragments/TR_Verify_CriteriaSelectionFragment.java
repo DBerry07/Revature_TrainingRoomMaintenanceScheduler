@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
@@ -16,13 +16,12 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
-import com.revature.roommaintenanceprototype.adapter.OnChangeSwitchState;
-import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
+import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
-import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
 import java.util.HashSet;

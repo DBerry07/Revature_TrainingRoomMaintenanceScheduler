@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
@@ -18,8 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.OnSetDateListener;
-import com.revature.roommaintenanceprototype.adapter.ReportsAdapter;
+import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
+import com.revature.roommaintenanceprototype.adapters.ReportsAdapter;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;

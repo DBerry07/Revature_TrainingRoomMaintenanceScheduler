@@ -1,7 +1,6 @@
-package com.revature.roommaintenanceprototype.adapter;
+package com.revature.roommaintenanceprototype.adapters;
 
 import android.view.View;
-import android.widget.Switch;
 
 public interface OnChangeSwitchState{
     public void onSwitchChanged(String title,View view, boolean isChecked);

@@ -1,10 +1,9 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,8 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
-import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -52,6 +52,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
 
     @Override
     public void onItemClick(View view, int position) {
+        SMSchedulePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
         FragmentHelper.navigateBetweenFragments(navController,
                 null,
                 R.id.action_SM_Schedule_RoomSelectionFragment_to_SM_Schedule_CriteriaSelectionFragment );

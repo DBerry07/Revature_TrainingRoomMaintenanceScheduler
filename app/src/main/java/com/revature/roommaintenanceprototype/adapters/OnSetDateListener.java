@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.adapter;
+package com.revature.roommaintenanceprototype.adapters;
 
 import android.widget.DatePicker;
 

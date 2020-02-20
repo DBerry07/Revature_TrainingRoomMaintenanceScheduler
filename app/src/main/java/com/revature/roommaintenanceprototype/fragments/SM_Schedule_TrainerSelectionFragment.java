@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
@@ -14,8 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
-import com.revature.roommaintenanceprototype.adapter.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
@@ -51,6 +52,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
 
     @Override
     public void onItemClick(View view, int position) {
+        SMSchedulePersistance.setTrainer( FragmentHelper.getSelectedItem(view) );
         FragmentHelper.navigateBetweenFragments(navController,
                 null,
                 R.id.action_SM_Schedule_TrainerSelectionFragment_to_SM_Schedule_DelegateDateFragment);

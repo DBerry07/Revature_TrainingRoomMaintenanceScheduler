@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/SM_Schedule_CampusSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_CampusSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_CampusSelectionFragment"
         android:label="fragment_campus_selection"
         tools:layout="@layout/fragment_campus_selection" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/SM_Schedule_RoomSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_RoomSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_RoomSelectionFragment"
         android:label="fragment_room_selection"
         tools:layout="@layout/fragment_room_selection" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/SM_Schedule_CriteriaSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_CriteriaSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_CriteriaSelectionFragment"
         android:label="fragment_criteria_selection"
         tools:layout="@layout/fragment_criteria_selection" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/SM_Schedule_TrainerSelectionFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_TrainerSelectionFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_TrainerSelectionFragment"
         android:label="fragment_trainer_selection"
         tools:layout="@layout/fragment_trainer_selection" >
         <action
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/SM_Schedule_DelegateDateFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.SM_Schedule_DelegateDateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.SM_Schedule_DelegateDateFragment"
         android:label="fragment_delegate_date"
         tools:layout="@layout/fragment_delegate_date" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.fragment;
+package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
@@ -17,9 +17,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.adapter.CriteriaAdapter;
-import com.revature.roommaintenanceprototype.adapter.OnChangeSwitchState;
-import com.revature.roommaintenanceprototype.adapter.OnItemClickListener;
+import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
+import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
+import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -31,10 +32,10 @@ import java.util.Set;
 public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener , OnChangeSwitchState {
     private static String TOOLBAR_TITLE = "SM_Schedule | ";
     
-    RecyclerView rvCleaningCriteria;
-    NavController navController;
-    Button button;
-    Set<String> choosenCriteria = new HashSet<>();
+    private RecyclerView rvCleaningCriteria;
+    private NavController navController;
+    private Button button;
+    private Set<String> chosenCriteria = new HashSet<>();
 
     public SM_Schedule_CriteriaSelectionFragment() {
     }
@@ -65,6 +66,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_criteriaSelection:
+                SMSchedulePersistance.setCleaningCriteria( CriteriaSelectionHelper.convertSetToList(chosenCriteria) );
                 FragmentHelper.navigateBetweenFragments(navController,
                         null,
                         R.id.action_SM_Schedule_CriteriaSelectionFragment_to_SM_Schedule_TrainerSelectionFragment);
@@ -77,11 +79,11 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
         Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
         TextView tvTitle = view.findViewById(R.id.tv_cleaningCriteria_item);
         CriteriaSelectionHelper.updateSwitchState(swt, getContext());
-        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,tvTitle.getText().toString(), swt.isChecked());
+        CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,tvTitle.getText().toString(), swt.isChecked());
     }
 
     @Override
     public void onSwitchChanged(String title,View view, boolean isChecked){
-        CriteriaSelectionHelper.updateChosenCriteriaList(choosenCriteria,title, isChecked);
+        CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,title, isChecked);
     }
 }

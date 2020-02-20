@@ -1,4 +1,4 @@
-package com.revature.roommaintenanceprototype.adapter;
+package com.revature.roommaintenanceprototype.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

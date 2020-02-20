@@ -6,7 +6,7 @@
     app:startDestination="@id/TR_Reports_DateFragment">
     <fragment
         android:id="@+id/TR_Reports_DateFragment"
-        android:name="com.revature.roommaintenanceprototype.fragment.TR_Reports_DateFragment"
+        android:name="com.revature.roommaintenanceprototype.fragments.TR_Reports_DateFragment"
         android:label="fragment_reports"
         tools:layout="@layout/fragment_reports" />
 </navigation>
