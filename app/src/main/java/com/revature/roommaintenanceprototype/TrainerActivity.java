@@ -19,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
+import com.revature.roommaintenanceprototype.controllers.navigation.TRDelegateNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRVerifyNavigationController;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -90,6 +91,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 navController.setGraph(R.navigation.tr_verify);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Verify_RoomSelectionFragment2);
+                bottomNavigationView.getMenu().clear();
+                bottomNavigationView.inflateMenu(R.menu.menu_tr_verify);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
                 break;
@@ -97,6 +100,10 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 navController.setGraph(R.navigation.tr_delegate);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Delegate_TrainerSelectionFragment);
+                bottomNavigationView.getMenu().clear();
+                bottomNavigationView.inflateMenu(R.menu.menu_tr_delegate);
+                bottomNavigationView.setVisibility(View.VISIBLE);
+                bottomNavigationView.setOnNavigationItemSelectedListener(new TRDelegateNavigationController(navController));
                 break;
             case R.id.menuItem_trainer_reports:
                 bottomNavigationView.setVisibility(View.INVISIBLE);
