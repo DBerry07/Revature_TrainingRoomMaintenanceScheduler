@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
@@ -63,6 +65,12 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         setUserDetails();
 
         imgHoverButton = findViewById(R.id.img_hover_btn);
+        imgHoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("RESULTS", SMSchedulePersistance.getResults());
+            }
+        });
     }
 
     private void addOpenCloseToggleActionToToolbar(){
@@ -95,7 +103,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 imgHoverButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Log.d("RESULTS", SMSchedulePersistance.getResults());
                     }
                 });
                 break;

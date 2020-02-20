@@ -11,9 +11,10 @@ public final class TRVerifyPersistance {
 
     public static String getResults(){
         StringBuilder results = new StringBuilder();
-        results.append("ROOM | "+room);
-        results.append("CLEANING CRITERIA | "+cleaningCriteria.toString());
-        results.append("SIGNATURE | ");
+        results.append("\n");
+        results.append("\n\nROOM | "+room);
+        results.append("\nCLEANING CRITERIA | "+cleaningCriteria.toString());
+        results.append("\nSIGNATURE | ");
         return results.toString();
     }
     public static String getRoom() {

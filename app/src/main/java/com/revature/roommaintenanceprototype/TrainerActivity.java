@@ -22,6 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRDelegateNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRVerifyNavigationController;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
@@ -68,6 +69,13 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         navigationView.getMenu().getItem(0).setChecked(true);
         setUserDetails();
         imgHoverButton = findViewById(R.id.img_hover_btn);
+        imgHoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
+                Log.d("RESULTS",TRVerifyPersistance.getResults());
+            }
+        });
     }
 
     private void setUserDetails(){
@@ -103,7 +111,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 imgHoverButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
+                        //ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
+                        Log.d("RESULTS",TRVerifyPersistance.getResults());
                     }
                 });
                 break;
@@ -118,7 +127,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 imgHoverButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Log.d("RESULTS", TRDelegatePersistance.getResults());
                     }
                 });
                 break;

@@ -17,23 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
         -->
-
-
-    <ScrollView
-        android:id="@+id/sv_cleaningCriteria"
-        style="@style/scrollViewGlobal"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cleaningCriteria"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_criteriaSelection"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_cleaningCriteria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
         android:id="@+id/btn_criteriaSelection"
         android:text="@string/btn_label_submit"
