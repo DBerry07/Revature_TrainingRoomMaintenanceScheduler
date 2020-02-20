@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ApiRequester {
 
@@ -38,6 +39,8 @@ public class ApiRequester {
     static List<Task> taskList;
     static String tasksAllURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchAllTasks";
     static String tasksByRoomURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/fetchRoomTaskList";
+    static String siteManagerReports = "https://private-ccda8-maintenanceapi1.apiary-mock.com/getReportsSiteManager";
+    static String trainerReportsURL = "https://private-ccda8-maintenanceapi1.apiary-mock.com/getReportsTrainer";
 
     static ApiRequester apiRequester = null;
     static RequestQueue requestQueue;
@@ -283,7 +286,6 @@ public class ApiRequester {
     public static void getTrainers(final Activity activity,
                             final SimpleStringAdapter adapter,
                             final RecyclerView recyclerView) {
-        RequestQueue requestQueue = Volley.newRequestQueue(activity);
 
         String url = trainerURL;
         JSONObject jsonObject = new JSONObject();
@@ -323,7 +325,7 @@ public class ApiRequester {
     public static void getSiteManagerReports(final Activity activity,
                                              final ReportsAdapter adapter,
                                              final RecyclerView recyclerView){
-        String url = "";
+        String url = siteManagerReports;
         JSONObject jsonObject = new JSONObject();
 
         try {
@@ -340,12 +342,8 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        List<User> list = JsonResponseParser.parseTrainers(response);
-                        ArrayList<String> names = new ArrayList<>();
-                        for (User each : list){
-                            names.add(each.getEmail());
-                        }
-                        adapter.updateList(names);
+                        Map<String, Boolean> list = JsonResponseParser.parseReports(response);
+                        adapter.updateList(list);
                         recyclerView.setAdapter(adapter);
                     }
                 },
@@ -355,6 +353,42 @@ public class ApiRequester {
                         Log.d("DEBUG ERROR", error.toString());
                     }
                 });
+
+        requestQueue.add(jsonObjectRequest);
     }
 
+    public static void getTrainerReports(final Activity activity,
+                                             final ReportsAdapter adapter,
+                                             final RecyclerView recyclerView){
+        String url = trainerReportsURL;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("username", "test@revature.com");
+            jsonObject.put("token", "ABC123");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Map<String, Boolean> list = JsonResponseParser.parseReports(response);
+                        adapter.updateList(list);
+                        recyclerView.setAdapter(adapter);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("DEBUG ERROR", error.toString());
+                    }
+                });
+
+        requestQueue.add(jsonObjectRequest);
+    }
 }

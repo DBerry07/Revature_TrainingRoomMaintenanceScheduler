@@ -12,7 +12,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.SiteManagerActivity;
@@ -53,7 +55,7 @@ public class JsonResponseParser {
 
         Intent intent;
 
-        if( userRole == 1 ){
+        if( userRole == 0 ){
             intent = new Intent(activity.getApplicationContext(), TrainerActivity.class);
             intent.putExtra("userId", userId);
             intent.putExtra("userRole", userRole);
@@ -182,5 +184,32 @@ public class JsonResponseParser {
             }
         }
         return list;
+    }
+
+    public static Map<String, Boolean> parseReports(JSONObject response){
+        Map<String, Boolean> map = new HashMap<>();
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            jsonArray = response.getJSONArray("reports");
+            for (int i = 0; i < jsonArray.length(); i++){
+                boolean completed = true;
+                jsonObject = (JSONObject) jsonArray.get(i);
+                JSONArray completeTasks = jsonObject.getJSONArray("completedTasks");
+                for (int k = 0; k < completeTasks.length(); k++){
+                    JSONObject task = (JSONObject) completeTasks.get(k);
+                    if (task.getString("taskCompleted").equals("false")){
+                        completed = false;
+                    }
+                }
+                map.put(jsonObject.getString("name"), completed);
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return map;
+
     }
 }

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
 import com.revature.roommaintenanceprototype.adapters.ReportsAdapter;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -34,8 +35,12 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_container, container, false);
         FragmentHelper.includeFragmentContent(R.layout.fragment_reports, (ViewGroup) rootView,inflater);
+        ReportsAdapter adapter = new ReportsAdapter(getActivity(), DummyText.getReports());
         recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_reports, getActivity(),
-                new ReportsAdapter(getActivity(), DummyText.getReports()));
+                adapter);
+
+        ApiRequester.getTrainerReports(getActivity(), adapter, recyclerView);
+
         return rootView;
     }
 
