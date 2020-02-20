@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controller.LogOutController;
+import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import com.revature.roommaintenanceprototype.database.api.APIrequester;
@@ -57,7 +58,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         Intent intent = getIntent();
         if( intent != null ){
             String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
-            setNavDrawerUserEmail(userEmail);
+            MainActivityHelper.setDrawerUserDetails(navigationView,userEmail);
         }else{
             Log.d("TESTING NAVDisplay","null intent");
         }
@@ -97,16 +98,5 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-
-    private void setNavDrawerUserEmail(String username){
-
-        TextView textView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.tv_nav_username);
-        if( textView != null ){
-            textView.setText(username);
-        }else{
-            Log.d("TESTING NAVDisplay","null nav textView");
-        }
     }
 }

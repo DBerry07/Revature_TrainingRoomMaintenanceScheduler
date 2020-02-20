@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.revature.roommaintenanceprototype.controller.LogOutController;
+import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class SiteManagerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -34,13 +35,13 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
-        navigationView = (NavigationView) findViewById(R.id.navigationView_main);
+        navigationView = findViewById(R.id.navigationView_main);
         navigationView.getMenu().clear();
         navigationView.inflateMenu(R.menu.menu_site_manager);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout_main);
+        drawerLayout = findViewById(R.id.drawerLayout_main);
 
         addOpenCloseToggleActionToToolbar();
 
@@ -54,7 +55,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         Intent intent = getIntent();
         if( intent != null ){
             String userEmail = intent.getStringExtra( LoginActivity.EXTRA_TAG_USER_EMAIL );
-            setNavDrawerUserEmail(navigationView,userEmail);
+            MainActivityHelper.setDrawerUserDetails(navigationView,userEmail);
         }else{
             Log.d("TESTING NAVDisplay","null intent");
         }
@@ -89,15 +90,5 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private void setNavDrawerUserEmail(NavigationView navigationView, String userEmail){
-
-        TextView textView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.tv_nav_username);
-        if( textView != null ){
-            textView.setText(userEmail);
-        }else{
-            Log.d("TESTING NAVDisplay","null nav textView");
-        }
     }
 }

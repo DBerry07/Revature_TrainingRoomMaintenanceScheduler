@@ -20,17 +20,19 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_TAG_USER_EMAIL = "EXTRA_TAG_USER_EMAIL";
 
-    Button btnLogin;
-    EditText etEmail, etPassword;
+    private Button btnLogin;
+    private EditText etEmail, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        init();
+    }
 
+    private void init(){
+        setContentView(R.layout.activity_login);
         etEmail = (EditText) findViewById(R.id.et_login_email);
         etPassword = (EditText) findViewById(R.id.et_login_password);
-
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
     }
@@ -39,7 +41,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btn_login:
-
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 processLogin(email, password);
