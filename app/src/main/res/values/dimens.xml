@@ -18,9 +18,10 @@
     <dimen name="switch_text_padding">3dp</dimen>
 
     <dimen name="container_signature_top_margin">75dp</dimen>
+    <dimen name="signature_top_padding">7dp</dimen>
+    <dimen name="signature_box_size">125dp</dimen>
 
     <dimen name="textView_signature_padding">7dp</dimen>
-    <dimen name="textView_signature_top_padding">125dp</dimen>
     <dimen name="textView_signature_bottom_border_width">3dp</dimen>
 
     <dimen name="card_roundRadius">0dp</dimen>

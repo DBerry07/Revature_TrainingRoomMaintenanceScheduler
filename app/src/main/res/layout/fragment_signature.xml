@@ -16,8 +16,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height=""
+            android:id="@+id/img_Signature"
+            android:layout_width="match_parent"
+            android:background="@drawable/background_signature_bottom_border"
+            android:layout_height="@dimen/signature_box_size"/>
 
         <TextView
             android:id="@+id/tv_title_trainerSignature"
