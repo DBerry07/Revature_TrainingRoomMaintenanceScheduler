@@ -25,10 +25,10 @@
     <string name="siteManager_option_reports">Reports</string>
 
     <!-- FRAGMENT TITLES -->
-    <string name="title_campus_selection">Select A Campus</string>
-    <string name="title_room_selection">Select A Room</string>
+    <string name="title_campus_selection">Select a Campus</string>
+    <string name="title_room_selection">Select a Room</string>
     <string name="title_cleaningCriteria_selection">Select Cleaning Criteria</string>
-    <string name="title_trainer_selection">Select A Trainer</string>
+    <string name="title_trainer_selection">Select a Trainer</string>
     <string name="title_date_selection">Select Date</string>
     <string name="title_signature">Signature</string>
 
