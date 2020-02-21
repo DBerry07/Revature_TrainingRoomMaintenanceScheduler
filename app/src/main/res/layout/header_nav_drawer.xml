@@ -13,6 +13,7 @@
         android:layout_height="@dimen/nav_icon_size"
         android:background="@drawable/background_circle_revorange"
         android:src="@drawable/ic_user_revorange"
+        android:tint="@color/primeContrast"
         android:padding="@dimen/card_padding"
         android:layout_marginTop="@dimen/global_control_margin"/>
     <TextView

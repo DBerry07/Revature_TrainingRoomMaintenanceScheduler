@@ -92,7 +92,7 @@
         android:background="@color/revOrange"
         app:headerLayout="@layout/header_nav_drawer"
         app:itemBackground="@color/transparent"
-        app:itemIconTint="@color/drawer_item"
-        app:itemTextColor="@color/drawer_item"
+        app:itemIconTint="@drawable/text_tint_nav_view"
+        app:itemTextColor="@drawable/text_tint_nav_view"
         app:menu="@menu/menu_trainer" />
 </androidx.drawerlayout.widget.DrawerLayout>

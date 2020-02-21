@@ -5,3 +5,4 @@
     <solid android:color="@android:color/white"/>
     <stroke android:width="@dimen/global_stroke_width" android:color="@color/black"/>
 </shape>
+
