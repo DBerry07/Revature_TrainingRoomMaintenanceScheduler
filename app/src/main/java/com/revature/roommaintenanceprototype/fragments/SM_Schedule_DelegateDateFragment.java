@@ -41,7 +41,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
     }
 
     public void init(View view) {
-        FragmentHelper.updateToolbarTitle((AppCompatActivity) getActivity(), "SM_Schedule | " + getString(R.string.title_date_selection));
+        FragmentHelper.updateToolbarTitle((AppCompatActivity) getActivity(), getString(R.string.title_date_selection));
         iconStartDate = view.findViewById(R.id.img_startDate_icon);
         iconStartDate.setOnClickListener(this);
         iconEndDate = view.findViewById(R.id.img_endDate_icon);

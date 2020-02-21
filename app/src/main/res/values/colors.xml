@@ -11,7 +11,7 @@
 
     <color name="black">#000</color>
 
-    <color name="globalBackgroundColor">@color/testingBackgroundColor</color>
+    <color name="globalBackgroundColor">    </color>
     <color name="testingBackgroundColor">#afa</color>
 
     <color name="transparent">#00FFFFFF</color>

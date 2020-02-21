@@ -47,7 +47,7 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
     }
 
     private void init(View view){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Reports | "+getString(R.string.title_view_reports) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_view_reports) );
 
         iconStartDate = view.findViewById(R.id.img_startDate_icon);
         iconStartDate.setOnClickListener(this);

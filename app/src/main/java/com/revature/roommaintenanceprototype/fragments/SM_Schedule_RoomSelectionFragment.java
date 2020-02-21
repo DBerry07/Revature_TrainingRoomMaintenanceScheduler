@@ -43,7 +43,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
     public void init(View view){
         SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
         RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_room_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
 
         ApiRequester.getInstance(getActivity()).getRoomByCampusAndLocation(getActivity(), 0, 0, adapter, recyclerView);
 

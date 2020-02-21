@@ -8,13 +8,14 @@
     android:id="@+id/linearLayout">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        style="@style/cardViewGlobal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:layout_margin="5dp"
         >
 
         <LinearLayout
+            android:padding="@dimen/global_control_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -22,11 +23,10 @@
             <TextView
                 android:id="@+id/tv_cleaningCriteria_item"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
-                android:padding="@dimen/switch_text_padding"
-                android:textSize="@dimen/global_card_text_size"
+                style="@style/textViewSimpleStringAdapter"
                 android:text="temp" />
 
             <LinearLayout

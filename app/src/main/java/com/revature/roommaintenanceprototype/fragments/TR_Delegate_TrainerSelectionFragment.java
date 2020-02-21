@@ -49,7 +49,7 @@ public class TR_Delegate_TrainerSelectionFragment extends Fragment implements Vi
 
         ApiRequester.getInstance(getActivity()).getTrainers(getActivity(), adapter, recyclerView);
 
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_trainer_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_trainer_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_trainer),R.drawable.ic_menu_trainer);
     }

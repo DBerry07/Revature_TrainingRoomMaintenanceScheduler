@@ -46,7 +46,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
 
         ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);
 
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Delegate | "+getString(R.string.title_room_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_room),R.drawable.ic_menu_room);
     }

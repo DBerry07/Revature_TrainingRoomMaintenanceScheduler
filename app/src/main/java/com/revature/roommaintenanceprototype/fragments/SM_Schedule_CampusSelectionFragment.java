@@ -56,7 +56,7 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
     }
 
     private void init(View view){
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "SM_Schedule | "+getString(R.string.title_campus_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_campus_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_campus),R.drawable.ic_menu_campus);
     }

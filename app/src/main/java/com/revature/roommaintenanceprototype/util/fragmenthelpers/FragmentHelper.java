@@ -76,7 +76,10 @@ public class FragmentHelper {
         TextView textView = rootView.findViewById(R.id.tv_descriptionHeader);
         textView.setText(description);
 
-        ImageView imageView = rootView.findViewById(R.id.img_iconHeader);
-        imageView.setImageResource(iconID);
+        ImageView imgIcon = rootView.findViewById(R.id.img_iconHeader);
+        imgIcon.setImageResource(iconID);
+
+        ImageView imgBackground = rootView.findViewById(R.id.img_backgroundHeader);
+        imgBackground.setImageResource(iconID);
     }
 }

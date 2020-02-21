@@ -45,7 +45,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
         ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);
 
-        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), "TR_Verify | "+getString(R.string.title_room_selection) );
+        FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_room),R.drawable.ic_menu_room);
     }

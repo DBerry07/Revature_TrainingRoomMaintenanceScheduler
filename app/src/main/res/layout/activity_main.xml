@@ -52,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/revOrange"
-                app:itemIconTint="@color/black"
-                app:itemTextColor="@color/black"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white"
                 android:paddingTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,17 +68,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="50dp"
             android:layout_alignParentBottom="true">
+
             <ImageView
                 android:id="@+id/img_hover_btn"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:padding="15dp"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/background_circle_bottom_hover"
+                android:padding="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_menu_confirm" />
+                app:srcCompat="@drawable/ic_menu_confirm1" />
         </LinearLayout>
     </RelativeLayout>
 
