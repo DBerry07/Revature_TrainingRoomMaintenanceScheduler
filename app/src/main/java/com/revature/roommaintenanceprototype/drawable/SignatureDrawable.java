@@ -40,7 +40,7 @@ public class SignatureDrawable extends View {
         strokeWidth = 3f;
         distance = 5f;
 
-        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);

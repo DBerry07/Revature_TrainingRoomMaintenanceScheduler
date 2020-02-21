@@ -38,7 +38,7 @@
 
                 <Switch
                     android:id="@+id/swt_cleaningCriteria_item"
-                    style="@style/switchGreen"
+                    android:theme="@style/switchTheme"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:layout_conversion_absoluteHeight="27dp"

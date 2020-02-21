@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Revature Training Room Maintenance Scheduler</string>
+    <string name="app_name">Maintenance Scheduler</string>
     <string name="description_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
     <!-- LOGIN STRINGS -->
@@ -55,9 +55,9 @@
             verifying that the room is clean.
         </string>
         <string name="description_sm_sch_date">
-            Sign in the box provided below.
-            By signing you are verifying the
-            information you have provided.
+            Select a start date (left) and an end date (right).
+            Click the submit button to set the dates for
+            which you will delegate.
         </string>
 
         <!-- REPORTS -->
