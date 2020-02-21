@@ -21,15 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include_logo"/>
 
-    <TextView
-        android:id="@+id/tv_login_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/global_control_margin"
-        android:text="@string/login_label_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
-
     <EditText
         android:id="@+id/et_login_email"
         android:layout_width="0dp"
@@ -39,16 +30,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_email" />
-
-    <TextView
-        android:id="@+id/tv_login_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/global_control_margin"
-        android:text="@string/login_label_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_title" />
 
     <EditText
         android:id="@+id/et_login_password"
@@ -59,24 +41,17 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
 
     <TextView
         android:id="@+id/tv_msg_forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/global_control_margin"
         android:text="@string/login_msg_forgotPassword"
-        android:layout_margin="@dimen/global_control_margin"
+        android:textColor="@color/link_color"
+        android:background="@drawable/link_bottom_border"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
-
-    <TextView
-        android:id="@+id/tv_link_forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_link_forgotPassword"
-        android:layout_margin="@dimen/global_control_margin"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     <Button

@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_login2:
                 launchSiteManagerActivity(email);
                 break;
+            case R.id.tv_msg_forgotPassword:
+                break;
         }
     }
 

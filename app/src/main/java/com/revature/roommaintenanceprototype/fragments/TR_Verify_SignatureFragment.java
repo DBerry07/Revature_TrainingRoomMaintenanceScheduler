@@ -6,22 +6,21 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.revature.roommaintenanceprototype.R;
-import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.drawable.SignatureDrawable;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
-import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
-public class TR_Verify_SignatureFragment extends Fragment {
+public class TR_Verify_SignatureFragment extends Fragment implements View.OnClickListener{
     private static final String DEBUG_TAG = "TR_Verify_SignatureFragment";
-    private ImageView imgSignature;
+    private FrameLayout imgSignatureContainer;
     private SignatureDrawable signatureDrawable;
+    private Button btnClearSignature;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +31,6 @@ public class TR_Verify_SignatureFragment extends Fragment {
             @Override
             public void run() {
                 init(rootView);
-                drawSignature(imgSignature);
             }
         });
         return rootView;
@@ -40,6 +38,7 @@ public class TR_Verify_SignatureFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
+        init(view);
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -47,16 +46,20 @@ public class TR_Verify_SignatureFragment extends Fragment {
 
     private void init(View view){
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_signature) );
-        imgSignature = view.findViewById(R.id.img_Signature);
+        imgSignatureContainer = view.findViewById(R.id.signatureContainer);
+        signatureDrawable = new SignatureDrawable(getContext());
+        imgSignatureContainer.addView(signatureDrawable);
+        btnClearSignature = view.findViewById(R.id.btn_clearSignature);
+        btnClearSignature.setOnClickListener(this);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_signature),R.drawable.ic_menu_signature);
     }
 
-    private void drawSignature(ImageView imageView){
-        //Log.d("DIMEN",""+imageView.getRootView());
-        int viewHeight = imageView.getHeight();
-        int viewWidth = imageView.getWidth();
-        Log.d("DIMEN","Before call construct");
-        signatureDrawable = new SignatureDrawable(viewWidth,viewHeight);
-        imageView.setImageBitmap(signatureDrawable.drawPath());
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btn_clearSignature:
+                signatureDrawable.clearCanvas();
+                break;
+        }
     }
 }

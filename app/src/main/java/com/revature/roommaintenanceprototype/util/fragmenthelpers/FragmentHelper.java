@@ -78,8 +78,5 @@ public class FragmentHelper {
 
         ImageView imgIcon = rootView.findViewById(R.id.img_iconHeader);
         imgIcon.setImageResource(iconID);
-
-        ImageView imgBackground = rootView.findViewById(R.id.img_backgroundHeader);
-        imgBackground.setImageResource(iconID);
     }
 }

@@ -29,4 +29,5 @@
     <color name="primeContrast">#19A174</color>
     <color name="primeContrastDark1">#06865C</color>
     <color name="primeContrastDark2">#006A47</color>
+    <color name="link_color">#0A6ACE</color>
 </resources>

@@ -15,11 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <ImageView
-            android:id="@+id/img_Signature"
+        <FrameLayout
+            android:id="@+id/signatureContainer"
             android:layout_width="match_parent"
-            android:background="@drawable/background_signature_bottom_border"
-            android:layout_height="@dimen/signature_box_size"/>
+            android:background="@drawable/black_border"
+            android:layout_height="@dimen/signature_box_size"></FrameLayout>
 
         <TextView
             android:id="@+id/tv_title_trainerSignature"
@@ -31,13 +31,25 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_trainerSelection"
+        android:id="@+id/btn_clearSignature"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_trainerVerify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_signatureContainer" />
+
+    <Button
+        android:id="@+id/btn_trainerVerify"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/trainer_option_verify"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_clearSignature"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_signatureContainer" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_signatureContainer"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

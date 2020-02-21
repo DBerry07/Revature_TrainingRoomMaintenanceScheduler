@@ -1,92 +1,99 @@
 package com.revature.roommaintenanceprototype.drawable;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-public class SignatureDrawable {
-    private Canvas canvas;
-    private Paint paint;
-    private Bitmap bitmap;
-    private int signatureHeight, signatureWidth;
-    private ImageView imageView;
-    private ArrayList<Point> pathPoints = new ArrayList<>();
-    private Path pathGraphic;
+public class SignatureDrawable extends View {
+    private Paint mPaint;
+    private Path mPath;
+    private float mCurX, mCurY;
+    private float mStartX, mStartY;
+    private float strokeWidth;
 
-    private SignatureDrawable(){}
+    private float distance;
 
-    public SignatureDrawable(int signatureWidth, int signatureHeight){
-        this.signatureWidth = signatureWidth;
-        this.signatureHeight = signatureHeight;
-        Log.d("DIMEN",signatureWidth+" | "+signatureHeight);
-        initPaint();
-        initBitmap();
-        initCanvas();
-        pathGraphic = new Path();
-        fillPathWithDummyPoints();
+    public SignatureDrawable(Context context) {
+        super(context);
+        init();
     }
 
-    private void fillPathWithDummyPoints(){
-        for(int i=0; i<signatureWidth;i++){
-            pathPoints.add(new Point(0,i));
+    private void init(){
+        mPaint = new Paint();
+        mPath = new Path();
+        mCurX = 0;
+        mCurY = 0;
+        mStartX = 0;
+        mStartY = 0;
+        strokeWidth = 3f;
+        distance = 5f;
+
+        mPaint.setColor(Color.BLACK);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);
+        mPaint.setStrokeWidth(strokeWidth);
+        mPaint.setAntiAlias(true);
+        mPaint.setPathEffect(new CornerPathEffect(6));
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                actionDown(x,y);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                actionMove(x,y);
+                break;
+            case MotionEvent.ACTION_UP:
+                actionUp();
+                break;
         }
+        invalidate();
+        return true;
     }
 
-    private void initPaint(){
-        paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(3);
-        paint.setStyle(Paint.Style.STROKE);
+    //pencil down on paper
+    private void actionDown(float x, float y){
+        mPath.moveTo(x,y);
     }
 
-    private void initCanvas(){
-        if(bitmap != null){
-            canvas = new Canvas(bitmap);
-            canvas.drawColor(Color.YELLOW);//set background color of canvas
-        }
+    //hand still puts pressure on the pencil while moving across paper
+    private void actionMove(float x, float y){
+        mPath.lineTo(x,y);
+        mCurX = x;
+        mCurY = y;
     }
 
-    private void initBitmap(){
-        bitmap = Bitmap.createBitmap(
-             signatureWidth,
-             signatureHeight,
-             Bitmap.Config.ARGB_8888
-        );
+    //hand lifts off the paper
+    private void actionUp(){
+        mPath.lineTo(mCurX, mCurY);
     }
 
-    public Bitmap drawPath(){
-        //canvas.drawPath(pathGraphic, paint);
-        Paint paint = new Paint();
-        Path path = new Path();
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.TRANSPARENT);
-        canvas.drawPaint(paint);
-        for (int i = 50; i < 100; i++) {
-            path.moveTo(i, i-1);
-            path.lineTo(i, i);
-        }
-        path.close();
-        paint.setStrokeWidth(3);
-        paint.setPathEffect(null);
-        paint.setColor(Color.BLACK);
-        paint.setStyle(Paint.Style.STROKE);
-        canvas.drawPath(path, paint);
-        return bitmap;
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        canvas.drawPath(mPath,mPaint);
     }
 
-    class Point{
-        float x,y;
-
-        private Point(){}
-        Point(float x, float y){
-            this.x = x;
-            this.y = y;
-        }
+    public void clearCanvas(){
+        mPath.reset();
+        invalidate();
     }
 }
