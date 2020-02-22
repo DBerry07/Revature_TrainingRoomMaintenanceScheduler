@@ -50,7 +50,7 @@ public abstract class MDatabase extends RoomDatabase {
 
     private static volatile MDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static MDatabase getDatabase(final Context context) {
@@ -63,8 +63,19 @@ public abstract class MDatabase extends RoomDatabase {
                 }
             }
         }
+        
         return INSTANCE;
     }
+
+    public static void insert(final User user){
+        databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                INSTANCE.userDao().insert(user);
+            }
+        });
+    }
+
 
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override

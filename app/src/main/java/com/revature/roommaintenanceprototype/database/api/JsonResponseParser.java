@@ -30,6 +30,29 @@ import com.revature.roommaintenanceprototype.util.DummyText;
 
 public class JsonResponseParser {
 
+    public static List<User> parseUsers(JSONObject response){
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        List<User> list = new ArrayList<>();
+
+        try {
+            array = response.getJSONArray("users");
+            for (int i = 0; i < array.length(); i++){
+                int userId = ((JSONObject)array.get(i)).getInt("userId");
+                int userRole = ((JSONObject) array.get(i)).getInt("userRole");
+                String email = ((JSONObject) array.get(i)).getString("email");
+                String username = ((JSONObject) array.get(i)).getString("username");
+                String password = ((JSONObject) array.get(i)).getString("password");
+                User newItem = new User(userId, userRole, email, username, password);
+                list.add(newItem);
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
     public static void parseValidateUser(JSONObject response, Activity activity){
         Log.d("DEBUG", "Inside parser");
         String validate = "";
@@ -136,9 +159,9 @@ public class JsonResponseParser {
         return list;
     }
 
-    public static List<Task> parseTasks(JSONObject response) {
+    /*public static List<Task> parseTasks(JSONObject response) {
         List<Task> list = new ArrayList<>();
-        JSONArray jsonArray = null;
+        JSONArray jsonArray = new JSONArray();
 
         Log.d("Debug JSON", response.toString());
         try {
@@ -159,7 +182,7 @@ public class JsonResponseParser {
             }
         }
         return list;
-    }
+    }*/
 
     public static List<User> parseTrainers(JSONObject response){
         List<User> list = new ArrayList<>();
@@ -176,7 +199,12 @@ public class JsonResponseParser {
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject entry = jsonArray.getJSONObject(i);
-                User c = new User(entry.getInt("id"), entry.getInt("userRole"), entry.getString("email"));
+                User c = new User(
+                        entry.getInt("id"),
+                        entry.getInt("userRole"),
+                        entry.getString("email"),
+                        entry.getString("username"),
+                        entry.getString("password"));
                 list.add(c);
                 Log.d("JSON", "Added task to list");
             } catch (JSONException e) {

@@ -44,7 +44,7 @@ public class TaskAPI {
         final Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                taskList = JsonResponseParser.parseTasks(response);
+                //taskList = JsonResponseParser.parseTasks(response);
             }
         };
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -77,7 +77,7 @@ public class TaskAPI {
         final Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                taskList = JsonResponseParser.parseTasks(response);
+                //taskList = JsonResponseParser.parseTasks(response);
                 //TaskUpdater.changeSMCriteriaList(taskList, rootView);
             }
         };
@@ -116,7 +116,7 @@ public class TaskAPI {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        List<RoomTaskList> rList = JsonResponseParser.parseTaskList(response);
+                        //List<RoomTaskList> rList = JsonResponseParser.parseTaskList(response);
                         //TaskUpdater.updateTRCriteriaList(rList, taskList, rootView);
                     }
                 },

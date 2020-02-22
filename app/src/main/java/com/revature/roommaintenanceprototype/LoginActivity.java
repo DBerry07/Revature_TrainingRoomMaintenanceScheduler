@@ -2,6 +2,7 @@ package com.revature.roommaintenanceprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,17 +10,22 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.revature.roommaintenanceprototype.database.MDatabase;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.database.api.UserAPI;
 import com.revature.roommaintenanceprototype.controllers.LoginController;
+import com.revature.roommaintenanceprototype.database.table.User;
 import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.controllers.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_TAG_USER_EMAIL = "EXTRA_TAG_USER_EMAIL";
-
+    public MDatabase db;
     private Button btnLogin;
     private EditText etEmail, etPassword;
 
@@ -68,12 +74,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be shorter than "+
                     InputProcessing.getPasswordMaxLength()+" characters.");
             }else if( passwordStatus == InputProcessing.InputReturn.OK){
-                UserAPI.requestLogin(this, email, password);
-
-                /*if( LoginController.testLoginCredentials(email, password) ){
-                    if(email.equals(DummyText.getTestSiteManagerEmail())){
+                ApiRequester.getInstance(this).getUsers(this, email, password);
+                /*if( LoginController.testLoginCredentials(email, password, users) ){
+                    if(email.contains("manager")){
                         launchSiteManagerActivity(email);
-                    }else if(email.equals(DummyText.getTestTrainerEmail())){
+                    }else if(email.contains("trainer")){
                         launchTrainerActivity(email);
                     }
                 }else{

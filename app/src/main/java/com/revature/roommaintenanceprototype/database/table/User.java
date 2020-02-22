@@ -16,11 +16,19 @@ public class User {
     @ColumnInfo(name = "email")
     String email;
 
+    @ColumnInfo(name = "password")
+    String password;
+
+    @ColumnInfo(name = "username")
+    String username;
+
     //Constructor
-    public User(int id, int userRole, String email){
+    public User(int id, int userRole, String email, String username, String password){
         this.id = id;
         this.userRole = userRole;
         this.email = email;
+        this.password = password;
+        this.username = username;
     }
 
     //Getters
@@ -34,9 +42,15 @@ public class User {
         return email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public int getUserRole() {
         return userRole;
     }
+
+    public String getUsername() { return username; }
 
     //Setters
 
@@ -48,7 +62,11 @@ public class User {
         this.email = email;
     }
 
+    public void setPassword(String password) { this.password = password; }
+
     public void setUserRole(int userRole) {
         this.userRole = userRole;
     }
+
+    public void setUsername(String username) { this.username = username; }
 }

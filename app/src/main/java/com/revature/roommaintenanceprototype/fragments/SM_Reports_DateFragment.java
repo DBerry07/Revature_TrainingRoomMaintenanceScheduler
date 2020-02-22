@@ -30,16 +30,17 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
     ImageView iconStartDate, iconEndDate;
     EditText etStartDate, etEndDate;
     RecyclerView recyclerView;
+    ReportsAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_container, container, false);
         FragmentHelper.includeFragmentContent(R.layout.fragment_reports, (ViewGroup) rootView,inflater);
-        ReportsAdapter adapter = new ReportsAdapter(getActivity(), DummyText.getReports());
+        adapter = new ReportsAdapter(getActivity(), DummyText.getReports());
         recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_reports, getActivity(),
                 adapter);
 
-        ApiRequester.getSiteManagerReports(getActivity(), adapter, recyclerView);
+        ApiRequester.getInstance(getActivity()).getSiteManagerReports(getActivity(), adapter, recyclerView);
 
         return rootView;
     }
@@ -60,6 +61,10 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
 
         etStartDate = (view.findViewById(R.id.et_startDate));
         etEndDate = view.findViewById(R.id.et_endDate);
+
+        ApiRequester.getInstance(getActivity()).getSiteManagerReportsByDate(getActivity(),
+                adapter, recyclerView, etStartDate.getText().toString(), etEndDate.getText().toString());
+
     }
 
     @Override

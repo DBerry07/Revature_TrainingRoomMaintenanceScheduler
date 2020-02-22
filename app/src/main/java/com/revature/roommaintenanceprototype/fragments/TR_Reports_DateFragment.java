@@ -39,7 +39,7 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
         recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_reports, getActivity(),
                 adapter);
 
-        ApiRequester.getTrainerReports(getActivity(), adapter, recyclerView);
+        ApiRequester.getTrainerReports(getActivity(), adapter, recyclerView, 0);
 
         return rootView;
     }
