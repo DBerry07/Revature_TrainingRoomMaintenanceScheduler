@@ -69,4 +69,7 @@
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:textSize">@dimen/global_card_text_size</item>
     </style>
+
+
+
 </resources>

@@ -60,7 +60,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
                 DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openStartDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
                 break;
             case R.id.btn_delegateDate:
                 SMSchedulePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );

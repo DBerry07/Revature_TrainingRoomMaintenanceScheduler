@@ -65,7 +65,7 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
                 DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openStartDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
                 break;
         }
     }

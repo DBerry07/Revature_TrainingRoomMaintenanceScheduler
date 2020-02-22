@@ -4,5 +4,6 @@ import android.widget.DatePicker;
 
 public interface OnSetDateListener {
 
-    public void onSetDate(DatePicker view, int year, int month, int day);
+    public void onSetDate(DatePicker view, int startYear, int startMonth, int startDay,
+                          int endYear, int endMonth, int endDay);
 }

@@ -59,7 +59,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
                 DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openStartDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
                 break;
             case R.id.btn_delegateDate:
                 TRDelegatePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
