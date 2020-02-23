@@ -21,18 +21,8 @@
         android:id="@+id/rv_cleaningCriteria"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_criteriaSelection"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    <Button
-        android:id="@+id/btn_criteriaSelection"
-        android:text="@string/btn_label_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/buttonStyle"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

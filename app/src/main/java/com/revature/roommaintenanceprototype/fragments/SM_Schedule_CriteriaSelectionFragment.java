@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
@@ -33,7 +34,6 @@ import java.util.Set;
 public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener , OnChangeSwitchState {
     private RecyclerView rvCleaningCriteria;
     private NavController navController;
-    private Button button;
     private Set<String> chosenCriteria = new HashSet<>();
 
     public SM_Schedule_CriteriaSelectionFragment() {
@@ -60,8 +60,9 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
 
         ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
 
-        button = (Button)view.findViewById(R.id.btn_criteriaSelection);
-        button.setOnClickListener(this);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
+
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_criteria),R.drawable.ic_menu_cleaningcriteria);
@@ -70,7 +71,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_criteriaSelection:
+            case R.id.floatingActionButton:
                 SMSchedulePersistance.setCleaningCriteria( CriteriaSelectionHelper.convertSetToList(chosenCriteria) );
                 FragmentHelper.navigateBetweenFragments(navController,
                         null,

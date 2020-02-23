@@ -70,6 +70,9 @@
         <item name="android:textSize">@dimen/global_card_text_size</item>
     </style>
 
+    <style name="floatingActionButton">
+        <item name="android:colorAccent">@color/prime</item>
+    </style>
 
 
 </resources>

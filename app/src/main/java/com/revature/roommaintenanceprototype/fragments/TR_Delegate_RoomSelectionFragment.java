@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
@@ -49,19 +50,24 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_room),R.drawable.ic_menu_room);
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.floatingActionButton:
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment );
+                break;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
         TRDelegatePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
-        FragmentHelper.navigateBetweenFragments(navController,
-                null,
-                R.id.action_TR_Delegate_RoomSelectionFragment_to_TR_Delegate_DateFragment );
     }
 }

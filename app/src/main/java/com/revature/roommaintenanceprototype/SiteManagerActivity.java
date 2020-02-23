@@ -64,6 +64,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
         setUserDetails();
 
+        /*
         imgHoverButton = findViewById(R.id.img_hover_btn);
         imgHoverButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 Log.d("RESULTS", SMSchedulePersistance.getResults());
             }
         });
+         */
     }
 
     private void setUserDetails(){
@@ -92,12 +94,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
-                imgHoverButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("RESULTS", SMSchedulePersistance.getResults());
-                    }
-                });
                 break;
             case R.id.menuItem_siteManager_reports:
                 navController.setGraph(R.navigation.sm_reports);

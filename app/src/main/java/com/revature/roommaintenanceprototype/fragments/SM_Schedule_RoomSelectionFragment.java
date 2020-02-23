@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
@@ -49,20 +50,25 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
 
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_room),R.drawable.ic_menu_room);
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.floatingActionButton:
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_SM_Schedule_RoomSelectionFragment_to_SM_Schedule_CriteriaSelectionFragment );
+                break;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
-        FragmentHelper.navigateBetweenFragments(navController,
-                null,
-                R.id.action_SM_Schedule_RoomSelectionFragment_to_SM_Schedule_CriteriaSelectionFragment );
     }
 
 }

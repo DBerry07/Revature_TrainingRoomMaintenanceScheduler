@@ -69,14 +69,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         setUserDetails();
-        imgHoverButton = findViewById(R.id.img_hover_btn);
-        imgHoverButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
-                Log.d("RESULTS",TRVerifyPersistance.getResults());
-            }
-        });
     }
 
     private void setUserDetails(){
@@ -101,13 +93,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_verify);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
-                imgHoverButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //ScreenMessage.displayResults(TRVerifyPersistance.getResults(), TrainerActivity.this);
-                        Log.d("RESULTS",TRVerifyPersistance.getResults());
-                    }
-                });
                 break;
             case R.id.menuItem_trainer_delegate:
                 navController.setGraph(R.navigation.tr_delegate);
@@ -117,12 +102,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_delegate);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRDelegateNavigationController(navController));
-                imgHoverButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("RESULTS", TRDelegatePersistance.getResults());
-                    }
-                });
                 break;
             case R.id.menuItem_trainer_reports:
                 bottomNavigationView.setVisibility(View.INVISIBLE);

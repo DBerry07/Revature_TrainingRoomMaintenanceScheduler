@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
@@ -49,20 +50,25 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_trainer_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_trainer),R.drawable.ic_menu_trainer);
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.floatingActionButton:
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_SM_Schedule_TrainerSelectionFragment_to_SM_Schedule_DelegateDateFragment);
+                break;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setTrainer( FragmentHelper.getSelectedItem(view) );
-        FragmentHelper.navigateBetweenFragments(navController,
-                null,
-                R.id.action_SM_Schedule_TrainerSelectionFragment_to_SM_Schedule_DelegateDateFragment);
     }
 
 }

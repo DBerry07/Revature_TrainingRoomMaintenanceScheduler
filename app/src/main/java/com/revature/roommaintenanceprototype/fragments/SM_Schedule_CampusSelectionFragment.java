@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
@@ -59,19 +60,24 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_campus_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_campus),R.drawable.ic_menu_campus);
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.floatingActionButton:
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_SM_Schedule_CampusSelectionFragment_to_SM_Schedule_RoomSelectionFragment);
+                break;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setCampus( FragmentHelper.getSelectedItem(view) );
-        FragmentHelper.navigateBetweenFragments(navController,
-                null,
-                R.id.action_SM_Schedule_CampusSelectionFragment_to_SM_Schedule_RoomSelectionFragment);
     }
 }

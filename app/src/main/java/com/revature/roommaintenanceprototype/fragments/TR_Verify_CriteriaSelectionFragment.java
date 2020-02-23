@@ -15,6 +15,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
@@ -33,7 +34,6 @@ import java.util.Set;
 public class TR_Verify_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener, OnChangeSwitchState {
     RecyclerView rvCleaningCriteria;
     NavController navController;
-    Button button;
     Set<String> chosenCriteria = new HashSet<>();
     Bundle bundle;
 
@@ -57,8 +57,9 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
 
         ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
 
-        button = (Button)view.findViewById(R.id.btn_criteriaSelection);
-        button.setOnClickListener(this);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
+
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_criteria),R.drawable.ic_menu_cleaningcriteria);
@@ -67,7 +68,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_criteriaSelection:
+            case R.id.floatingActionButton:
                 TRVerifyPersistance.setCleaningCriteria( CriteriaSelectionHelper.convertSetToList(chosenCriteria) );
                 FragmentHelper.navigateBetweenFragments(navController,
                         null,

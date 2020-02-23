@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     private NavController navController;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,20 +50,26 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
         navController = Navigation.findNavController(view);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_verify_room),R.drawable.ic_menu_room);
+
+        floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.floatingActionButton:
+                FragmentHelper.navigateBetweenFragments(navController,
+                        null,
+                        R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2 );
+                break;
         }
     }
 
     @Override
     public void onItemClick(View view, int position) {
         TRVerifyPersistance.setRoom( FragmentHelper.getSelectedItem(view) );
-        FragmentHelper.navigateBetweenFragments(navController,
-                null,
-                R.id.action_TR_Verify_RoomSelectionFragment2_to_TR_Verify_CriteriaSelectionFragment2 );
+
     }
 
 }
