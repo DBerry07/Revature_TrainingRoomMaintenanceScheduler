@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -20,6 +19,7 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
@@ -36,6 +36,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     NavController navController;
     Set<String> chosenCriteria = new HashSet<>();
     Bundle bundle;
+    FloatingActionButton floatingActionButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,8 +58,9 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
 
         ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
 
-        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(this);
+        CustomViewAnimator.animateFloatingActionButtonIn(floatingActionButton);
 
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);

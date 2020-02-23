@@ -5,13 +5,12 @@
     android:id="@+id/ll_fragmentContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="#4819A174">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ll_fragmentHeaderHolder"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/fragmentPlaceholder"
         app:layout_constraintStart_toStartOf="@+id/fragmentPlaceholder"
@@ -20,7 +19,7 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,14 +29,14 @@
             <ImageView
                 android:id="@+id/img_backgroundHeader"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/white_blur" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_fragmentHeader"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +83,24 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="225dp"
+            android:layout_marginRight="25dp"
+            android:clickable="true"
+            android:theme="@style/floatingActionButton"
+            app:srcCompat="@drawable/ic_chevron_right" />
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/fragmentPlaceholder"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -93,14 +110,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_fragmentHeaderHolder"></LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:theme="@style/floatingActionButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentPlaceholder"
-        app:srcCompat="@drawable/ic_chevron_right" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

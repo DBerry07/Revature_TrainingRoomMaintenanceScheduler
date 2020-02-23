@@ -21,6 +21,7 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.CriteriaAdapter;
 import com.revature.roommaintenanceprototype.adapters.OnChangeSwitchState;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.CriteriaSelectionHelper;
@@ -62,6 +63,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(this);
+        CustomViewAnimator.animateFloatingActionButtonIn(floatingActionButton);
 
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_cleaningCriteria_selection) );
         navController = Navigation.findNavController(view);

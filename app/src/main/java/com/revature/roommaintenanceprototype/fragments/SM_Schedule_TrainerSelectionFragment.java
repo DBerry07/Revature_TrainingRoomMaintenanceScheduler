@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
@@ -53,6 +54,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
 
         FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(this);
+        CustomViewAnimator.animateFloatingActionButtonIn(floatingActionButton);
     }
 
     @Override

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.drawable.SignatureDrawable;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
