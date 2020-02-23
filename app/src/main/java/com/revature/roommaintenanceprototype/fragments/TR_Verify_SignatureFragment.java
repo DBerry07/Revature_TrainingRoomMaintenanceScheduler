@@ -6,19 +6,28 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.drawable.SignatureDrawable;
+import com.revature.roommaintenanceprototype.adapters.OnItemClickListener;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
+import com.revature.roommaintenanceprototype.database.table.CompletedTaskList;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
-public class TR_Verify_SignatureFragment extends Fragment implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
+
+public class TR_Verify_SignatureFragment extends Fragment implements View.OnClickListener {
     private static final String DEBUG_TAG = "TR_Verify_SignatureFragment";
     private FrameLayout imgSignatureContainer;
     private SignatureDrawable signatureDrawable;
@@ -35,6 +44,7 @@ public class TR_Verify_SignatureFragment extends Fragment implements View.OnClic
                 init(rootView);
             }
         });
+        ((Button) rootView.findViewById(R.id.btn_signatureVerify)).setOnClickListener(this);
         return rootView;
     }
 
@@ -62,6 +72,9 @@ public class TR_Verify_SignatureFragment extends Fragment implements View.OnClic
             case R.id.btn_clearSignature:
                 signatureDrawable.clearCanvas();
                 break;
+            case R.id.btn_signatureVerify:
+            ApiRequester.sendTrainerVerify(getActivity(), "100010101", new ArrayList<CompletedTaskList>());
+            break;
         }
     }
 }

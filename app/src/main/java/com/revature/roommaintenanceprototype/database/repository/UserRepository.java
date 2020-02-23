@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserRepository {
 
-    private UserDao dao;
+    private static UserDao dao;
     private static LiveData<List<User>> list;
 
     public UserRepository(Application application){
@@ -23,6 +23,19 @@ public class UserRepository {
 
     public static LiveData<List<User>> getAll(){
         return list;
+    }
+
+    public static void insert(final User user) {
+        MDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dao.insert(user);
+            }
+        });
+    }
+
+    public static LiveData<List<String>> getSiteManagerEmail() {
+        return dao.selectSiteManagerEmail();
     }
 
 }

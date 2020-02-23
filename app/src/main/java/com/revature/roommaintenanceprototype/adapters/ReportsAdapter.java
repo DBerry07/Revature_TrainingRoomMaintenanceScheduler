@@ -68,4 +68,8 @@ public class ReportsAdapter extends RecyclerView.Adapter<ReportsAdapter.MyViewHo
         return roomStatus.size();
     }
 
+    public void updateList(Map<String, Boolean> list){
+        this.roomStatus = list;
+    }
+
 }

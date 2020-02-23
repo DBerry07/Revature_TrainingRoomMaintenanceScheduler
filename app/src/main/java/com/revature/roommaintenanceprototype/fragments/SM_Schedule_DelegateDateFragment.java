@@ -16,8 +16,12 @@ import android.widget.ImageView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
+import com.revature.roommaintenanceprototype.database.table.RoomTaskList;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
+
+import java.util.ArrayList;
 
 public class SM_Schedule_DelegateDateFragment extends Fragment implements View.OnClickListener {
     private static final String DEBUG_TAG = "SM_Schedule_DelegateDateFragment";
@@ -67,6 +71,10 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
             case R.id.btn_delegateDate:
                 SMSchedulePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
                 SMSchedulePersistance.setEndDate( FragmentHelper.getSelectedDate(etEndDate) );
+
+                ApiRequester.sendSiteManagerSchedule(getActivity(), 0, 0, 0,
+                        "1-1-2999", "1-1-3000", new ArrayList<RoomTaskList>());
+
                 break;
         }
     }

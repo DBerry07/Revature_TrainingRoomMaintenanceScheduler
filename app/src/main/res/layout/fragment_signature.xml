@@ -37,12 +37,12 @@
         android:layout_height="wrap_content"
         android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_trainerVerify"
+        app:layout_constraintEnd_toStartOf="@+id/btn_signatureVerify"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_signatureContainer" />
 
     <Button
-        android:id="@+id/btn_trainerVerify"
+        android:id="@+id/btn_signatureVerify"
         style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

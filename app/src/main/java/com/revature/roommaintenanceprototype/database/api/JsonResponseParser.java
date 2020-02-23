@@ -12,7 +12,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.SiteManagerActivity;
@@ -27,6 +29,29 @@ import com.revature.roommaintenanceprototype.database.table.User;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
 public class JsonResponseParser {
+
+    public static List<User> parseUsers(JSONObject response){
+        JSONObject obj = new JSONObject();
+        JSONArray array = new JSONArray();
+        List<User> list = new ArrayList<>();
+
+        try {
+            array = response.getJSONArray("users");
+            for (int i = 0; i < array.length(); i++){
+                int userId = ((JSONObject)array.get(i)).getInt("userId");
+                int userRole = ((JSONObject) array.get(i)).getInt("userRole");
+                String email = ((JSONObject) array.get(i)).getString("email");
+                String username = ((JSONObject) array.get(i)).getString("username");
+                String password = ((JSONObject) array.get(i)).getString("password");
+                User newItem = new User(userId, userRole, email, username, password);
+                list.add(newItem);
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
     public static void parseValidateUser(JSONObject response, Activity activity){
         Log.d("DEBUG", "Inside parser");
@@ -53,7 +78,7 @@ public class JsonResponseParser {
 
         Intent intent;
 
-        if( userRole == 1 ){
+        if( userRole == 0 ){
             intent = new Intent(activity.getApplicationContext(), TrainerActivity.class);
             intent.putExtra("userId", userId);
             intent.putExtra("userRole", userRole);
@@ -134,9 +159,9 @@ public class JsonResponseParser {
         return list;
     }
 
-    public static List<Task> parseTasks(JSONObject response) {
+    /*public static List<Task> parseTasks(JSONObject response) {
         List<Task> list = new ArrayList<>();
-        JSONArray jsonArray = null;
+        JSONArray jsonArray = new JSONArray();
 
         Log.d("Debug JSON", response.toString());
         try {
@@ -157,7 +182,7 @@ public class JsonResponseParser {
             }
         }
         return list;
-    }
+    }*/
 
     public static List<User> parseTrainers(JSONObject response){
         List<User> list = new ArrayList<>();
@@ -174,7 +199,12 @@ public class JsonResponseParser {
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject entry = jsonArray.getJSONObject(i);
-                User c = new User(entry.getInt("id"), entry.getInt("userRole"), entry.getString("email"));
+                User c = new User(
+                        entry.getInt("id"),
+                        entry.getInt("userRole"),
+                        entry.getString("email"),
+                        entry.getString("username"),
+                        entry.getString("password"));
                 list.add(c);
                 Log.d("JSON", "Added task to list");
             } catch (JSONException e) {
@@ -182,5 +212,32 @@ public class JsonResponseParser {
             }
         }
         return list;
+    }
+
+    public static Map<String, Boolean> parseReports(JSONObject response){
+        Map<String, Boolean> map = new HashMap<>();
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            jsonArray = response.getJSONArray("reports");
+            for (int i = 0; i < jsonArray.length(); i++){
+                boolean completed = true;
+                jsonObject = (JSONObject) jsonArray.get(i);
+                JSONArray completeTasks = jsonObject.getJSONArray("completedTasks");
+                for (int k = 0; k < completeTasks.length(); k++){
+                    JSONObject task = (JSONObject) completeTasks.get(k);
+                    if (task.getString("taskCompleted").equals("false")){
+                        completed = false;
+                    }
+                }
+                map.put(jsonObject.getString("name"), completed);
+            }
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        return map;
+
     }
 }

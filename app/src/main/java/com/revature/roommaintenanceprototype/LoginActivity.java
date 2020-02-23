@@ -2,6 +2,7 @@ package com.revature.roommaintenanceprototype;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,18 +10,24 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.revature.roommaintenanceprototype.database.MDatabase;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.database.api.UserAPI;
 import com.revature.roommaintenanceprototype.controllers.LoginController;
+import com.revature.roommaintenanceprototype.database.table.User;
 import com.revature.roommaintenanceprototype.util.LogStrings;
 import com.revature.roommaintenanceprototype.controllers.LoginController;
 import com.revature.roommaintenanceprototype.util.DummyText;
 import com.revature.roommaintenanceprototype.util.InputProcessing;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String EXTRA_TAG_USER_EMAIL = "EXTRA_TAG_USER_EMAIL";
 
     private Button btnLogin,btnLogin2;
+    public MDatabase db;
     private EditText etEmail, etPassword;
 
     @Override
@@ -69,18 +76,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 ScreenMessage.toastLongMsg(getApplicationContext(), "Password field cannot be empty");
                 return;
             }else if(passwordStatus == InputProcessing.InputReturn.TOO_SHORT){
-                ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be longer than "+
+                ScreenMessage.toastLongMsg(getApplicationContext(), "Password has to be longer than "+
                         InputProcessing.getPasswordMinLength()+" characters.");
             }else if(passwordStatus == InputProcessing.InputReturn.TOO_LONG){
-                ScreenMessage.toastLongMsg(getApplicationContext(), "Password is has too be shorter than "+
+                ScreenMessage.toastLongMsg(getApplicationContext(), "Password has to be shorter than "+
                         InputProcessing.getPasswordMaxLength()+" characters.");
             }else if( passwordStatus == InputProcessing.InputReturn.OK){
-                //UserAPI.requestLogin(this, email, password);
-
-                /*if( LoginController.testLoginCredentials(email, password) ){
-                    if(email.equals(DummyText.getTestSiteManagerEmail())){
+                ApiRequester.getInstance(this).getUsers(this, email, password);
+                /*if( LoginController.testLoginCredentials(email, password, users) ){
+                    if(email.contains("manager")){
                         launchSiteManagerActivity(email);
-                    }else if(email.equals(DummyText.getTestTrainerEmail())){
+                    }else if(email.contains("trainer")){
                         launchTrainerActivity(email);
                     }
                 }else{

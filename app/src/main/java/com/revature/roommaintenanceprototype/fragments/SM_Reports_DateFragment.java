@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
 import com.revature.roommaintenanceprototype.adapters.ReportsAdapter;
+import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
@@ -30,13 +31,18 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
     EditText etStartDate, etEndDate;
     RecyclerView recyclerView;
     DateFragmentPojo dateFragmentPojo;
+    ReportsAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_container, container, false);
         FragmentHelper.includeFragmentContent(R.layout.fragment_reports, (ViewGroup) rootView,inflater);
+        adapter = new ReportsAdapter(getActivity(), DummyText.getReports());
         recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_reports, getActivity(),
-                new ReportsAdapter(getActivity(), DummyText.getReports()));
+                adapter);
+
+        ApiRequester.getInstance(getActivity()).getSiteManagerReports(getActivity(), adapter, recyclerView);
+
         return rootView;
     }
 
@@ -59,6 +65,9 @@ public class SM_Reports_DateFragment extends Fragment implements View.OnClickLis
         etEndDate = view.findViewById(R.id.et_endDate);
 
         dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
+        ApiRequester.getInstance(getActivity()).getSiteManagerReportsByDate(getActivity(),
+                adapter, recyclerView, etStartDate.getText().toString(), etEndDate.getText().toString());
+
     }
 
     @Override
