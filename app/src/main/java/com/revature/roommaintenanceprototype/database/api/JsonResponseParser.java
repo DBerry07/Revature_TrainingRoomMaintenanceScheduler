@@ -159,7 +159,7 @@ public class JsonResponseParser {
         return list;
     }
 
-    /*public static List<Task> parseTasks(JSONObject response) {
+    public static List<Task> parseTasks(JSONObject response) {
         List<Task> list = new ArrayList<>();
         JSONArray jsonArray = new JSONArray();
 
@@ -182,7 +182,7 @@ public class JsonResponseParser {
             }
         }
         return list;
-    }*/
+    }
 
     public static List<User> parseTrainers(JSONObject response){
         List<User> list = new ArrayList<>();

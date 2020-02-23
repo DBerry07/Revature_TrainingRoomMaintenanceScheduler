@@ -45,6 +45,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -75,12 +79,28 @@ public class ApiRequester {
 
     static ApiRequester apiRequester = null;
     static RequestQueue requestQueue;
+    static File logfile = null;
+    static BufferedWriter bufferedWriter;
 
     public static ApiRequester getInstance(Activity activity)
     {
+        File directory  = activity.getDir("log", 0);
+        logfile = new File(directory + "/log.log");
+        if (!logfile.exists()) {
+            try {
+                logfile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(logfile, true));
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
         if (apiRequester == null) { apiRequester = new ApiRequester(); }
         requestQueue = Volley.newRequestQueue(activity);
-        getAllTasks();
         db = MDatabase.getDatabase(activity);
         return apiRequester;
 
@@ -194,7 +214,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + request.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -202,6 +227,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         List<User> list = JsonResponseParser.parseUsers(response);
                         if( LoginController.testLoginCredentials(email, password, list) ){
                             for (User each : list) {
@@ -250,6 +283,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -257,6 +296,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append(response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         List<Campus> list = JsonResponseParser.parseCampuses(response);
                         ArrayList<String> names = new ArrayList<>();
                         for (Campus each : list){
@@ -292,6 +339,12 @@ public class ApiRequester {
         } catch (JSONException e){
             e.printStackTrace();
         }
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -299,6 +352,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         List<RoomData> list = JsonResponseParser.parseRooms(response);
                         ArrayList<String> names = new ArrayList<>();
                         for (RoomData each : list){
@@ -331,6 +392,12 @@ public class ApiRequester {
         } catch (JSONException e){
             e.printStackTrace();
         }
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -338,6 +405,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         List<RoomData> list = JsonResponseParser.parseRooms(response);
                         ArrayList<String> names = new ArrayList<>();
                         for (RoomData each : list){
@@ -356,7 +431,7 @@ public class ApiRequester {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public static void getAllTasks(){
+    /*public static void getAllTasks(){
         String url = tasksAllURL;
         JSONObject jsonObject = new JSONObject();
 
@@ -370,6 +445,13 @@ public class ApiRequester {
         final Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                try {
+                    bufferedWriter.append("Response: " + response.toString());
+                    bufferedWriter.newLine();
+                    bufferedWriter.close();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
                 //taskList = JsonResponseParser.parseTasks(response);
             }
         };
@@ -387,7 +469,7 @@ public class ApiRequester {
 
         requestQueue.add(jsonObjectRequest);
     }
-
+*/
     public static void siteManagerGetTasks(final Activity activity,
                                     final CriteriaAdapter adapter,
                                     final RecyclerView recyclerView){
@@ -402,18 +484,33 @@ public class ApiRequester {
             e.printStackTrace();
         }
 
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         final Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                /*List<Task> tList = JsonResponseParser.parseTasks(response);
+                try {
+                    bufferedWriter.append("Response: " + response.toString());
+                    bufferedWriter.newLine();
+                    bufferedWriter.newLine();
+                    bufferedWriter.close();
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+                List<Task> tList = JsonResponseParser.parseTasks(response);
                 ArrayList<String> names = new ArrayList<>();
                 for (Task each : tList){
                     names.add(each.getName());
                 }
                 adapter.updateList(names);
-                recyclerView.setAdapter(adapter);*/
+                recyclerView.setAdapter(adapter);
             }
         };
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -484,6 +581,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -491,6 +594,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         List<User> list = JsonResponseParser.parseTrainers(response);
                         ArrayList<String> names = new ArrayList<>();
                         for (User each : list){
@@ -523,7 +634,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -531,6 +647,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         Map<String, Boolean> list = JsonResponseParser.parseReports(response);
                         adapter.updateList(list);
                         recyclerView.setAdapter(adapter);
@@ -561,7 +685,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -569,6 +698,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         Map<String, Boolean> list = JsonResponseParser.parseReports(response);
                         adapter.updateList(list);
                         recyclerView.setAdapter(adapter);
@@ -590,14 +727,18 @@ public class ApiRequester {
                                                 int userId){
         String url = trainerReportsURL;
         JSONObject jsonObject = new JSONObject();
-
         try {
             jsonObject.put("username", "test@revature.com");
             jsonObject.put("token", "ABC123");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -605,6 +746,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         Map<String, Boolean> list = JsonResponseParser.parseReports(response);
                         adapter.updateList(list);
                         recyclerView.setAdapter(adapter);
@@ -666,6 +815,7 @@ public class ApiRequester {
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 
+
         try {
             jsonObject.put("username", "test@revature.com");
             jsonObject.put("token", "ABC123");
@@ -682,7 +832,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -690,6 +845,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         Toast.makeText(activity, "Task Verification submitted successfully!", Toast.LENGTH_LONG).show();
                     }
                 },
@@ -730,7 +893,12 @@ public class ApiRequester {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        try {
+            bufferedWriter.append("Request: " + jsonObject.toString());
+            bufferedWriter.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.POST,
                 url,
@@ -738,6 +906,14 @@ public class ApiRequester {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        try {
+                            bufferedWriter.append("Response: " + response.toString());
+                            bufferedWriter.newLine();
+                            bufferedWriter.newLine();
+                            bufferedWriter.close();
+                        } catch (IOException e){
+                            e.printStackTrace();
+                        }
                         Toast.makeText(activity, "Room Maintenance scheduled successfully!", Toast.LENGTH_LONG).show();
                     }
                 },
