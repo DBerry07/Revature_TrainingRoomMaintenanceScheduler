@@ -8,5 +8,6 @@
         android:id="@+id/SM_Reports_DateFragment"
         android:name="com.revature.roommaintenanceprototype.fragments.SM_Reports_DateFragment"
         android:label="fragment_reports"
-        tools:layout="@layout/fragment_reports" />
+        tools:layout="@layout/fragment_reports"
+        />
 </navigation>

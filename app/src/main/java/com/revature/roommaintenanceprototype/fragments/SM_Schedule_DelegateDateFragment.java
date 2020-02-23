@@ -25,6 +25,7 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
     private ImageView iconStartDate, iconEndDate;
     private EditText etStartDate, etEndDate;
     private Button button;
+    DateFragmentPojo dateFragmentPojo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,16 +52,17 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_date),R.drawable.ic_menu_date);
+        dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_startDate_icon:
-                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
             case R.id.btn_delegateDate:
                 SMSchedulePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );

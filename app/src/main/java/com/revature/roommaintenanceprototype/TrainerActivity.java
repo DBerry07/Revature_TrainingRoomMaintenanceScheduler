@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -53,7 +54,7 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout_main);
 
-        addOpenCloseToggleActionToToolbar();
+        setSupportActionBar(toolbar);
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
         navController.setGraph(R.navigation.tr_verify);
@@ -86,14 +87,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         }else{
             Log.d("TESTING NAVDisplay","null intent");
         }
-    }
-
-    public void addOpenCloseToggleActionToToolbar(){
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
     }
 
 
@@ -145,5 +138,10 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController,drawerLayout);
     }
 }

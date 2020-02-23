@@ -55,7 +55,7 @@ public class InputProcessing {
         TOO_LONG;
     }
 
-    public static String formatDate(int year, int month, int day){
-        return year+"/"+month+"/"+day;
+    public static String formatDate(int day, int month, int year){
+        return day+"/"+month+"/"+year;
     }
 }

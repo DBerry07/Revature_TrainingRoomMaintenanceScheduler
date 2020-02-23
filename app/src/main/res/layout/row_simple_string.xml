@@ -33,7 +33,7 @@
         android:layout_height="30dp"
         android:background="@drawable/background_circle_revorange_lightorange"
         android:padding="5dp"
-        android:src="@drawable/ic_right"
+        android:src="@drawable/ic_chevron_right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

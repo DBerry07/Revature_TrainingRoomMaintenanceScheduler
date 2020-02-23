@@ -24,6 +24,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
     private ImageView iconStartDate, iconEndDate;
     private EditText etStartDate, etEndDate;
     private Button button;
+    DateFragmentPojo dateFragmentPojo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,16 +51,18 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_date),R.drawable.ic_menu_date);
+        dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_startDate_icon:
-                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
+                Log.d(DEBUG_TAG, "Clicked open start date icon.");
+                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
             case R.id.btn_delegateDate:
                 TRDelegatePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );

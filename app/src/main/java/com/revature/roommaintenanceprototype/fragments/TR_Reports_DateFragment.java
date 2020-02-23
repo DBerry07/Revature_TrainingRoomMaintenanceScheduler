@@ -29,6 +29,7 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
     ImageView iconStartDate, iconEndDate;
     EditText etStartDate, etEndDate;
     RecyclerView recyclerView;
+    DateFragmentPojo dateFragmentPojo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,16 +57,17 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
         etStartDate = (view.findViewById(R.id.et_startDate));
         etEndDate = view.findViewById(R.id.et_endDate);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_rpt_reports),R.drawable.ic_reports);
+        dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
     }
 
     @Override
     public void onClick(View view){
         switch(view.getId()){
             case R.id.img_startDate_icon:
-                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openStartDatePicker(etStartDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
             case R.id.img_endDate_icon:
-                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager());
+                DelegateDateHelper.openEndDatePicker(etEndDate,getActivity().getSupportFragmentManager(),dateFragmentPojo);
                 break;
         }
     }

@@ -50,7 +50,7 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
 
         drawerLayout = findViewById(R.id.drawerLayout_main);
 
-        addOpenCloseToggleActionToToolbar();
+        setSupportActionBar(toolbar);
 
         navController = Navigation.findNavController(this, R.id.fragment_mainContentContainer);
         navController.setGraph(R.navigation.sm_schedule);
@@ -71,14 +71,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 Log.d("RESULTS", SMSchedulePersistance.getResults());
             }
         });
-    }
-
-    private void addOpenCloseToggleActionToToolbar(){
-        setSupportActionBar(toolbar);
-
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.drawerOpen,R.string.drawerClose);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
     }
 
     private void setUserDetails(){
@@ -121,5 +113,10 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
         menuItem.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController,drawerLayout);
     }
 }
