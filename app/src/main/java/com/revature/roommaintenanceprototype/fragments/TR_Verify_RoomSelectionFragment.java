@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,8 @@ import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRV
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -70,7 +73,6 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
     @Override
     public void onItemClick(View view, int position) {
         TRVerifyPersistance.setRoom( FragmentHelper.getSelectedItem(view) );
-
     }
 
 }
