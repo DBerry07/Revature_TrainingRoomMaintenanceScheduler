@@ -29,7 +29,7 @@ public class DelegateDateHelper {
     }
 
     //Need to pass start and end date here
-    public static void openEndDatePicker(final EditText etEndDate, FragmentManager fragmentManager,DateFragmentPojo dateFragmentPojo) {
+    public static void openEndDatePicker(final EditText etEndDate, FragmentManager fragmentManager, DateFragmentPojo dateFragmentPojo) {
         createDatePicker(etEndDate, fragmentManager, endTag, dateFragmentPojo);
     }
 
@@ -37,6 +37,21 @@ public class DelegateDateHelper {
         if (fragmentManager != null) {
             Log.d(DEBUG_TAG, "Fragment manager is not null.");
             DialogFragment datePickerFragment = new DatePickerFragment(new OnSetDateListener() {
+                @Override
+                public void onSetDate(DatePicker view, int year, int month, int day) {
+                    month++;
+                    Log.d(DEBUG_TAG, "Attempting to set date.");
+                    if (datePickerTag.equals(startTag)) {
+                        editText.setText(InputProcessing.formatDate(month,day, year));
+                    } else {
+                        editText.setText(InputProcessing.formatDate(month,day, year));
+                    }
+                }
+            });
+            datePickerFragment.show(fragmentManager, datePickerTag);
+        } else {
+            Log.d(DEBUG_TAG, "Error opening date picker. Fragment manager is null.");
+        }/*
                 @Override
                 public void onSetDate(DatePicker view, int year, int month, int day) {
                     Log.d(DEBUG_TAG, "Attempting to set date.");
@@ -67,6 +82,7 @@ public class DelegateDateHelper {
         } else {
             Log.d(DEBUG_TAG, "Error opening date picker. Fragment manager is null.");
         }
+        */
     }
 
     private static boolean validateDate(int startYear, int startMonth, int startDay,
@@ -94,15 +110,15 @@ public class DelegateDateHelper {
         */
     }
 
-    private static void updateDatePojo(DateFragmentPojo dateFragmentPojo, DatePicker datePicker, String tag){
-        if(tag.equals(startTag)){
-            dateFragmentPojo.setStartDay( datePicker.getDayOfMonth() );
-            dateFragmentPojo.setStartMonth( datePicker.getMonth() );
-            dateFragmentPojo.setStartYear( datePicker.getYear() );
-        }else{
-            dateFragmentPojo.setEndDay( datePicker.getDayOfMonth() );
-            dateFragmentPojo.setEndMonth( datePicker.getMonth() );
-            dateFragmentPojo.setEndYear( datePicker.getYear() );
+    private static void updateDatePojo(DateFragmentPojo dateFragmentPojo, DatePicker datePicker, String tag) {
+        if (tag.equals(startTag)) {
+            dateFragmentPojo.setStartDay(datePicker.getDayOfMonth());
+            dateFragmentPojo.setStartMonth(datePicker.getMonth());
+            dateFragmentPojo.setStartYear(datePicker.getYear());
+        } else {
+            dateFragmentPojo.setEndDay(datePicker.getDayOfMonth());
+            dateFragmentPojo.setEndMonth(datePicker.getMonth());
+            dateFragmentPojo.setEndYear(datePicker.getYear());
         }
     }
 }

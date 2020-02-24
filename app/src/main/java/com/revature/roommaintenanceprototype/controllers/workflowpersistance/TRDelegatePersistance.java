@@ -10,11 +10,11 @@ public final class TRDelegatePersistance {
 
     public static String getResults(){
         StringBuilder results = new StringBuilder();
-        results.append("\n");
         results.append("\n\nROOM | "+room);
-        results.append("\nTRAINER | "+trainer);
-        results.append("\nSTART DATE | "+startDate);
-        results.append("\nEND DATE | "+endDate);
+        results.append("\n\n\nTRAINER | "+trainer);
+        results.append("\n\n\nSTART DATE | "+startDate);
+        results.append("\n\n\nEND DATE | "+endDate);
+        results.append("\n\n");
         return results.toString();
     }
 

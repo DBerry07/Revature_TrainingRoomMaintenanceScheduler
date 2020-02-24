@@ -14,12 +14,12 @@ public final class SMSchedulePersistance {
 
     public static String getResults(){
         StringBuilder results = new StringBuilder();
-        results.append("\n");
         results.append("\n\nCAMPUS | "+campus);
-        results.append("\nROOM | "+room);
-        results.append("\nCLEANING CRITERIA | "+cleaningCriteria.toString());
-        results.append("\nSTART DATE | "+startDate);
-        results.append("\nEND DATE | "+endDate);
+        results.append("\n\n\nROOM | "+room);
+        results.append("\n\n\nCLEANING CRITERIA | "+cleaningCriteria.toString());
+        results.append("\n\n\nSTART DATE | "+startDate);
+        results.append("\n\n\nEND DATE | "+endDate);
+        results.append("\n\n");
         return results.toString();
     }
 

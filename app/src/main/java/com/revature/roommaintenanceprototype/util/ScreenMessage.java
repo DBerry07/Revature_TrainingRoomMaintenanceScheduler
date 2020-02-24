@@ -11,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 
 public class ScreenMessage {
+    private static AlertDialog dialog;
 
     public static void snackBarShortMsg(View view, String msg){
         Snackbar.make(view,msg,Snackbar.LENGTH_SHORT).show();
@@ -58,10 +62,29 @@ public class ScreenMessage {
         alertDialog.show();
     }
 
-    public static void displayResults(String results, AppCompatActivity activity){
+    public static void displayResults(AppCompatActivity activity, String category){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(R.string.review_inputs);
-        builder.setView(R.layout.confirmation);
-        ((TextView) activity.findViewById(R.id.tv_results)).setText(results);
+        builder.setView(R.layout.results_container);
+        dialog = builder.create();
+        dialog.show();
+        TextView tvResults = dialog.findViewById(R.id.tv_resultsContainer);
+        if(category.equals("verify")){
+            tvResults.setText( TRVerifyPersistance.getResults() );
+        }
+
+        if(category.equals("delegate")){
+            tvResults.setText( TRDelegatePersistance.getResults() );
+        }
+
+        if(category.equals("schedule")){
+            tvResults.setText( SMSchedulePersistance.getResults() );
+        }
+    }
+
+    public static void showResultsInFragment(String results){
+        dialog.show();
+        TextView tvResults = dialog.findViewById(R.id.tv_resultsContainer);
+        tvResults.setText(results);
     }
 }

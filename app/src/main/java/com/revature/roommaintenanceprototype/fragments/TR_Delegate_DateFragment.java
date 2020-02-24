@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
+import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
@@ -70,6 +71,7 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
             case R.id.btn_delegateDate:
                 TRDelegatePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
                 TRDelegatePersistance.setEndDate( FragmentHelper.getSelectedDate(etEndDate) );
+                ScreenMessage.showResultsInFragment(TRDelegatePersistance.getResults());
                 break;
         }
     }

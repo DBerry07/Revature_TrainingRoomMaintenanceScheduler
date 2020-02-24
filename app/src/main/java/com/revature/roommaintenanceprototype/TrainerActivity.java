@@ -71,6 +71,14 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
         setUserDetails();
+
+        imgHoverButton = findViewById(R.id.img_hover_btn);
+        imgHoverButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ScreenMessage.displayResults(TrainerActivity.this,"verify");
+            }
+        });
     }
 
     private void setUserDetails(){
@@ -97,6 +105,16 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_verify);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
+
+
+                imgHoverButton = findViewById(R.id.img_hover_btn);
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ScreenMessage.displayResults(TrainerActivity.this,"verify");
+                    }
+                });
+
                 break;
             case R.id.menuItem_trainer_delegate:
                 CustomViewAnimator.showBottomNavComponents(drawerLayout);
@@ -108,6 +126,19 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.inflateMenu(R.menu.menu_tr_delegate);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRDelegateNavigationController(navController));
+
+
+
+                imgHoverButton = findViewById(R.id.img_hover_btn);
+                imgHoverButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ScreenMessage.displayResults(TrainerActivity.this,"delegate");
+                    }
+                });
+
+
+
                 break;
             case R.id.menuItem_trainer_reports:
                 CustomViewAnimator.hideBottomNavComponents(drawerLayout);
