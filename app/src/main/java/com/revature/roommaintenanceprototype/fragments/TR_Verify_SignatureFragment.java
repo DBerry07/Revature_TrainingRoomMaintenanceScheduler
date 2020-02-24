@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -73,6 +75,9 @@ public class TR_Verify_SignatureFragment extends Fragment implements View.OnClic
                 signatureDrawable.clearCanvas();
                 break;
             case R.id.btn_signatureVerify:
+
+                NavController navController  = Navigation.findNavController(v);
+                FragmentHelper.navigateBetweenFragments(navController,null,R.id.TR_Verify_RoomSelectionFragment2);
             ApiRequester.sendTrainerVerify(getActivity(), "100010101", new ArrayList<CompletedTaskList>());
             break;
         }

@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
@@ -71,7 +74,12 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
             case R.id.btn_delegateDate:
                 TRDelegatePersistance.setStartDate( FragmentHelper.getSelectedDate(etStartDate) );
                 TRDelegatePersistance.setEndDate( FragmentHelper.getSelectedDate(etEndDate) );
-                ScreenMessage.showResultsInFragment(TRDelegatePersistance.getResults());
+                Toast.makeText(view.getContext(), "Delegate task submitted successfully!", Toast.LENGTH_LONG).show();
+
+                //ScreenMessage.showResultsInFragment(TRDelegatePersistance.getResults());
+
+                NavController navController  = Navigation.findNavController(view);
+                FragmentHelper.navigateBetweenFragments(navController,null,R.id.TR_Delegate_TrainerSelectionFragment);
                 break;
         }
     }

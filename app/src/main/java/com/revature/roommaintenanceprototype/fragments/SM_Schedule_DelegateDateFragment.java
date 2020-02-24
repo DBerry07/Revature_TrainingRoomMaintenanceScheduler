@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
@@ -77,7 +80,9 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
 
                 ApiRequester.sendSiteManagerSchedule(getActivity(), 0, 0, 0,
                         "1-1-2999", "1-1-3000", new ArrayList<RoomTaskList>());
-
+                Toast.makeText(view.getContext(), "Task submitted successfully!", Toast.LENGTH_LONG).show();
+                NavController navController  = Navigation.findNavController(view);
+                FragmentHelper.navigateBetweenFragments(navController,null,R.id.SM_Schedule_CampusSelectionFragment);
                 break;
         }
     }
