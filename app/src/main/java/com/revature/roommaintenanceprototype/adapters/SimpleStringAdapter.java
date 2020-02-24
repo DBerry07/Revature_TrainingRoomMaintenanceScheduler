@@ -16,11 +16,17 @@ import java.util.List;
 
 public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.StringViewHolder>{
     ArrayList<String> list;
+    ArrayList<View> listOfItems;
     OnItemClickListener listener;
 
     public SimpleStringAdapter(ArrayList<String> list, OnItemClickListener listener){
         this.list = list;
         this.listener = listener;
+        this.listOfItems = new ArrayList<>();
+    }
+
+    public ArrayList<View> getListOfItems() {
+        return listOfItems;
     }
 
     @NonNull
@@ -31,7 +37,7 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StringViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final StringViewHolder holder, final int position) {
         holder.tvString.setText(list.get(position));
         holder.container.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -46,14 +52,23 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
         return list.size();
     }
 
-    class StringViewHolder extends RecyclerView.ViewHolder{
-        TextView tvString;
-        LinearLayout container;
+    public class StringViewHolder extends RecyclerView.ViewHolder{
+        private TextView tvString;
+        private LinearLayout container;
 
         public StringViewHolder(@NonNull final View itemView) {
             super(itemView);
+            listOfItems.add(itemView);
             container = itemView.findViewById(R.id.container_row_simple_string);
             tvString = itemView.findViewById(R.id.tv_string);
+        }
+
+        public TextView getTvString() {
+            return tvString;
+        }
+
+        public LinearLayout getContainer() {
+            return container;
         }
     }
 

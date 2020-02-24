@@ -22,18 +22,19 @@ public class CustomViewAnimator {
     private static int animationSpeed = 500;
 
     public static void animateFloatingActionButtonOut(FloatingActionButton floatingActionButton){
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(floatingActionButton,"translationY",250f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(floatingActionButton,"translationY",300f);
         objectAnimator.setDuration(animationSpeed);
         objectAnimator.start();
     }
 
     public static void animateFloatingActionButtonIn(FloatingActionButton floatingActionButton){
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(floatingActionButton,"translationY",-250f);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(floatingActionButton,"translationY",-300f);
         objectAnimator.setDuration(animationSpeed);
         objectAnimator.start();
     }
 
     public static void hideBottomNavComponents(View parentView){
+        Log.d(DEBUG_TAG,"Hiding bottom nav");
         BottomNavigationView bottomNavigationView = parentView.findViewById(R.id.bottom_navigation);
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(bottomNavigationView,"translationY",300);
         objectAnimator.setDuration(animationSpeed);

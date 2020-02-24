@@ -21,87 +21,105 @@ import com.revature.roommaintenanceprototype.util.ScreenMessage;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_TAG_USER_EMAIL = "EXTRA_TAG_USER_EMAIL";
 
-    private Button btnLogin,btnLogin2;
+    private Button btnLogin, btnLogin2;
     public MDatabase db;
     private EditText etEmail, etPassword;
     private TextView tvInvalidEmailMessage, tvInvalidPasswordMessage;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         init();
     }
 
-    private void init(){
+    private void init() {
         setContentView(R.layout.activity_login);
         etEmail = (EditText) findViewById(R.id.et_login_email);
         etEmail.setOnClickListener(this);
         etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                CustomViewAnimator.hideInvalidMessage( tvInvalidEmailMessage );
+                CustomViewAnimator.hideInvalidMessage(tvInvalidEmailMessage);
             }
         });
         etPassword = (EditText) findViewById(R.id.et_login_password);
         etPassword.setOnClickListener(this);
-        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                CustomViewAnimator.hideInvalidMessage( tvInvalidPasswordMessage );
+                CustomViewAnimator.hideInvalidMessage(tvInvalidPasswordMessage);
             }
         });
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
 
-        CustomViewAnimator.animateSplashToLogin( findViewById(R.id.login_activity_container) );
+        CustomViewAnimator.animateSplashToLogin(findViewById(R.id.login_activity_container));
 
         tvInvalidEmailMessage = findViewById(R.id.tv_invalid_email_msg);
         tvInvalidPasswordMessage = findViewById(R.id.tv_invalid_password_msg);
     }
 
     @Override
-    public void onClick(View view){
+    public void onClick(View view) {
         String email = etEmail.getText().toString();
         String password = etPassword.getText().toString();
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.et_login_email:
-                CustomViewAnimator.hideInvalidMessage( tvInvalidEmailMessage );
+                CustomViewAnimator.hideInvalidMessage(tvInvalidEmailMessage);
                 break;
             case R.id.et_login_password:
-                CustomViewAnimator.hideInvalidMessage( tvInvalidPasswordMessage );
+                CustomViewAnimator.hideInvalidMessage(tvInvalidPasswordMessage);
                 break;
             case R.id.btn_login:
-                processLogin(email,password);
+                processLogin(email, password);
                 break;
             case R.id.chk_keep_logged_in:
+                break;
+            case R.id.btn_loginTrainer:
+                processLogin(email, password);
+                break;
+            case R.id.btn_loginSiteManager:
+                processLogin(email, password);
                 break;
         }
     }
 
-    private void processLogin(String email, String password){
+    public void login(View view){
+        String email = etEmail.getText().toString();
+        switch (view.getId()) {
+            case R.id.btn_loginTrainer:
+                launchTrainerActivity(email);
+                break;
+            case R.id.btn_loginSiteManager:
+                launchSiteManagerActivity(email);
+                break;
+        }
+    }
+
+    private void processLogin(String email, String password) {
         InputProcessing.InputReturn emailStatus = InputProcessing.validateEmail(email);
-        if( emailStatus == InputProcessing.InputReturn.EMPTY_STRING){
-            CustomViewAnimator.showInvalidMessage(tvInvalidEmailMessage,"Email field cannot be empty");
+        if (emailStatus == InputProcessing.InputReturn.EMPTY_STRING) {
+            CustomViewAnimator.showInvalidMessage(tvInvalidEmailMessage, "Email field cannot be empty");
             return;
-        }else if( emailStatus == InputProcessing.InputReturn.INVALID_EMAIL ){
-            CustomViewAnimator.showInvalidMessage(tvInvalidEmailMessage,"Invalid email entry.");
+        } else if (emailStatus == InputProcessing.InputReturn.INVALID_EMAIL) {
+            CustomViewAnimator.showInvalidMessage(tvInvalidEmailMessage, "Invalid email entry.");
             return;
-        }else if( emailStatus == InputProcessing.InputReturn.OK ){
+        } else if (emailStatus == InputProcessing.InputReturn.OK) {
             InputProcessing.InputReturn passwordStatus = InputProcessing.validatePassword(password);
-            if(  passwordStatus == InputProcessing.InputReturn.EMPTY_STRING ){
-                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage,"Password field cannot be empty");
+            if (passwordStatus == InputProcessing.InputReturn.EMPTY_STRING) {
+                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage, "Password field cannot be empty");
                 return;
-            }else if(passwordStatus == InputProcessing.InputReturn.TOO_SHORT){
-                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage,"Password has to be longer than "+
-                        InputProcessing.getPasswordMinLength()+" characters.");
-            }else if(passwordStatus == InputProcessing.InputReturn.TOO_LONG){
-                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage,"Password has to be shorter than "+
-                        InputProcessing.getPasswordMaxLength()+" characters.");
-            }else if( passwordStatus == InputProcessing.InputReturn.OK){
+            } else if (passwordStatus == InputProcessing.InputReturn.TOO_SHORT) {
+                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage, "Password has to be longer than " +
+                        InputProcessing.getPasswordMinLength() + " characters.");
+            } else if (passwordStatus == InputProcessing.InputReturn.TOO_LONG) {
+                CustomViewAnimator.showInvalidMessage(tvInvalidPasswordMessage, "Password has to be shorter than " +
+                        InputProcessing.getPasswordMaxLength() + " characters.");
+            } else if (passwordStatus == InputProcessing.InputReturn.OK) {
                 ApiRequester.getInstance(this).getUsers(this, email, password);
                 /*
                 List<User> users = Arrays.asList();
@@ -119,15 +137,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void launchSiteManagerActivity(String email){
-        Intent intent = new Intent( this, SiteManagerActivity.class );
-        intent.putExtra(EXTRA_TAG_USER_EMAIL,email);
+    private void launchSiteManagerActivity(String email) {
+        Intent intent = new Intent(this, SiteManagerActivity.class);
+        intent.putExtra(EXTRA_TAG_USER_EMAIL, email);
         startActivity(intent);
     }
 
-    private void launchTrainerActivity(String email){
-        Intent intent = new Intent( this, TrainerActivity.class );
-        intent.putExtra(EXTRA_TAG_USER_EMAIL,email);
+    private void launchTrainerActivity(String email) {
+        Intent intent = new Intent(this, TrainerActivity.class);
+        intent.putExtra(EXTRA_TAG_USER_EMAIL, email);
         startActivity(intent);
     }
 }

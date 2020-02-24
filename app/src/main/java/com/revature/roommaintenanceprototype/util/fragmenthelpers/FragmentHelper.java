@@ -1,6 +1,7 @@
 package com.revature.roommaintenanceprototype.util.fragmenthelpers;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 public class FragmentHelper {
@@ -78,5 +80,21 @@ public class FragmentHelper {
 
         ImageView imgIcon = rootView.findViewById(R.id.img_iconHeader);
         imgIcon.setImageResource(iconID);
+    }
+
+    public static void addRecyclerColor(View container){
+        if(container != null){
+            container.setBackgroundColor( container.getResources().getColor(R.color.primeDark2) );
+            container.findViewById(R.id.simple_string_container).setBackgroundColor( container.getResources().getColor(R.color.primeDark2) );
+            ((TextView)container.findViewById(R.id.tv_string)).setTextColor( container.getResources().getColor(android.R.color.white) );
+        }
+    }
+
+    public static void removeRecyclerColor(View container){
+        if(container != null){
+            container.setBackgroundColor( container.getResources().getColor(android.R.color.white) );
+            container.findViewById(R.id.simple_string_container).setBackgroundColor( container.getResources().getColor(android.R.color.white) );
+            ((TextView)container.findViewById(R.id.tv_string)).setTextColor( container.getResources().getColor(R.color.black) );
+        }
     }
 }

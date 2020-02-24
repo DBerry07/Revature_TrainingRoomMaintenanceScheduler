@@ -154,9 +154,8 @@
 
 
 
-    <!--
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_loginTrainer"
             style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -167,7 +166,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btn_login2"
+            android:id="@+id/btn_loginSiteManager"
             style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,8 +175,7 @@
             android:text="site"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_login" />
-         -->
+            app:layout_constraintStart_toEndOf="@+id/btn_loginTrainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

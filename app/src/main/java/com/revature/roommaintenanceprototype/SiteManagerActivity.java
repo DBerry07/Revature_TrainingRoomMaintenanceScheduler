@@ -104,7 +104,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 navController.setGraph(R.navigation.sm_reports);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Reports_DateFragment);
-                bottomNavigationView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.menuItem_siteManager_logout:
                 ScreenMessage.confirmLogOut(this);

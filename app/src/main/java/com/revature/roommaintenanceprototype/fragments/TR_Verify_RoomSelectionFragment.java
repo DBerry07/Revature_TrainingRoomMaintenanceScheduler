@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -22,13 +21,12 @@ import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 import com.revature.roommaintenanceprototype.util.DummyText;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     private NavController navController;
     private FloatingActionButton floatingActionButton;
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +44,7 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
 
     public void init(View view){
         SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
+        recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
 
         ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);
 
@@ -73,6 +71,12 @@ public class TR_Verify_RoomSelectionFragment extends Fragment implements View.On
     @Override
     public void onItemClick(View view, int position) {
         TRVerifyPersistance.setRoom( FragmentHelper.getSelectedItem(view) );
+        ArrayList<View> list = ((SimpleStringAdapter)recyclerView.getAdapter()).getListOfItems();
+        int itemCount = list.size();
+        for(int i =0 ; i<itemCount; i++){
+            FragmentHelper.removeRecyclerColor( list.get(i) );
+        }
+        FragmentHelper.addRecyclerColor(view);
     }
 
 }
