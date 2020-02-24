@@ -56,7 +56,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     }
     
     public void init(View view){
-        CriteriaAdapter adapter = new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this );
+        CriteriaAdapter adapter = new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this,SMSchedulePersistance.getCleaningCriteria() );
         rvCleaningCriteria = FragmentHelper.initRecyclerView(view,R.id.rv_cleaningCriteria, getActivity(), adapter);
 
         ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
@@ -86,7 +86,7 @@ public class SM_Schedule_CriteriaSelectionFragment extends Fragment implements V
     public void onItemClick(View view, int position) {
         Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
         TextView tvTitle = view.findViewById(R.id.tv_cleaningCriteria_item);
-        //CriteriaSelectionHelper.updateSwitchState(swt, getContext());
+        CriteriaSelectionHelper.updateSwitchState(swt, getContext());
         CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,tvTitle.getText().toString(), swt.isChecked());
     }
 

@@ -27,6 +27,7 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
         this.criteriaItemsList = criteriaItemList;
         this.switchListener = switchListener;
         this.listener = listener;
+        this.selectedCriteriaList = new ArrayList<String>();
     }
 
     public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener,OnChangeSwitchState switchListener,ArrayList<String> selectedCriteriaList){

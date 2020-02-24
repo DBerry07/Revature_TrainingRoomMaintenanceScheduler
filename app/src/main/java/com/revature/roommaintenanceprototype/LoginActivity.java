@@ -79,15 +79,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.chk_keep_logged_in:
                 break;
-            case R.id.btn_loginTrainer:
-                processLogin(email, password);
-                break;
-            case R.id.btn_loginSiteManager:
-                processLogin(email, password);
-                break;
         }
     }
 
+    /*
     public void login(View view){
         String email = etEmail.getText().toString();
         switch (view.getId()) {
@@ -99,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+*/
 
     private void processLogin(String email, String password) {
         InputProcessing.InputReturn emailStatus = InputProcessing.validateEmail(email);

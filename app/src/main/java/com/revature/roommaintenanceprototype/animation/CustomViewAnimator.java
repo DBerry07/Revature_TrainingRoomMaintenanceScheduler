@@ -36,9 +36,9 @@ public class CustomViewAnimator {
     public static void hideBottomNavComponents(View parentView){
         Log.d(DEBUG_TAG,"Hiding bottom nav");
         BottomNavigationView bottomNavigationView = parentView.findViewById(R.id.bottom_navigation);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(bottomNavigationView,"translationY",300);
+        /*ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(bottomNavigationView,"translationY",300);
         objectAnimator.setDuration(animationSpeed);
-        objectAnimator.start();
+        objectAnimator.start();*/
         bottomNavigationView.setVisibility(View.GONE);
 
         ImageView imgHoverBtn = parentView.findViewById(R.id.img_hover_btn);
@@ -47,7 +47,6 @@ public class CustomViewAnimator {
 
     public static void showBottomNavComponents(View parentView){
         BottomNavigationView bottomNavigationView = parentView.findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setX(0);
         bottomNavigationView.setVisibility(View.VISIBLE);
 
         ImageView imgHoverBtn = parentView.findViewById(R.id.img_hover_btn);

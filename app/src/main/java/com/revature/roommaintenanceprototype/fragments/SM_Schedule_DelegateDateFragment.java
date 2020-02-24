@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
@@ -55,6 +56,8 @@ public class SM_Schedule_DelegateDateFragment extends Fragment implements View.O
         etEndDate = view.findViewById(R.id.et_endDate);
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setVisibility(View.GONE);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_sm_sch_date),R.drawable.ic_menu_date);
         dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
     }
