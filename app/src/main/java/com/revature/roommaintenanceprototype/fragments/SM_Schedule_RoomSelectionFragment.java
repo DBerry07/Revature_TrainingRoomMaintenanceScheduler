@@ -26,7 +26,8 @@ import java.util.ArrayList;
 
 public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
 
-    NavController navController;
+    private NavController navController;
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +45,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
 
     public void init(View view){
         SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
+        recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
 
         ApiRequester.getInstance(getActivity()).getRoomByCampusAndLocation(getActivity(), 0, 0, adapter, recyclerView);
@@ -71,6 +72,12 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
+        ArrayList<View> list = ((SimpleStringAdapter)recyclerView.getAdapter()).getListOfItems();
+        int itemCount = list.size();
+        for(int i =0 ; i<itemCount; i++){
+            FragmentHelper.removeRecyclerColor( list.get(i) );
+        }
+        FragmentHelper.addRecyclerColor(view);
     }
 
 }

@@ -34,8 +34,8 @@ import java.util.concurrent.locks.Lock;
 public class SM_Schedule_CampusSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     private static final String DEBUG_TAG = "SM_Schedule_CampusSelectionFragment";
 
-    RecyclerView recyclerView;
-    NavController navController;
+    private RecyclerView recyclerView;
+    private NavController navController;
     String description;
 
     @Override
@@ -81,5 +81,11 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setCampus( FragmentHelper.getSelectedItem(view) );
+        ArrayList<View> list = ((SimpleStringAdapter)recyclerView.getAdapter()).getListOfItems();
+        int itemCount = list.size();
+        for(int i =0 ; i<itemCount; i++){
+            FragmentHelper.removeRecyclerColor( list.get(i) );
+        }
+        FragmentHelper.addRecyclerColor(view);
     }
 }

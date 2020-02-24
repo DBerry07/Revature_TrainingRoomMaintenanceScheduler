@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 public class SM_Schedule_TrainerSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
     private NavController navController;
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +45,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
 
     public void init(View view){
         SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this);
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.trainer_selection_recycler, getActivity(), adapter);
+        recyclerView = FragmentHelper.initRecyclerView(view,R.id.trainer_selection_recycler, getActivity(), adapter);
 
         ApiRequester.getInstance(getActivity()).getTrainers(getActivity(), adapter, recyclerView);
 
@@ -71,6 +72,12 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
     @Override
     public void onItemClick(View view, int position) {
         SMSchedulePersistance.setTrainer( FragmentHelper.getSelectedItem(view) );
+        ArrayList<View> list = ((SimpleStringAdapter)recyclerView.getAdapter()).getListOfItems();
+        int itemCount = list.size();
+        for(int i =0 ; i<itemCount; i++){
+            FragmentHelper.removeRecyclerColor( list.get(i) );
+        }
+        FragmentHelper.addRecyclerColor(view);
     }
 
 }

@@ -24,6 +24,7 @@
             android:id="@+id/img_startDate_icon"
             android:layout_width="@dimen/img_date_icon"
             android:layout_height="@dimen/img_date_icon"
+            android:background="@android:color/white"
             app:srcCompat="@drawable/ic_calendar_black" />
     </LinearLayout>
 
@@ -47,6 +48,7 @@
             android:id="@+id/img_endDate_icon"
             android:layout_width="@dimen/img_date_icon"
             android:layout_height="@dimen/img_date_icon"
+            android:background="@android:color/white"
             app:srcCompat="@drawable/ic_calendar_black" />
     </LinearLayout>
 </LinearLayout>

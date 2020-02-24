@@ -84,16 +84,14 @@ public class FragmentHelper {
 
     public static void addRecyclerColor(View container){
         if(container != null){
-            container.setBackgroundColor( container.getResources().getColor(R.color.primeDark2) );
-            container.findViewById(R.id.simple_string_container).setBackgroundColor( container.getResources().getColor(R.color.primeDark2) );
+            container.findViewById(R.id.card_simple_string).setBackgroundColor( container.getResources().getColor(R.color.primeDark2) );
             ((TextView)container.findViewById(R.id.tv_string)).setTextColor( container.getResources().getColor(android.R.color.white) );
         }
     }
 
     public static void removeRecyclerColor(View container){
         if(container != null){
-            container.setBackgroundColor( container.getResources().getColor(android.R.color.white) );
-            container.findViewById(R.id.simple_string_container).setBackgroundColor( container.getResources().getColor(android.R.color.white) );
+            container.findViewById(R.id.card_simple_string).setBackgroundColor( container.getResources().getColor(android.R.color.white) );
             ((TextView)container.findViewById(R.id.tv_string)).setTextColor( container.getResources().getColor(R.color.black) );
         }
     }

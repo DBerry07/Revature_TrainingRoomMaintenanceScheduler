@@ -27,6 +27,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     private static final String DEBUG_TAG = "TR_Delegate_RoomSelectionFragment";
 
     private NavController navController;
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +45,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
 
     public void init(View view){
         SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
-        RecyclerView recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
+        recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
 
         ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);
 
@@ -71,5 +72,11 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     @Override
     public void onItemClick(View view, int position) {
         TRDelegatePersistance.setRoom( FragmentHelper.getSelectedItem(view) );
+        ArrayList<View> list = ((SimpleStringAdapter)recyclerView.getAdapter()).getListOfItems();
+        int itemCount = list.size();
+        for(int i =0 ; i<itemCount; i++){
+            FragmentHelper.removeRecyclerColor( list.get(i) );
+        }
+        FragmentHelper.addRecyclerColor(view);
     }
 }

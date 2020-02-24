@@ -17,9 +17,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.OnSetDateListener;
 import com.revature.roommaintenanceprototype.adapters.ReportsAdapter;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
@@ -63,6 +65,10 @@ public class TR_Reports_DateFragment extends Fragment implements View.OnClickLis
         etEndDate = view.findViewById(R.id.et_endDate);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_rpt_reports),R.drawable.ic_reports);
         dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(this);
+        CustomViewAnimator.animateFloatingActionButtonOut(floatingActionButton);
     }
 
     @Override
