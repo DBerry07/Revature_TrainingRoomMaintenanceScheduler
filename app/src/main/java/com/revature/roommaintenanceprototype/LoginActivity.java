@@ -54,10 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password = etPassword.getText().toString();
         switch (view.getId()){
             case R.id.btn_login:
-                launchTrainerActivity(email);
-                break;
-            case R.id.btn_login2:
-                launchSiteManagerActivity(email);
+                processLogin(email,password);
                 break;
             case R.id.chk_keep_logged_in:
                 break;
@@ -85,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         InputProcessing.getPasswordMaxLength()+" characters.");
             }else if( passwordStatus == InputProcessing.InputReturn.OK){
                 ApiRequester.getInstance(this).getUsers(this, email, password);
-                /*if( LoginController.testLoginCredentials(email, password, users) ){
+                if( LoginController.testLoginCredentials(email, password, users) ){
                     if(email.contains("manager")){
                         launchSiteManagerActivity(email);
                     }else if(email.contains("trainer")){
@@ -93,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }else{
                     ScreenMessage.toastLongMsg(getApplicationContext(), "Invalid login credentials.");
-                }*/
+                }
             }
         }
     }

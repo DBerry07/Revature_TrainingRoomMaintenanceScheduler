@@ -141,7 +141,7 @@
                 android:layout_marginRight="5dp"
                 android:padding="0dp" />
             <Button
-                android:id="@+id/btn_login3"
+                android:id="@+id/btn_login"
                 style="@style/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
 
 
 
-
+    <!--
         <Button
             android:id="@+id/btn_login"
             style="@style/buttonStyle"
@@ -175,6 +175,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_login" />
+         -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
