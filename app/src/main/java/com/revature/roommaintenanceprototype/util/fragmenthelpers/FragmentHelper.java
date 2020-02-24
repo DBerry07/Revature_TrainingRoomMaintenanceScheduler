@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -100,12 +101,21 @@ public class FragmentHelper {
     }
 
     public static void restoreSimpleTextChoice(View view, String selectedItem){
-        Log.d(DEBUG_TAG,"Trying to store item");
         TextView title = view.findViewById(R.id.tv_string);
         String titleString = title.getText().toString();
-        Log.d(DEBUG_TAG,"CURRENT_TITLE: "+titleString+" | SELECTED_ITEM: "+selectedItem);
         if( titleString.equals(selectedItem )){
             addRecyclerColor(view);
         }
+    }
+
+    public static void restoreCriteriaChoices(View view, ArrayList<String> chosenCriteria){
+        TextView textView = view.findViewById(R.id.tv_cleaningCriteria_item);
+        String criteriaString = textView.getText().toString();
+        Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
+
+        if(chosenCriteria.contains(criteriaString)){
+            swt.setChecked(true);
+        }
+
     }
 }

@@ -12,24 +12,32 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.CriteriaViewHolder>{
-    ArrayList<String> criteriaItemsList;
-    OnItemClickListener listener;
-    OnChangeSwitchState switchListener;
-
-    public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener){
-        this.criteriaItemsList = criteriaItemList;
-        this.listener = listener;
-    }
+    private ArrayList<String> criteriaItemsList;
+    private OnItemClickListener listener;
+    private OnChangeSwitchState switchListener;
+    private ArrayList<String> selectedCriteriaList;
 
     public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener,OnChangeSwitchState switchListener){
         this.criteriaItemsList = criteriaItemList;
         this.switchListener = switchListener;
         this.listener = listener;
+    }
+
+    public CriteriaAdapter(ArrayList<String> criteriaItemList,OnItemClickListener listener,OnChangeSwitchState switchListener,ArrayList<String> selectedCriteriaList){
+        this.criteriaItemsList = criteriaItemList;
+        this.switchListener = switchListener;
+        this.listener = listener;
+        this.selectedCriteriaList = selectedCriteriaList;
+    }
+
+    public ArrayList<String> getSelectedCriteriaList() {
+        return selectedCriteriaList;
     }
 
     @NonNull
@@ -40,8 +48,29 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CriteriaViewHolder holder, final int position) {
-        holder.tvCleaningItem.setText(criteriaItemsList.get(position));
+    public void onBindViewHolder(@NonNull final CriteriaViewHolder holder, final int position) {
+        TextView tvTitle = holder.tvCleaningItem;
+        tvTitle.setText(criteriaItemsList.get(position));
+        String title = tvTitle.getText().toString();
+        if( selectedCriteriaList.contains(title) ){
+            holder.swtCleaningItem.setChecked(true);
+        }else{
+            holder.swtCleaningItem.setChecked(false);
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                listener.onItemClick(view, 0);
+            }
+        });
+        holder.swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                switchListener.onSwitchChanged(holder.tvCleaningItem.getText().toString(),buttonView,isChecked);
+            }
+        });
+        FragmentHelper.restoreCriteriaChoices(holder.container,selectedCriteriaList);
     }
 
     @Override
@@ -49,7 +78,10 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
         return criteriaItemsList.size();
     }
 
-
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
 
     class CriteriaViewHolder extends RecyclerView.ViewHolder{
         Switch swtCleaningItem;
@@ -58,28 +90,10 @@ public class CriteriaAdapter extends RecyclerView.Adapter<CriteriaAdapter.Criter
 
         public CriteriaViewHolder(@NonNull final View itemView) {
             super(itemView);
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    listener.onItemClick(view, 0);
-                }
-            });
             container = itemView.findViewById(R.id.linearLayout);
-
             tvCleaningItem = itemView.findViewById(R.id.tv_cleaningCriteria_item);
-
             swtCleaningItem = (Switch) itemView.findViewById(R.id.swt_cleaningCriteria_item);
-            swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                }
-            });
-            swtCleaningItem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    switchListener.onSwitchChanged(tvCleaningItem.getText().toString(),buttonView,isChecked);
-                }
-            });
+            this.setIsRecyclable(false);
         }
     }
 

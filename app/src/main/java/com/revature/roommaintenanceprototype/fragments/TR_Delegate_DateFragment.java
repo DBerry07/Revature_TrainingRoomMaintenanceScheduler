@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
 import com.revature.roommaintenanceprototype.util.fragmenthelpers.DelegateDateHelper;
@@ -50,6 +51,8 @@ public class TR_Delegate_DateFragment extends Fragment implements View.OnClickLi
         etEndDate = view.findViewById(R.id.et_endDate);
         button = view.findViewById(R.id.btn_delegateDate);
         button.setOnClickListener(this);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setVisibility(View.GONE);
         FragmentHelper.initFragmentHeader(view, getString(R.string.description_tr_delegate_date),R.drawable.ic_menu_date);
         dateFragmentPojo = new DateFragmentPojo(-1,-1,-1,-1,-1,-1);
     }

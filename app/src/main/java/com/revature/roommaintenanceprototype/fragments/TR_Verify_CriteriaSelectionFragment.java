@@ -2,6 +2,7 @@ package com.revature.roommaintenanceprototype.fragments;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +33,11 @@ import java.util.Set;
 
 
 public class TR_Verify_CriteriaSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener, OnChangeSwitchState {
-    RecyclerView rvCleaningCriteria;
-    NavController navController;
-    Set<String> chosenCriteria = new HashSet<>();
+    private static final String DEBUG_TAG = "TR_Verify_CriteriaSelectionFragment";
+
+    private RecyclerView rvCleaningCriteria;
+    private NavController navController;
+    private Set<String> chosenCriteria = new HashSet<>();
     Bundle bundle;
     FloatingActionButton floatingActionButton;
 
@@ -53,7 +56,7 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     }
 
     public void init(View view){
-        CriteriaAdapter adapter = new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this );
+        CriteriaAdapter adapter = new CriteriaAdapter( (ArrayList<String>) DummyText.getCleaningCriteria(),this,this, TRVerifyPersistance.getCleaningCriteria() );
         rvCleaningCriteria = FragmentHelper.initRecyclerView(view,R.id.rv_cleaningCriteria, getActivity(), adapter);
 
         ApiRequester.siteManagerGetTasks(getActivity(), adapter, rvCleaningCriteria);
@@ -83,12 +86,16 @@ public class TR_Verify_CriteriaSelectionFragment extends Fragment implements Vie
     public void onItemClick(View view, int position) {
         Switch swt = view.findViewById(R.id.swt_cleaningCriteria_item);
         TextView tvTitle = view.findViewById(R.id.tv_cleaningCriteria_item);
+
+        ((CriteriaAdapter)rvCleaningCriteria.getAdapter()).getSelectedCriteriaList().add(tvTitle.getText().toString());
         CriteriaSelectionHelper.updateSwitchState(swt, getContext());
         CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,tvTitle.getText().toString(), swt.isChecked());
     }
 
     @Override
     public void onSwitchChanged(String title,View view, boolean isChecked){
+        Log.d(DEBUG_TAG,"Switch change: "+title+" | State: "+isChecked);
+        ((CriteriaAdapter)rvCleaningCriteria.getAdapter()).getSelectedCriteriaList().add(title);
         CriteriaSelectionHelper.updateChosenCriteriaList(chosenCriteria,title, isChecked);
     }
 }

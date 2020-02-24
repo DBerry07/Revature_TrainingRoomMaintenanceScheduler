@@ -71,6 +71,9 @@ public class DelegateDateHelper {
 
     private static boolean validateDate(int startYear, int startMonth, int startDay,
                                         int endYear, int endMonth, int endDay) {
+        return true;
+        //NEED TO IMPLEMENT
+        /*
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         if( Arrays.asList(startYear,startMonth,startDay,endYear,endMonth,endDay).contains(-1) ){
             Log.d(DEBUG_TAG, "One of the values for date is not set yet. Cannot complete validation.");
@@ -88,6 +91,7 @@ public class DelegateDateHelper {
             Log.d(DEBUG_TAG,"Invalid date format.");
         }
         return true;
+        */
     }
 
     private static void updateDatePojo(DateFragmentPojo dateFragmentPojo, DatePicker datePicker, String tag){
