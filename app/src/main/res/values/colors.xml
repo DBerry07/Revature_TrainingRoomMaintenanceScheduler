@@ -32,4 +32,5 @@
     <color name="link_color">#0A6ACE</color>
     <color name="primaryContrastTransparent">#6506865C</color>
     <color name="login_title_gray">#CDCDCD</color>
+    <color name="red">#F00</color>
 </resources>
