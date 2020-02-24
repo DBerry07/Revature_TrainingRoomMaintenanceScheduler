@@ -9,6 +9,7 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -17,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.revature.roommaintenanceprototype.R;
 
 public class CustomViewAnimator {
+    private static final String DEBUG_TAG = "CustomViewAnimator";
     private static int animationSpeed = 500;
 
     public static void animateFloatingActionButtonOut(FloatingActionButton floatingActionButton){
@@ -68,5 +70,22 @@ public class CustomViewAnimator {
                 loginContainer.animate().alpha(1f).setDuration(700).start();
             }
         }).start();
+    }
+
+    public static void hideInvalidMessage(final TextView tvMessage){
+        Log.d(DEBUG_TAG,"Now Hiding Message");
+        tvMessage.animate().alpha(0).setDuration(500).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                tvMessage.setVisibility(View.GONE);
+            }
+        }).start();
+    }
+
+    public static void showInvalidMessage(final TextView tvMessage, String message){
+        Log.d(DEBUG_TAG,"Now Showing Message");
+        tvMessage.setText("  "+message+"  ");
+        tvMessage.setVisibility(View.VISIBLE);
+        tvMessage.setAlpha(1);
     }
 }
