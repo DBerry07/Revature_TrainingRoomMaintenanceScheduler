@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRDelegateNavigationController;
 import com.revature.roommaintenanceprototype.controllers.navigation.TRVerifyNavigationController;
@@ -27,6 +28,7 @@ import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRD
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.MainActivityHelper;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
 public class TrainerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawerLayout;
@@ -86,6 +88,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_trainer_verify:
+                CustomViewAnimator.showBottomNavComponents(drawerLayout);
+
                 navController.setGraph(R.navigation.tr_verify);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Verify_RoomSelectionFragment2);
@@ -95,6 +99,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRVerifyNavigationController(navController));
                 break;
             case R.id.menuItem_trainer_delegate:
+                CustomViewAnimator.showBottomNavComponents(drawerLayout);
+
                 navController.setGraph(R.navigation.tr_delegate);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Delegate_TrainerSelectionFragment);
@@ -104,7 +110,8 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 bottomNavigationView.setOnNavigationItemSelectedListener(new TRDelegateNavigationController(navController));
                 break;
             case R.id.menuItem_trainer_reports:
-                bottomNavigationView.setVisibility(View.INVISIBLE);
+                CustomViewAnimator.hideBottomNavComponents(drawerLayout);
+
                 navController.setGraph(R.navigation.tr_reports);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Reports_DateFragment);

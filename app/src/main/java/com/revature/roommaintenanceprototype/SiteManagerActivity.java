@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.controllers.navigation.SMScheduleNavigationController;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.SMSchedulePersistance;
 import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRDelegatePersistance;
@@ -89,6 +90,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.menuItem_siteManager_schedule:
+                CustomViewAnimator.showBottomNavComponents(drawerLayout);
+
                 navController.setGraph(R.navigation.sm_schedule);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Schedule_CampusSelectionFragment);
@@ -96,6 +99,8 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 bottomNavigationView.setOnNavigationItemSelectedListener(new SMScheduleNavigationController(navController));
                 break;
             case R.id.menuItem_siteManager_reports:
+                CustomViewAnimator.hideBottomNavComponents(drawerLayout);
+
                 navController.setGraph(R.navigation.sm_reports);
                 NavigationUI.setupActionBarWithNavController(this,navController,drawerLayout);
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.SM_Reports_DateFragment);
