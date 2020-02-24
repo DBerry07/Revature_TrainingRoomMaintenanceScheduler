@@ -1,5 +1,6 @@
 package com.revature.roommaintenanceprototype.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
+import com.revature.roommaintenanceprototype.util.fragmenthelpers.FragmentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.StringViewHolder>{
+    private static final String DEBUG_TAG = "SimpleStringAdapter";
+
     ArrayList<String> list;
     ArrayList<View> listOfItems;
     OnItemClickListener listener;
@@ -61,6 +66,9 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
             listOfItems.add(itemView);
             container = itemView.findViewById(R.id.container_row_simple_string);
             tvString = itemView.findViewById(R.id.tv_string);
+            Log.d(DEBUG_TAG,"Now Calling FragmentHelper");
+            FragmentHelper.restoreSimpleTextChoice(itemView, TRVerifyPersistance.getRoom());
+            Log.d(DEBUG_TAG,"Finish Calling FragmentHelper");
         }
 
         public TextView getTvString() {

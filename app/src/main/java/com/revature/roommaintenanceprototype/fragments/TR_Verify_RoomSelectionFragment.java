@@ -1,6 +1,7 @@
 package com.revature.roommaintenanceprototype.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.revature.roommaintenanceprototype.util.DummyText;
 import java.util.ArrayList;
 
 public class TR_Verify_RoomSelectionFragment extends Fragment implements View.OnClickListener, OnItemClickListener {
+    private static final String DEBUG_TAG = "TR_Verify_RoomSelectionFragment";
+
     private NavController navController;
     private FloatingActionButton floatingActionButton;
     private RecyclerView recyclerView;

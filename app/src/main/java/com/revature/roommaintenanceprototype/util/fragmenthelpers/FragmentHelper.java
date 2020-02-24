@@ -21,6 +21,8 @@ import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
+import java.util.ArrayList;
+
 public class FragmentHelper {
     private static final String DEBUG_TAG = "FragmentHelper";
 
@@ -93,6 +95,16 @@ public class FragmentHelper {
         if(container != null){
             container.findViewById(R.id.card_simple_string).setBackgroundColor( container.getResources().getColor(android.R.color.white) );
             ((TextView)container.findViewById(R.id.tv_string)).setTextColor( container.getResources().getColor(R.color.black) );
+        }
+    }
+
+    public static void restoreSimpleTextChoice(View view, String selectedItem){
+        Log.d(DEBUG_TAG,"Trying to resotre item");
+        TextView title = view.findViewById(R.id.tv_string);
+        String titleString = title.getText().toString();
+        Log.d(DEBUG_TAG,"CURRENT_TITLE: "+titleString+" | SELECTED_ITEM: "+selectedItem);
+        if( titleString.equals(selectedItem )){
+            addRecyclerColor(view);
         }
     }
 }
