@@ -44,7 +44,7 @@ public class TR_Delegate_RoomSelectionFragment extends Fragment implements View.
     }
 
     public void init(View view){
-        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this,TRDelegatePersistance.getRoom());
         recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
 
         ApiRequester.getInstance(getActivity()).fetchRoomByCalendar(getActivity(), 0, adapter, recyclerView);

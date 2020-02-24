@@ -44,7 +44,7 @@ public class SM_Schedule_TrainerSelectionFragment extends Fragment implements Vi
     }
 
     public void init(View view){
-        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this);
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getTrainers() , this,SMSchedulePersistance.getTrainer());
         recyclerView = FragmentHelper.initRecyclerView(view,R.id.trainer_selection_recycler, getActivity(), adapter);
 
         ApiRequester.getInstance(getActivity()).getTrainers(getActivity(), adapter, recyclerView);

@@ -41,7 +41,7 @@ public class SM_Schedule_CampusSelectionFragment extends Fragment implements Vie
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this);
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getCampuses() , this,SMSchedulePersistance.getCampus());
         View rootView = inflater.inflate(R.layout.fragment_container, container, false);
         FragmentHelper.includeFragmentContent(R.layout.fragment_campus_selection, (ViewGroup) rootView,inflater);
         recyclerView = FragmentHelper.initRecyclerView(rootView,R.id.rv_campusSelection, getActivity(), adapter);

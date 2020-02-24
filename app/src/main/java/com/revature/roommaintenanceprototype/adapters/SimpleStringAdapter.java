@@ -19,15 +19,24 @@ import java.util.List;
 
 public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapter.StringViewHolder>{
     private static final String DEBUG_TAG = "SimpleStringAdapter";
+    private String selectedItem;
 
-    ArrayList<String> list;
-    ArrayList<View> listOfItems;
-    OnItemClickListener listener;
+    private ArrayList<String> list;
+    private ArrayList<View> listOfItems;
+    private OnItemClickListener listener;
 
     public SimpleStringAdapter(ArrayList<String> list, OnItemClickListener listener){
         this.list = list;
         this.listener = listener;
         this.listOfItems = new ArrayList<>();
+        this.selectedItem = "";
+    }
+
+    public SimpleStringAdapter(ArrayList<String> list, OnItemClickListener listener,String selectedItem){
+        this.list = list;
+        this.listener = listener;
+        this.listOfItems = new ArrayList<>();
+        this.selectedItem = selectedItem;
     }
 
     public ArrayList<View> getListOfItems() {
@@ -50,6 +59,8 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
                 listener.onItemClick(view,position);
             }
         });
+
+        FragmentHelper.restoreSimpleTextChoice(holder.container, selectedItem);
     }
 
     @Override
@@ -66,9 +77,6 @@ public class SimpleStringAdapter extends RecyclerView.Adapter<SimpleStringAdapte
             listOfItems.add(itemView);
             container = itemView.findViewById(R.id.container_row_simple_string);
             tvString = itemView.findViewById(R.id.tv_string);
-            Log.d(DEBUG_TAG,"Now Calling FragmentHelper");
-            FragmentHelper.restoreSimpleTextChoice(itemView, TRVerifyPersistance.getRoom());
-            Log.d(DEBUG_TAG,"Finish Calling FragmentHelper");
         }
 
         public TextView getTvString() {

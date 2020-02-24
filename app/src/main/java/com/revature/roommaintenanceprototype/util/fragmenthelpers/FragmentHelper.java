@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.revature.roommaintenanceprototype.R;
 import com.revature.roommaintenanceprototype.adapters.SimpleStringAdapter;
+import com.revature.roommaintenanceprototype.controllers.workflowpersistance.TRVerifyPersistance;
 import com.revature.roommaintenanceprototype.util.ScreenMessage;
 
 import java.util.ArrayList;
@@ -99,7 +100,7 @@ public class FragmentHelper {
     }
 
     public static void restoreSimpleTextChoice(View view, String selectedItem){
-        Log.d(DEBUG_TAG,"Trying to resotre item");
+        Log.d(DEBUG_TAG,"Trying to store item");
         TextView title = view.findViewById(R.id.tv_string);
         String titleString = title.getText().toString();
         Log.d(DEBUG_TAG,"CURRENT_TITLE: "+titleString+" | SELECTED_ITEM: "+selectedItem);

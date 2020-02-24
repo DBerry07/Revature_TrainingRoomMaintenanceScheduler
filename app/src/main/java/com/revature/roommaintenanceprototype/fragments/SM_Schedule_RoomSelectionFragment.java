@@ -44,7 +44,7 @@ public class SM_Schedule_RoomSelectionFragment extends Fragment implements View.
     }
 
     public void init(View view){
-        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this);
+        SimpleStringAdapter adapter = new SimpleStringAdapter((ArrayList<String>) DummyText.getRooms() , this,SMSchedulePersistance.getRoom());
         recyclerView = FragmentHelper.initRecyclerView(view,R.id.rv_room_selection, getActivity(), adapter);
         FragmentHelper.updateToolbarTitle( (AppCompatActivity) getActivity(), getString(R.string.title_room_selection) );
 
