@@ -117,7 +117,6 @@ public class TrainerActivity extends AppCompatActivity implements NavigationView
                 Navigation.findNavController(this,R.id.fragment_mainContentContainer).navigate(R.id.TR_Reports_DateFragment);
                 break;
             case R.id.menuItem_trainer_logout:
-                bottomNavigationView.setVisibility(View.INVISIBLE);
                 ScreenMessage.confirmLogOut(this);
                 break;
         }

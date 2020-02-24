@@ -1,8 +1,16 @@
 package com.revature.roommaintenanceprototype.animation;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +33,7 @@ public class CustomViewAnimator {
 
     public static void hideBottomNavComponents(View parentView){
         BottomNavigationView bottomNavigationView = parentView.findViewById(R.id.bottom_navigation);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(bottomNavigationView,"translationy",300);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(bottomNavigationView,"translationY",300);
         objectAnimator.setDuration(animationSpeed);
         objectAnimator.start();
         bottomNavigationView.setVisibility(View.GONE);
@@ -41,5 +49,24 @@ public class CustomViewAnimator {
 
         ImageView imgHoverBtn = parentView.findViewById(R.id.img_hover_btn);
         imgHoverBtn.setVisibility(View.VISIBLE);
+    }
+
+    public static void animateSplashToLogin(View parentView){
+        final ConstraintLayout splashContainer = parentView.findViewById(R.id.splashContainer);
+        final ConstraintLayout loginContainer = parentView.findViewById(R.id.loginContainer);
+
+
+        splashContainer.animate().setDuration(1500).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                splashContainer.animate().translationX(10000).setDuration(2000).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        splashContainer.setVisibility(View.GONE);
+                    }
+                }).start();
+                loginContainer.animate().alpha(1f).setDuration(700).start();
+            }
+        }).start();
     }
 }

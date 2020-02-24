@@ -107,7 +107,6 @@ public class SiteManagerActivity extends AppCompatActivity implements Navigation
                 bottomNavigationView.setVisibility(View.INVISIBLE);
                 break;
             case R.id.menuItem_siteManager_logout:
-                bottomNavigationView.setVisibility(View.INVISIBLE);
                 ScreenMessage.confirmLogOut(this);
                 break;
         }

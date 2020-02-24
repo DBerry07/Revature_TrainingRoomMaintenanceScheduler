@@ -10,6 +10,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.revature.roommaintenanceprototype.animation.CustomViewAnimator;
 import com.revature.roommaintenanceprototype.database.MDatabase;
 import com.revature.roommaintenanceprototype.database.api.ApiRequester;
 import com.revature.roommaintenanceprototype.database.api.UserAPI;
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnLogin2 = (Button) findViewById(R.id.btn_login2);
         btnLogin2.setOnClickListener(this);
+        CustomViewAnimator.animateSplashToLogin( findViewById(R.id.login_activity_container) );
     }
 
     @Override
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_login2:
                 launchSiteManagerActivity(email);
                 break;
-            case R.id.tv_msg_forgotPassword:
+            case R.id.chk_keep_logged_in:
                 break;
         }
     }
